@@ -1,0 +1,32 @@
+Domain name fee: 11 dollars (176 cedis)
+Exchange rate at 19 august: 16.00
+Hosting (1 year): 35 dollars (560 cedis) 
+Hosting (2 years): 55 dollars (880 cedis)
+
+
+->Clicking on the pages in the navbar returns a problem
+->Add scroll back to top
+->Add fuse for searches
+->When loging in, for the login form, onsubmit return false
+->Tokens will be reserved for after contract starts
+->Theme, two soft tones, like grey and lavender
+-> Earthy tones like brown and gold
+
+
+TODOS - Before September
+------ BACKEND -------------
+[X] DB Config
+[X] Models
+[ ] Controllers - Basic [AuthController, BooksController, CartController]
+[ ] Validation - Basic
+[ ] Routes - Basic
+[ ] Authentication - Basic
+[ ] Views Basic => Will be handled with React
+
+
+------ FRONTEND ------------
+[X] Navbar
+[X] Hero
+[ ] Footer
+[ ] Row 1 - Remains Parallax
+[ ] Brief About Author

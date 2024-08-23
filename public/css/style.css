@@ -1,0 +1,112 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* background-color: rgb(200, 255, 255); */
+}
+
+a {
+  color: #00B7FF;
+}
+
+.rip-shadow{
+  box-shadow: 0.2rem .25rem .2rem rgba(0,0,0,.5) !important;
+}
+
+.rip-bg-info{
+  background-color: rgb(150, 255, 255);;
+}
+
+.rip-w-75{
+  width: 75% !important;
+}
+.rip-w-50 {
+  width: 50% !important;
+}
+.rip-stretch-heigth{
+  min-height: 82vh;
+}
+.rip-min-height{
+  min-height: 75vh;
+}
+.rip-nav-pill{
+  border-radius: 10rem;
+}
+.rip-border-left {
+  border-left: 1px solid #dee2e6;
+}
+.rip-border-right {
+  border-right: 1px solid #dee2e6;
+}
+
+table.dataTable tbody td {
+  vertical-align: middle;
+}
+
+
+/* .rip-mob-center{
+  text-align: left;
+} */
+
+@media (max-width: 991px){
+  .rip-w-75{
+    width: 100% !important;
+  }
+  .rip-w-50 {
+    width: 100% !important;
+  }
+  .rip-mob-center{
+    text-align: center !important;
+  }
+  .rip-nav-pill{
+    border-radius: .25rem !important;
+  }
+  .rip-border-left {
+    border-top: 1px solid #dee2e6;
+    border-left: none;
+  }
+  .rip-border-right {
+    border-bottom: 1px solid #dee2e6;
+    border-right: none;
+  }
+}
+
+/* Loading Animation */
+.loader-img{
+  z-index: 1;
+  width: 100px;
+  height: 69px;
+  margin: 100px auto;
+  background-image: url('/public/images/loading.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 50%;
+  box-shadow: 0 0.1rem 1rem rgba(0,0,0,.8);
+}
+.loader {
+  /* position: absolute;
+  left: 50%;
+  top: 50%; */
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  /* margin: -76px 0 0 -76px; */
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#loaderModal .modal-content{
+  background-color: transparent;
+  border: none;
+}
