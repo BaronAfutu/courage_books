@@ -1,10 +1,13 @@
 const Book = require('../models/Book');
+const { ReviewValidation } = require('../helpers/validation');
 
 // Add a review to a book
 exports.addReview = async (req, res) => {
+    const { error, value } = ReviewValidation.create.validate(req.body);
+    if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
+
     try {
-        const { bookId } = req.params;
-        const { reviewer, reviewText, rating } = req.body;
+        const { bookId, reviewer, reviewText, rating } = value;
 
         const book = await Book.findById(bookId);
         if (!book) {
@@ -12,7 +15,7 @@ exports.addReview = async (req, res) => {
         }
 
         const newReview = {
-            reviewer: reviewer || req.user.name, // Assuming you are using authentication and have the reviewer's name
+            reviewer: (reviewer != "" && reviewer != null) ? reviewer : "anonymous",
             reviewText,
             rating,
             reviewDate: new Date(),
@@ -34,11 +37,45 @@ exports.addReview = async (req, res) => {
     }
 };
 
+// Add a rating to a book
+exports.addRating = async (req, res) => {
+    const { error, value } = ReviewValidation.rate.validate(req.body);
+    if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
+
+    try {
+        const { bookId, rating } = value;
+
+        const book = await Book.findById(bookId);
+        if (!book) {
+            return res.status(404).json({ message: 'Book not found' });
+        }
+
+        const newReview = {
+            rating,
+            reviewDate: new Date(),
+        };
+
+        // Update the average rating and number of ratings
+        book.rating.numberOfRatings += 1;
+        book.rating.averageRating =
+            (book.rating.averageRating * (book.rating.numberOfRatings - 1) + rating) /
+            book.rating.numberOfRatings;
+
+        await book.save();
+        res.status(201).json({ message: 'Review added successfully', review: newReview });
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: 'Error adding review', error });
+    }
+};
+
 // Update a review for a book
 exports.updateReview = async (req, res) => {
+    const { error, value } = ReviewValidation.create.validate(req.body);
+    if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
     try {
-        const { bookId, reviewId } = req.params;
-        const { reviewText, rating } = req.body;
+        const { reviewId } = req.params;
+        const { bookId, reviewText, rating } = value;
 
         const book = await Book.findById(bookId);
         if (!book) {

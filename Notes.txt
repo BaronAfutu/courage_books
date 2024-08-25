@@ -17,11 +17,11 @@ TODOS - Before September
 ------ BACKEND -------------
 [X] DB Config
 [X] Models
-[ ] Controllers - Basic [AuthController, BooksController, CartController]
+[ ] Controllers - Basic [AuthController, BookController, CartController, ReviewController, WishlistController, OrderController]
 [ ] Validation - Basic
 [ ] Routes - Basic
 [ ] Authentication - Basic
-[ ] Views Basic => Will be handled with React
+[ ] Views Basic => Will be handled with React, maybe
 
 
 ------ FRONTEND ------------

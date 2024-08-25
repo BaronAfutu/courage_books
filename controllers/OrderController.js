@@ -1,33 +1,45 @@
 const Order = require('../models/Order');
 const Book = require('../models/Book');
+const User = require('../models/User');
+const { decodeToken } = require('./GeneralController');
+const { OrderValidation } = require('../helpers/validation');
 
 // Create a new order
 exports.createOrder = async (req, res) => {
+    const { error, value } = OrderValidation.create.validate(req.body);
+    if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
+    
     try {
-        const { user, items, shippingAddress, paymentMethod } = req.body;
+        //Getting User ID
+        const decoded = await decodeToken(req.headers.authorization);
+        if (!decoded.success) return res.status(500).json({ status: false });
+        const { id: userId, isAdmin } = decoded;
+
+        const { items, shippingAddress } = value;
 
         // Calculate total price
-        let totalPrice = 0;
+        let totalAmount = 0;
         for (const item of items) {
             const book = await Book.findById(item.book);
             if (!book) {
                 return res.status(404).json({ message: 'Book not found' });
             }
-            totalPrice += book.price * item.quantity;
+            totalAmount += book.price * item.quantity;
         }
+
+        const user = await User.findById(userId).select('id');
 
         const order = new Order({
             user,
             items,
-            shippingAddress,
-            paymentMethod,
-            totalPrice,
-            orderStatus: 'Pending',
+            totalAmount,
+            shippingAddress
         });
 
         await order.save();
         res.status(201).json({ message: 'Order created successfully', order });
     } catch (error) {
+        console.log(error)
         res.status(400).json({ message: 'Error creating order', error });
     }
 };
@@ -35,9 +47,20 @@ exports.createOrder = async (req, res) => {
 // Get all orders (Admin only)
 exports.getAllOrders = async (req, res) => {
     try {
-        const orders = await Order.find().populate('user', 'name email');
+        //Getting User ID
+        const decoded = await decodeToken(req.headers.authorization);
+        if (!decoded.success) return res.status(500).json({ status: false });
+        const { id: userId, isAdmin } = decoded;
+
+        if (!isAdmin) return res.status(401).json({status:false, message:"Unathorized!!"});
+
+        // TODO Add other queries like order status and the likes
+        const orders = await Order.find()
+        .populate('user', 'id username email')
+        .populate('items.book','id title subtitle slug format coverImageUrl');
         res.status(200).json(orders);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: 'Error fetching orders', error });
     }
 };
@@ -45,7 +68,13 @@ exports.getAllOrders = async (req, res) => {
 // Get orders by user ID
 exports.getOrdersByUser = async (req, res) => {
     try {
-        const orders = await Order.find({ user: req.params.userId }).populate('items.book', 'title price');
+        //Getting User ID
+        const decoded = await decodeToken(req.headers.authorization);
+        if (!decoded.success) return res.status(500).json({ status: false });
+        const { id: userId, isAdmin } = decoded;
+
+        const orders = await Order.find({ user: userId })
+        .populate('items.book','id title subtitle slug format coverImageUrl');
         res.status(200).json(orders);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching orders', error });
@@ -55,7 +84,8 @@ exports.getOrdersByUser = async (req, res) => {
 // Get order by ID
 exports.getOrderById = async (req, res) => {
     try {
-        const order = await Order.findById(req.params.id).populate('items.book', 'title price');
+        const order = await Order.findById(req.params.id)
+        .populate('items.book','id title subtitle slug format coverImageUrl');
         if (!order) {
             return res.status(404).json({ message: 'Order not found' });
         }
@@ -67,15 +97,21 @@ exports.getOrderById = async (req, res) => {
 
 // Update order status
 exports.updateOrderStatus = async (req, res) => {
+    const { error, value } = OrderValidation.updateStatus.validate(req.body);
+    if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
+
     try {
-        const { status } = req.body;
+
+        const {orderStatus='', shippingStatus='', shippingAddress=''} = value;
 
         const order = await Order.findById(req.params.id);
         if (!order) {
             return res.status(404).json({ message: 'Order not found' });
         }
+        if(orderStatus!=='' && orderStatus!=null)order.orderStatus = orderStatus;
+        if(shippingStatus!=='' && shippingStatus!=null)order.shippingStatus = shippingStatus;
+        if(shippingAddress!=='' && shippingAddress!=null)order.shippingAddress = shippingAddress;
 
-        order.orderStatus = status;
         await order.save();
 
         res.status(200).json({ message: 'Order status updated', order });
@@ -87,7 +123,7 @@ exports.updateOrderStatus = async (req, res) => {
 // Delete an order by ID (Admin only)
 exports.deleteOrder = async (req, res) => {
     try {
-        const order = await Order.findByIdAndDelete(req.params.id);
+        const order = await Order.findByIdAndUpdate(req.params.id,{orderStatus:'cancelled'});
         if (!order) {
             return res.status(404).json({ message: 'Order not found' });
         }

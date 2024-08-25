@@ -14,14 +14,17 @@ const authJwt = require('./helpers/jwt');
 
 
 // *******REQUIRE ROUTES*************
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/userRoutes');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/userRoutes');
 const booksRouter = require('./routes/bookRoutes');
 const cartRouter = require('./routes/cartRoutes');
+const wishlistRouter = require('./routes/wishlistRoutes');
+const reviewRouter = require('./routes/reviewRoutes');
+const orderRouter = require('./routes/orderRoutes');
 
 
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -63,9 +66,14 @@ app.options('*',cors());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/books',booksRouter);
+// TODDO merge the authJwt() middleware uses into one
+// Maybe put at very top and exempt some endpoints
+app.use('/reviews',reviewRouter);
 app.use('/cart',authJwt());
 app.use('/cart',cartRouter);
-
+app.use('/orders',authJwt());
+app.use('/wishlist',wishlistRouter);
+app.use('/orders',orderRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

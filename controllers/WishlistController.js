@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const Book = require('../models/Book');
+const { decodeToken } = require('./GeneralController');
 
 /*
 Recommendations:
@@ -13,8 +14,14 @@ This wishlistController will allow users to manage their wishlist by adding and 
 // Add a book to the wishlist
 exports.addToWishlist = async (req, res) => {
     try {
-        const userId = req.user.id; // Assuming user is authenticated and user ID is available
-        const { bookId } = req.body;
+        //Getting User ID
+        const decoded = await decodeToken(req.headers.authorization);
+        if (!decoded.success) return res.status(500).json({ status: false });
+        const { id: userId, isAdmin } = decoded;
+
+        // Getting Book ID
+        const { bookId = ''} = req.body;
+        if (typeof bookId !== 'string') return res.status(400).json({ status: false, errMsg: "bookid should be a string!!" });
 
         const book = await Book.findById(bookId);
         if (!book) {
@@ -38,8 +45,14 @@ exports.addToWishlist = async (req, res) => {
 // Remove a book from the wishlist
 exports.removeFromWishlist = async (req, res) => {
     try {
-        const userId = req.user.id;
-        const { bookId } = req.params;
+        //Getting User ID
+        const decoded = await decodeToken(req.headers.authorization);
+        if (!decoded.success) return res.status(500).json({ status: false });
+        const { id: userId, isAdmin } = decoded;
+
+        // Getting Book ID
+        const { bookId = ''} = req.body;
+        if (typeof bookId !== 'string') return res.status(400).json({ status: false, errMsg: "bookid should be a string!!" });
 
         const user = await User.findById(userId);
 
@@ -61,9 +74,12 @@ exports.removeFromWishlist = async (req, res) => {
 // Get the user's wishlist
 exports.getWishlist = async (req, res) => {
     try {
-        const userId = req.user.id;
+        //Getting User ID
+        const decoded = await decodeToken(req.headers.authorization);
+        if (!decoded.success) return res.status(500).json({ status: false });
+        const { id: userId, isAdmin } = decoded;
 
-        const user = await User.findById(userId).populate('wishlist');
+        const user = await User.findById(userId).populate('wishlist','id title subtitle price slug coverImageUrl');
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -77,7 +93,10 @@ exports.getWishlist = async (req, res) => {
 // Clear the wishlist
 exports.clearWishlist = async (req, res) => {
     try {
-        const userId = req.user.id;
+        //Getting User ID
+        const decoded = await decodeToken(req.headers.authorization);
+        if (!decoded.success) return res.status(500).json({ status: false });
+        const { id: userId, isAdmin } = decoded;
 
         const user = await User.findById(userId);
         user.wishlist = []; // Clear the wishlist
