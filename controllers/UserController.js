@@ -4,7 +4,9 @@ const { dataValidation, dataFiltersValidation, getDataValidation } = require('..
 // Fetch all users
 const getAllUsers = async (req, res) => {
     try {
-        const users = await UserModel.find();
+        const users = await UserModel.find()
+        .populate('books','id slug title subtitle rating.averageRating')
+        .populate('cart.book','id slug title subtitle rating.averageRating');
         res.status(200).json(users);
     } catch (err) {
         res.status(500).json({ message: err.message });

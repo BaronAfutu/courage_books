@@ -53,7 +53,7 @@ exports.login = async (req, res) => {
 
     const { email, password } = value;
     try {
-        let user = await User.findOne({ 'email': email }, 'email password');
+        let user = await User.findOne({ 'email': email }, 'email password isAdmin');
 
         if (user && bcrypt.compareSync(password, user.password)) {
             const token = jwt.sign({

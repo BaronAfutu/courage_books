@@ -51,7 +51,6 @@ exports.getAllOrders = async (req, res) => {
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id: userId, isAdmin } = decoded;
-
         if (!isAdmin) return res.status(401).json({status:false, message:"Unathorized!!"});
 
         // TODO Add other queries like order status and the likes

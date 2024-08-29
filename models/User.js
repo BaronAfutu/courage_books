@@ -29,6 +29,7 @@ const userSchema = new mongoose.Schema({
     default: []
   }],
   address: { type: String, default: "" },
+  balance: { type:Number, default: 0},
   isAdmin: { type: Boolean, default: false },
   status: { type: Number, default: 1 },
   profileImage: { type: String, default: "" },

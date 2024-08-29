@@ -3,6 +3,9 @@ Exchange rate at 19 august: 16.00
 Hosting (1 year): 35 dollars (560 cedis) 
 Hosting (2 years): 55 dollars (880 cedis)
 
+Domain name and Hosting: 1 year = 180+560 = 750
+Domain name and Hosting: 2 years = 360 + 880 = 1240 #I made a mistage sending to them 
+
 
 ->Clicking on the pages in the navbar returns a problem
 ->Add scroll back to top
@@ -11,17 +14,19 @@ Hosting (2 years): 55 dollars (880 cedis)
 ->Tokens will be reserved for after contract starts
 ->Theme, two soft tones, like grey and lavender
 -> Earthy tones like brown and gold
+-> On admin side, all models can be queried py all their fields including period range
 
 
 TODOS - Before September
 ------ BACKEND -------------
 [X] DB Config
 [X] Models
-[ ] Controllers - Basic [AuthController, BookController, CartController, ReviewController, WishlistController, OrderController]
+[ ] Controllers - Basic [AuthController, Book, Cart, Review, WishlistController, OrderController, PaymentController]
 [ ] Validation - Basic
 [ ] Routes - Basic
 [ ] Authentication - Basic
 [ ] Views Basic => Will be handled with React, maybe
+[ ] Paystack Integration into payment controller
 
 
 ------ FRONTEND ------------

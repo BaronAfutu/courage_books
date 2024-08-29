@@ -67,6 +67,15 @@ class OrderValidation {
     })
 }
 
+class PaymentValidation{
+    static create = Joi.object({
+        order: Joi.string().required(),
+        transactionId: Joi.string().required(),
+        paymentMethod: Joi.string().trim().required(),
+        amount: Joi.number().required()
+    })
+}
+
 
 class ReviewValidation {
     static create = Joi.object({
@@ -108,5 +117,6 @@ module.exports = {
     UserValidation,
     BookValidation,
     ReviewValidation,
-    OrderValidation
+    OrderValidation,
+    PaymentValidation
 }
