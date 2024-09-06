@@ -406,7 +406,6 @@
 
         <div class="container">
 
-
             <div class="row justify-content-between">
 
 
@@ -434,10 +433,16 @@
         </div>
 
 
-
     </div>
 
-
+    <section class="container bg-primary-subtle">
+        <form id="fileUpload" enctype="multipart/form-data">
+            <input type="file" name="bookFile" id="bookFile" accept="application/pdf" required>
+            <input type="file" name="bookCover" id="bookCover" accept="image/*">
+            <input type="text" name="slug" id="slug" value="theBook">
+            <input type="submit" value="Upload">
+        </form>
+    </section>
 
 
 

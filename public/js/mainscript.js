@@ -8,6 +8,43 @@ const getBooks = async () => {
 
 }
 
+const request = (url, method, data = {}) => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: url,
+            type: method,
+            contentType: 'application/json',
+            data: (method == "POST") ? JSON.stringify(data) : data,
+            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + $('#token').val()); },
+            success: function (response) {
+                resolve(response)
+            },
+            error: function (error) {
+                reject(error);
+            }
+        });
+    })
+}
+
+const uploadRequest = (url, formData) => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            processData: false,  // Prevent jQuery from converting the data into a query string
+            contentType: false,  // Set the content type to false, as jQuery will tell the browser to set it to multipart/form-data
+            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + $('#token').val()); },
+            success: function (response) {
+                resolve(response);
+            },
+            error: function (xhr, status, error) {
+                reject(xhr.responseText);
+            }
+        });
+    })
+}
+
 $(document).ready(async function () {
     "use strict";
 
@@ -146,7 +183,7 @@ $(document).ready(async function () {
 
             let bookContainer = document.createElement('div');
             bookContainer.className = 'col-6 col-md-4 my-4';
-            
+
             let link = document.createElement('a');
             link.className = 'w-100';
             link.href = `${book.title}.html`;
@@ -156,7 +193,7 @@ $(document).ready(async function () {
 
             let coverPage = document.createElement('img');
             coverPage.src = book.thumbnailUrl;
-            coverPage.className='img-fluid rounded-2 w-100';
+            coverPage.className = 'img-fluid rounded-2 w-100';
             coverPage.alt = book.title;
 
             coverPageCard.appendChild(coverPage);
@@ -167,7 +204,7 @@ $(document).ready(async function () {
 
             link.appendChild(coverPageCard);
             link.appendChild(readMoreButton);
-            
+
             bookContainer.appendChild(link);
 
             // bookContainer.className = ''; // Add a class for styling
@@ -206,5 +243,53 @@ $(document).ready(async function () {
         valueField: 'isbn',
         // suggestion: '<div><strong>{{title}}</strong> – {{title}}</div>',
         onSelect: (item) => { console.log(item) }
+    });
+
+
+    $("#fileUpload").submit(async function (e) {
+        e.preventDefault(); // Prevent the form from submitting via the browser
+
+        let formData = new FormData();
+        let fileInput = $('#bookCover')[0].files[0];
+        if (!fileInput) {
+            alert("Please select an image upload.");
+            return false;
+        }
+        formData.append('bookCover', fileInput);
+
+        let formData2 = new FormData();
+        let fileInput2 = $('#bookFile')[0].files[0];
+        if (!fileInput2) {
+            alert("Please select a PDF file to upload.");
+            return false;
+        }
+        formData2.append('bookFile',fileInput2);
+
+        // try{
+        //     let response = await request('http://localhost:3000/books/','POST');
+        //     console.log(response);
+        // }catch(error){
+        //     console.log(error.responseText)
+        // }
+
+        // uploadRequest('http://localhost:3000/uploads/cover/66c74cdbf4dc26be1dab1142?slug=thebook', formData)
+        //     .then(response => {
+        //         console.log(response);
+        //         // Response => Object { message: "Image uploaded successfully", fileName: "bookCover-1725209079725-thebook.png" }
+        //     }).catch(error => {
+        //         console.log(error)
+        //         alert("Error")
+        //     })
+
+        // uploadRequest('http://localhost:3000/uploads/book/66c74cdbf4dc26be1dab1142?slug=thebook', formData2)
+        //     .then(response => {
+        //         console.log(response);
+        //         // Response => Object { message: "Image uploaded successfully", fileName: "bookCover-1725209079725-thebook.png" }
+        //     }).catch(error => {
+        //         console.log(error)
+        //         alert("Error")
+        //     })
+
+        return false;
     });
 });

@@ -11,17 +11,17 @@ Domain name and Hosting: 2 years = 360 + 880 = 1240 #I made a mistage sending to
 ->Add scroll back to top
 ->Add fuse for searches
 ->When loging in, for the login form, onsubmit return false
-->Tokens will be reserved for after contract starts
 ->Theme, two soft tones, like grey and lavender
 -> Earthy tones like brown and gold
--> On admin side, all models can be queried py all their fields including period range
+-> On admin side, all models can be queried by all their fields including period range
+-> Homepage last due to too much pressure to make it perfect
 
 
 TODOS - Before September
 ------ BACKEND -------------
 [X] DB Config
 [X] Models
-[ ] Controllers - Basic [AuthController, Book, Cart, Review, WishlistController, OrderController, PaymentController]
+[ ] Controllers - Basic [AuthController, Book, Cart, Review, WishlistController, OrderController, PaymentController, UserController]
 [ ] Validation - Basic
 [ ] Routes - Basic
 [ ] Authentication - Basic

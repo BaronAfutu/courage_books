@@ -100,15 +100,24 @@ class UserValidation {
         firstName: Joi.string().trim().required(),
         lastName: Joi.string().trim().required(),
         email: Joi.string().trim().email().required().lowercase(),
-        password: Joi.string().min(3).required(),
-        // phone: Joi.string().trim().allow('', null),
-        // address: Joi.string().trim().required()
-        // After registering, you complete profile
+        password: Joi.string().min(3).required()
     });
 
     static login = Joi.object({
         email: Joi.string().trim().email().required(),
         password: Joi.string().required()
+    })
+
+    static update = Joi.object({
+        username: Joi.string().min(2).required(),
+        firstName: Joi.string().trim().required(),
+        lastName: Joi.string().trim().required(),
+        // email: Joi.string().trim().email().required().lowercase(),
+        // password: Joi.string().min(3).required(),
+        // email & password for security updates
+        phone: Joi.string().trim().allow('', null),
+        address: Joi.string().trim().allow('',null),
+        profileImage: Joi.string().trim().allow('',null)
     })
 }
 

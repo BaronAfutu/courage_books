@@ -22,6 +22,7 @@ const wishlistRouter = require('./routes/wishlistRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const orderRouter = require('./routes/orderRoutes');
 const paymentRouter = require('./routes/paymentRoutes');
+const uploadRouter = require('./routes/fileUploadRoutes');
 
 
 
@@ -76,6 +77,7 @@ app.use('/orders',authJwt());
 app.use('/wishlist',wishlistRouter);
 app.use('/orders',orderRouter);
 app.use('/payments',paymentRouter);
+app.use('/uploads',uploadRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

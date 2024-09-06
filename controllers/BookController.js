@@ -88,6 +88,36 @@ const createBook = async (req, res) => {
         res.status(400).json({ message: 'Error creating book', error });
     }
 };
+
+// Add Book Cover
+const addBookCover = async (req, res) => {
+    try {
+        const coverUrl = `/uploads/coverImages/${req.file.filename}`;
+        const book = await Book.findByIdAndUpdate(req.params.id, { coverImageUrl: coverUrl });
+        if (!book) {
+            return res.status(404).json({ message: 'Book not found' });
+        }
+        res.status(200).json({ message: 'Book cover saved successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error saving book cover', error });
+    }
+};
+
+// Add Book File
+const addBookFile = async (req, res) => {
+    try {
+        const bookUrl = `/uploads/books/${req.file.filename}`;
+        const book = await Book.findByIdAndUpdate(req.params.id, { bookfileUrl: bookUrl });
+        if (!book) {
+            return res.status(404).json({ message: 'Book not found' });
+        }
+        res.status(200).json({ message: 'Book pdf saved successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error saving book pdf', error });
+    }
+};
+
+
 // Update a book by ID
 const updateBook = async (req, res) => {
     const { error, value } = BookValidation.create.validate(req.body);
@@ -139,5 +169,7 @@ module.exports = {
     getBookById,
     updateBook,
     deleteBook,
-    searchBooks
+    searchBooks,
+    addBookCover,
+    addBookFile
 };
