@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD TEMPLATE START -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- <meta http-equiv="Content-Security-Policy" -->
+    <!-- content="script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net"> -->
+
+    <title>Courage Books</title>
+
+    <!-- <link rel="shortcut icon" href="/img/ripfavicon.png"> -->
+    <!-- <link rel="stylesheet" href="/public/fontawesome-5.15/css/all.min.css" /> -->
+     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/select2.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.css"> -->
+    <link rel="stylesheet" href="/public/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/public/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/public/css/datatables.min.css" />
+    <!-- <link rel="stylesheet" href="/public/css/templatemo-pod-talk.css" /> -->
+    <link rel="stylesheet" href="/public/css/style.css" />
+</head>
+<!-- HEAD TEMPLATE END -->
+
+<body>
+
+    <!-- NAVBAR START -->
+    <nav class="navbar navbar-expand-lg py-4 px-5">
+        <div class="container-fluid px-5">
+            <a class="navbar-brand" href="#">JP Alorwu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Books
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+
+
+                </ul>
+                <button class="btn btn-outline-dark rounded-pill border-0 shadow-sm mx-2"> <span
+                        class="fa fa-search "></span> Search</button>
+                <button class="btn btn-outline-dark rounded-pill border-0 shadow-sm mx-2"> Login</button>
+                <button class="btn btn-outline-dark rounded-pill border-0 shadow-sm mx-2">
+                    Cart
+                    <span id="cartCount" class="bg-dark rounded-circle px-2 py-1 text-white mx-2">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- NAVBAR END -->
+
+    <!-- JUMBO START -->
+    <div class="container-fluid px-5 my-5">
+        <div class="p-5 bg-body-secondary rounded-4 jumbotron shadow-sm ">
+            <div class="py-4">
+
+                <h1 class="text-body-emphasis">Books</h1>
+
+                <p class="my-4 ">Browse our favorite sale products and brands.</p>
+                <div class="d-flex justify-content-between ">
+                    <button class="btn bg-white rounded-pill p-2 shadow-sm ">
+                        <span class="fa fa-baby fa-lg bg-secondary-subtle rounded-circle p-3"></span>
+                        <span class="mx-2 ">Category 1</span>
+                    </button>
+                    <button class="btn bg-white rounded-pill p-2 shadow-sm  ">
+                        <span class="fa fa-heart fa-lg bg-secondary-subtle rounded-circle p-3"></span>
+                        <span class="mx-2 ">Category 2</span>
+                    </button>
+                    <button class="btn bg-white rounded-pill p-2 shadow-sm  ">
+                        <span class="fa fa-address-book fa-lg bg-secondary-subtle rounded-circle p-3"></span>
+                        <span class="mx-2 ">Category 3</span>
+                    </button>
+                    <button class="btn bg-white rounded-pill p-2 shadow-sm ">
+                        <span class="fa fa-book fa-lg bg-secondary-subtle rounded-circle p-3"></span>
+                        <span class="mx-2 ">Category 4</span>
+                    </button>
+                    <button class="btn bg-white rounded-pill p-2 shadow-sm  ">
+                        <span class="fa fa-pen fa-lg bg-secondary-subtle rounded-circle p-3"></span>
+                        <span class="mx-2 ">Category 5</span>
+                    </button>
+                    <button class="btn bg-white rounded-pill p-2 shadow-sm  ">
+                        <span class="fa fa-wine-glass fa-lg bg-secondary-subtle rounded-circle p-3"></span>
+                        <span class="mx-2 ">Category 6</span>
+                    </button>
+                    <button class="btn bg-white rounded-pill p-2 shadow-sm  ">
+                        <span class="fa fa-bicycle fa-lg bg-secondary-subtle rounded-circle p-3"></span>
+                        <span class="mx-2 ">Category 7</span>
+                    </button>
+                </div>
+                <!-- <p class="col-lg-8 mx-auto fs-5 text-muted">
+                    This is a custom jumbotron featuring an SVG image at the top, some longer text that wraps early
+                    thanks
+                    to a responsive <code>.col-*</code> class, and a customized call to action.
+                </p> -->
+                <!-- <div class="d-inline-flex gap-2 mb-5">
+                    <button class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill"
+                        type="button">
+                        Call to action
+                        <svg class="bi ms-2" width="24" height="24">
+                            <use xlink:href="#arrow-right-short"></use>
+                        </svg>
+                    </button>
+                    <button class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">
+                        Secondary link
+                    </button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- JUMBO END -->
+
+    <div class="container-fluid px-5">
+
+        <div class="row px-5">
+            <!-- LEF SIDE BAR -->
+            <div class="col-3 pe-5">
+                <div class=" border border-light-subtle rounded-4 p-4 mb-5">
+                    <h5 class="fw-bold ">Categories</h5>
+                    <p>Category 1 <span class="text-secondary">(12)</span></p>
+                    <p>Category 2 <span class="text-secondary">(1)</span></p>
+                    <p>Category 3 <span class="text-secondary">(3)</span></p>
+                    <p>Category 4 <span class="text-secondary">(5)</span></p>
+                    <p>Category 5 <span class="text-secondary">(4)</span></p>
+                    <p>Category 6 <span class="text-secondary">(8)</span></p>
+                    <p>Category 7 <span class="text-secondary">(10)</span></p>
+                </div>
+
+                <div class=" border border-secondary-subtle rounded p-4 mb-5">
+                    <h5 class="fw-bold ">Filter By Price</h5>
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="number" class="form-control form-control-sm" id="minPrice"
+                                    placeholder="0.00" value="0">
+                                <label for="floatingInputGrid">GH¢</label>
+                            </div>
+                        </div>
+                        <div class="col-2 h-100">
+                            <div class="h-50 my-3 text-center">
+                                <span class="fa fa-minus fa-lg "></span>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="number" class="form-control form-control-sm" id="maxPrice"
+                                    placeholder="500.00" value="500">
+                                <label for="floatingInputGrid">GH¢</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <a href="#" class="text-decoration-underline text-dark">Reset</a>
+                    </div>
+                </div>
+
+
+                <div class=" border border-secondary-subtle rounded p-4">
+                    <h5 class="fw-bold ">Minimum Rating</h5>
+                    <div>
+                        <div class="star-rating text-secondary my-4">
+                            <i class="fa fa-star fa-lg star" data-value="1"></i>
+                            <i class="fa fa-star fa-lg star" data-value="2"></i>
+                            <i class="fa fa-star fa-lg star" data-value="3"></i>
+                            <i class="fa fa-star fa-lg star" data-value="4"></i>
+                            <i class="fa fa-star fa-lg star" data-value="5"></i>
+                        </div>
+                    </div>
+                    <input type="hidden" name="minRating" id="minRating" value="">
+                    <div class="">
+                        <a href="#" class="text-decoration-underline text-dark">Reset</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div class="col-9 p-3">
+                <div class="row">
+                    <div class="col">
+                        <p class="pt-2 mb-0" id="paginationMsg"></p>
+                    </div>
+                    <div class="col-3 text-end">
+                        <select class="form-select form-select-sm border-0" aria-label="Large select example"
+                            name="orderBy" id="orderBy">
+                            <option selected>Default Sorting</option>
+                            <option value="1">Sort by popularity</option>
+                            <option value="2">Sort by average rating</option>
+                            <option value="3">Sort by latest</option>
+                            <option value="4">Sort by price: low to high</option>
+                            <option value="5">Sort by price: high to low</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <hr class="text-secondary">
+
+
+                <!-- BOOKLIST -->
+                <div id="bookList" class="mt-4 pt-2">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="position-relative">
+                                <div class="position-absolute w-100 d-flex justify-content-between">
+                                    <span class="fa fa-heart fa-2x p-2 rounded-circle text-light shadow m-1"></span>
+                                    <span
+                                        class="fa fa-cart-arrow-down fa-2x p-2 rounded-circle text-light shadow"></span>
+                                </div>
+                                <img src="https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg"
+                                    alt="bookcover" class="img-fluid w-100 object-fit-cover rounded-3">
+                            </div>
+                            <div>
+                                Book Title
+                            </div>
+                            <div>
+                                <i class="fa fa-star fa-sm text-warning" data-value="1"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="2"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="3"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="4"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="5"></i>
+                            </div>
+                            <div>
+                                GH¢ 50.00
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="position-relative">
+                                <div class="position-absolute w-100 d-flex justify-content-between">
+                                    <span class="fa fa-heart fa-2x p-2 rounded-circle text-light shadow m-1"></span>
+                                    <span
+                                        class="fa fa-cart-arrow-down fa-2x p-2 rounded-circle text-light shadow"></span>
+                                </div>
+                                <img src="https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg"
+                                    alt="bookcover" class="img-fluid w-100 object-fit-cover">
+                            </div>
+                            <div>
+                                Book Title
+                            </div>
+                            <div>
+                                <i class="fa fa-star fa-sm text-warning" data-value="1"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="2"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="3"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="4"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="5"></i>
+                            </div>
+                            <div>
+                                GH¢ 50.00
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="position-relative">
+                                <div class="position-absolute w-100 d-flex justify-content-between">
+                                    <span class="fa fa-heart fa-2x p-2 rounded-circle text-light shadow m-1"></span>
+                                    <span
+                                        class="fa fa-cart-arrow-down fa-2x p-2 rounded-circle text-light shadow"></span>
+                                </div>
+                                <img src="https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg"
+                                    alt="bookcover" class="img-fluid w-100 object-fit-cover">
+                            </div>
+                            <div>
+                                Book Title
+                            </div>
+                            <div>
+                                <i class="fa fa-star fa-sm text-warning" data-value="1"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="2"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="3"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="4"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="5"></i>
+                            </div>
+                            <div>
+                                GH¢ 50.00
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="position-relative">
+                                <div class="position-absolute w-100 d-flex justify-content-between">
+                                    <span class="fa fa-heart fa-2x p-2 rounded-circle text-light shadow m-1"></span>
+                                    <span
+                                        class="fa fa-cart-arrow-down fa-2x p-2 rounded-circle text-light shadow"></span>
+                                </div>
+                                <img src="https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg"
+                                    alt="bookcover" class="img-fluid w-100 object-fit-cover">
+                            </div>
+                            <div>
+                                Book Title
+                            </div>
+                            <div>
+                                <i class="fa fa-star fa-sm text-warning" data-value="1"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="2"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="3"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="4"></i>
+                                <i class="fa fa-star fa-sm text-warning" data-value="5"></i>
+                            </div>
+                            <div>
+                                GH¢ 50.00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<!-- BASE SCRIPTS TEMPLATE START -->
+<script type="text/javascript" src="/public/js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript" src="/public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/js/select2.min.js"></script>
+<script type="text/javascript" src="/public/js/datatables.min.js"></script>
+<script type="text/javascript" src="/public/js/bootstrap-typeahead.min.js"></script>
+<script type="text/javascript" src="/public/js/owl.carousel.min.js"></script>
+<!-- BASE SCRIPTS TEMPLATE END -->
+
+<script type="text/javascript" src="/public/js/bookList.js"></script>
+<script type="text/javascript" src="/public/js/booksScript.js"></script>
+<script type="text/javascript" src="/public/js/templatemo.custom.js"></script>
+
+
+</html>

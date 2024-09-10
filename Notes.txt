@@ -21,13 +21,13 @@ TODOS - Before September
 ------ BACKEND -------------
 [X] DB Config
 [X] Models
-[ ] Controllers - Basic [AuthController, Book, Cart, Review, WishlistController, OrderController, PaymentController, UserController]
-[ ] Validation - Basic
-[ ] Routes - Basic
-[ ] Authentication - Basic
+[X] Controllers - Basic [AuthController, Book, Cart, Review, WishlistController, OrderController, PaymentController, UserController]
+[X] Validation - Basic
+[X] Routes - Basic
+[X] Authentication - Basic
 [ ] Views Basic => Will be handled with React, maybe
 [ ] Paystack Integration into payment controller
-
+[ ] Email
 
 ------ FRONTEND ------------
 [X] Navbar
@@ -35,3 +35,4 @@ TODOS - Before September
 [ ] Footer
 [ ] Row 1 - Remains Parallax
 [ ] Brief About Author
+[ ] Books Page

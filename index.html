@@ -16,7 +16,12 @@
     <title>Courage Books</title>
 
     <!-- <link rel="shortcut icon" href="/img/ripfavicon.png"> -->
-    <link rel="stylesheet" href="/public/fontawesome-5.15/css/all.min.css" />
+    <!-- <link rel="stylesheet" href="/public/fontawesome-5.15/css/all.min.css" /> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/public/css/select2.min.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.css"> -->
@@ -47,7 +52,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand me-lg-5 me-0" href="index.html">
-                <img src="/public/images/pod-talk-logo.png" class="logo-image img-fluid" alt="templatemo pod talk">
+                <img src="/public/images/logo/logo.jpg" class="logo-image img-fluid rounded-circle shadow-lg" alt="templatemo pod talk">
             </a>
 
             <!-- <form action="#" method="get" class="custom-form search-form flex-fill me-3" role="search">
@@ -68,12 +73,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
+                        <a class="nav-link active text-dark" href="index.html">Home</a>
                     </li>
 
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button"
+                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarLightDropdownMenuLink" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Books</a>
 
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink"
@@ -86,14 +91,14 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Blog</a>
+                        <a class="nav-link text-dark" href="about.html">Blog</a>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="about.html">Extras</a>
                     </li> -->
 
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link text-dark" href="about.html">About</a>
                     </li>
 
                     <!-- <li class="nav-item dropdown">
@@ -107,12 +112,12 @@
                     </li> -->
 
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link text-dark" href="contact.html">Contact</a>
                     </li>
                 </ul>
 
                 <div class="ms-4">
-                    <a href="#section_3" class="btn custom-btn custom-border-btn smoothscroll">Get Reading</a>
+                    <a href="#section_3" class="btn btn-outline-dark rounded-pill smoothscroll">Get Reading</a>
                 </div>
             </div>
         </div>
@@ -352,7 +357,7 @@
     <!-- HERO SECTION END -->
 
 
-    <div id="main" class="container-fluid px-0 mt-5">
+    <div id="main" class="container-fluid px-0 mt-5 d-none">
 
         <div class="p-1 p-md-5 bg-info text-center">
             <div class="py-5">
@@ -435,7 +440,7 @@
 
     </div>
 
-    <section class="container bg-primary-subtle">
+    <section class="container bg-primary-subtle d-none">
         <form id="fileUpload" enctype="multipart/form-data">
             <input type="file" name="bookFile" id="bookFile" accept="application/pdf" required>
             <input type="file" name="bookCover" id="bookCover" accept="image/*">

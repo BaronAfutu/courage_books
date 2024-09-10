@@ -7,6 +7,17 @@ a {
   color: #00B7FF;
 }
 
+.jumbotron{
+  background-image: url('/public/images/logo/logo_full_rot.png');
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-position: center; 
+  background-size: cover;
+}
+
+
+
+
 .rip-shadow{
   box-shadow: 0.2rem .25rem .2rem rgba(0,0,0,.5) !important;
 }
