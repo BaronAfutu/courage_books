@@ -66,18 +66,16 @@ app.options('*',cors());
 
 // ************** USE ROUTES *********
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/books',booksRouter);
-// TODDO merge the authJwt() middleware uses into one
-// Maybe put at very top and exempt some endpoints
-app.use('/reviews',reviewRouter);
-app.use('/cart',authJwt());
-app.use('/cart',cartRouter);
-app.use('/orders',authJwt());
-app.use('/wishlist',wishlistRouter);
-app.use('/orders',orderRouter);
-app.use('/payments',paymentRouter);
-app.use('/uploads',uploadRouter);
+
+app.use('/api/v1/',authJwt());
+app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/books',booksRouter);
+app.use('/api/v1/reviews',reviewRouter);
+app.use('/api/v1/cart',cartRouter);
+app.use('/api/v1/wishlist',wishlistRouter);
+app.use('/api/v1/orders',orderRouter);
+app.use('/api/v1/payments',paymentRouter);
+app.use('/api/v1/uploads',uploadRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

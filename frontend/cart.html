@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEAD TEMPLATE START -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- <meta http-equiv="Content-Security-Policy" -->
+    <!-- content="script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net"> -->
+
+    <title>Courage Books</title>
+
+    <!-- <link rel="shortcut icon" href="/img/ripfavicon.png"> -->
+    <!-- <link rel="stylesheet" href="../backend/public/fontawesome-5.15/css/all.min.css" /> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="../backend/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../backend/public/css/select2.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.css"> -->
+    <link rel="stylesheet" href="../backend/public/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../backend/public/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../backend/public/css/datatables.min.css" />
+    <!-- <link rel="stylesheet" href="../backend/public/css/templatemo-pod-talk.css" /> -->
+    <link rel="stylesheet" href="../backend/public/css/style.css" />
+</head>
+<!-- HEAD TEMPLATE END -->
+
+<body>
+
+    <!-- NAVBAR START -->
+    <nav class="navbar navbar-expand-lg py-4 px-5">
+        <div class="container-fluid px-5">
+            <a class="navbar-brand" href="#">JP Alorwu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Books
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+
+
+                </ul>
+                <button class="btn btn-outline-dark rounded-pill border-0 shadow-sm mx-2"> <span
+                        class="fa fa-search "></span> Search</button>
+                <button class="btn btn-outline-dark rounded-pill border-0 shadow-sm mx-2"> Login</button>
+                <button class="btn btn-outline-dark rounded-pill border-0 shadow-sm mx-2">
+                    Cart
+                    <span id="cartCount" class="bg-dark rounded-circle px-2 py-1 text-white mx-2">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- NAVBAR END -->
+
+
+    <div class="container-fluid px-5 ">
+        <div class="container-fluid px-5 text-center my-5 ">
+            <h1>My Cart</h1>
+        </div>
+        <div class="row p-xxl-5 ">
+
+            <div class="col-8" id="cartListingPane">
+                
+                <div class="row bg-secondary-subtle p-3 fw-bold fs-6 border-bottom border-1 border-secondary">
+                    <div class="col-2">
+                        PRODUCT
+                    </div>
+                    <div class="col-8">
+                        DETAILS
+                    </div>
+                    <div class="col-2">
+                        TOTAL
+                    </div>
+                </div>
+                
+                <div class="row p-3 border-bottom border-1 border-secondary-subtle">
+                    
+                    <div class="col-2 p-4">
+                        <img src="../backend/public/images/book_cover.jpg" 
+                        class="img-fluid rounded " alt="">
+                    </div>
+
+                    <div class="col-8 py-4">
+                        <div class="mb-3">Collective Intelligence in Action</div>
+                        <div class="fw-bold my-3">GH¢ 14.20</div>
+                        <div class="text-truncate my-3">
+                            Zend Framework in Action is a comprehensive tutorial that shows how to use the Zend Framework to create web-based applications and web services. This book takes you on an over-the-shoulder tour of the components of the Zend Framework as you build a high quality, real-world web application.
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-5 col-xl-4 col-xxl-3">
+                                <div class="bg-secondary-subtle rounded-pill p-2 d-flex">
+                                    <span class=" bg-white rounded-circle p-2 fa fa-minus"></span>
+                                    <div class="px-2">
+                                        <input type="text" class="form-control form-control-sm bg-transparent text-center" value="1">
+                                    </div>
+                                    <span class=" bg-white rounded-circle p-2 fa fa-plus"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#">
+                            <figcaption>
+                                Remove item
+                            </figcaption>
+                        </a>
+
+                    </div>
+
+                    <div class="col-2 py-4 fw-bolder">
+                        GH¢ 14.20
+                    </div>
+
+                </div>
+
+                <div class="row p-3 border-bottom border-1 border-secondary-subtle">
+                    
+                    <div class="col-2 p-4">
+                        <img src="../backend/public/images/book_cover.jpg" 
+                        class="img-fluid rounded " alt="">
+                    </div>
+
+                    <div class="col-8 py-4">
+                        <div class="mb-3">Collective Intelligence in Action</div>
+                        <div class="fw-bold my-3">GH¢ 14.20</div>
+                        <div class="text-truncate my-3">
+                            Zend Framework in Action is a comprehensive tutorial that shows how to use the Zend Framework to create web-based applications and web services. This book takes you on an over-the-shoulder tour of the components of the Zend Framework as you build a high quality, real-world web application.
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-5 col-xl-4 col-xxl-3">
+                                <div class="bg-secondary-subtle rounded-pill p-2 d-flex">
+                                    <span class=" bg-white rounded-circle p-2 fa fa-minus"></span>
+                                    <div class="px-2">
+                                        <input type="text" value="2"
+                                        class="form-control form-control-sm bg-transparent text-center">
+                                    </div>
+                                    <span class=" bg-white rounded-circle p-2 fa fa-plus"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#">
+                            <figcaption>
+                                Remove item
+                            </figcaption>
+                        </a>
+
+                    </div>
+
+                    <div class="col-2 py-4 fw-bolder">
+                        GH¢ 28.40
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-4 ps-5">
+                <div class="rounded border border-secondary-subtle p-5 sticky-top">
+                    <div class="h4 fw-bolder border-bottom border-secondary-subtle border-1 pb-2 my-0">
+                        Cart Totals
+                    </div>
+                    <div class="h6 border-bottom border-secondary-subtle border-1 py-3 d-flex justify-content-between">
+                        <div>Subtotals</div>
+                        <div class="fw-bolder">GH¢ 42.60</div>
+                    </div>
+                    <div class="h6 border-bottom border-secondary-subtle border-1 py-3 d-flex justify-content-between">
+                        <div>Total</div>
+                        <div class="fw-bolder">GH¢ 42.60</div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-lg btn-secondary rounded-pill w-100">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- SUBSCRIBE FORM START -->
+    <div class="container-fluid px-5 my-5">
+        <div class="p-5 bg-success rounded-4 shadow-sm ">
+            <div class="display-4 text-center text-light w-50 mx-auto my-5">
+                Subscribe to Our Newsletter and Get 10% Off.
+            </div>
+            <div class="w-50 mx-auto my-5 border border-2 border-light rounded-pill p-1 d-flex ">
+                <div class="w-75">
+                    <input type="email" id="subscriberEmail" placeholder="Your Email"
+                        class="form-control p-3 bg-transparent border-0 rounded-pill text-white focus-ring focus-ring-success">
+                    <!-- <label for="floatingInputGrid">Your Email</label> -->
+                </div>
+                <div class="w-25 text-end">
+                    <button class="btn btn-light btn-lg m-1 rounded-pill">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SUBSCRIBE FORM END -->
+
+    <!-- FOOTER START -->
+    <footer class="container-fluid px-5">
+        <div class="row p-5">
+            <div class="col-4">
+                <h5>Connect</h5>
+                <div class="mt-5">
+                    <p>329 Queensberry Street, North Melbourne</p>
+                    <p>VIC3051, Australia.</p>
+                    <p>sales@bookix.com</p>
+                    <p>1234567890</p>
+                </div>
+            </div>
+            <div class="col-2">
+                <h5>Categories</h5>
+                <ul class="mt-5 list-unstyled">
+                    <li>Category 1</li>
+                    <li>Category 2</li>
+                    <li>Category 3</li>
+                    <li>Category 4</li>
+                    <li>Category 5</li>
+                    <li>Category 6</li>
+                    <li>Category 7</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <h5>Explore</h5>
+                <ul class="mt-5 list-unstyled">
+                    <li>About Us</li>
+                    <li>Contact Us</li>
+                    <li>Help Center</li>
+                    <li>Career</li>
+                    <li>Policy</li>
+                    <li>Sitemap</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <h5>Account</h5>
+                <ul class="mt-5 list-unstyled">
+                    <li>Account</li>
+                    <li>Manage Account</li>
+                    <li>Saved Items</li>
+                    <li>Orders & Returns</li>
+                    <li>Redeem a Gift card</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <h5>Get in touch</h5>
+                <ul class="mt-5 list-unstyled">
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>Instagram</li>
+                    <li>Linkedin</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="mx-2">
+        <div class="container-fluid d-flex justify-content-between my-3">
+            <div class="pt-2">© 2023 Bookix. All rights reserved.</div>
+            <div>
+                <span class="fa fa-credit-card fa-2x"></span>
+            </div>
+        </div>
+
+    </footer>
+    <!-- FOOTER END -->
+
+
+
+</body>
+<!-- BASE SCRIPTS TEMPLATE START -->
+<script type="text/javascript" src="../backend/public/js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/select2.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/datatables.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/bootstrap-typeahead.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/owl.carousel.min.js"></script>
+<!-- BASE SCRIPTS TEMPLATE END -->
+
+<script type="text/javascript" src="../backend/public/js/bookList.js"></script>
+<!-- <script type="text/javascript" src="../backend/public/js/mainscript.js"></script> -->
+<script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script>
+
+</html>

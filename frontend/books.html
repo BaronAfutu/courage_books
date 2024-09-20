@@ -16,20 +16,20 @@
     <title>Courage Books</title>
 
     <!-- <link rel="shortcut icon" href="/img/ripfavicon.png"> -->
-    <!-- <link rel="stylesheet" href="./public/fontawesome-5.15/css/all.min.css" /> -->
-     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="../backend/public/fontawesome-5.15/css/all.min.css" /> -->
 
-    <link rel="stylesheet" href="./public/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./public/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="../backend/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../backend/public/css/select2.min.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.css"> -->
-    <link rel="stylesheet" href="./public/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="./public/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="./public/css/datatables.min.css" />
-    <!-- <link rel="stylesheet" href="./public/css/templatemo-pod-talk.css" /> -->
-    <link rel="stylesheet" href="./public/css/style.css" />
+    <link rel="stylesheet" href="../backend/public/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../backend/public/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../backend/public/css/datatables.min.css" />
+    <!-- <link rel="stylesheet" href="../backend/public/css/templatemo-pod-talk.css" /> -->
+    <link rel="stylesheet" href="../backend/public/css/style.css" />
 </head>
 <!-- HEAD TEMPLATE END -->
 
@@ -152,63 +152,64 @@
         <div class="row px-5">
             <!-- LEF SIDE BAR -->
             <div class="col-3 pe-5">
-                <div class=" border border-light-subtle rounded-4 p-4 mb-5">
-                    <h5 class="fw-bold ">Categories</h5>
-                    <p>Category 1 <span class="text-secondary">(12)</span></p>
-                    <p>Category 2 <span class="text-secondary">(1)</span></p>
-                    <p>Category 3 <span class="text-secondary">(3)</span></p>
-                    <p>Category 4 <span class="text-secondary">(5)</span></p>
-                    <p>Category 5 <span class="text-secondary">(4)</span></p>
-                    <p>Category 6 <span class="text-secondary">(8)</span></p>
-                    <p>Category 7 <span class="text-secondary">(10)</span></p>
-                </div>
+                <div class="sticky-md-top py-2">
+                    <div class=" border border-light-subtle rounded-4 p-4 mb-5">
+                        <h5 class="fw-bold ">Categories</h5>
+                        <p>Category 1 <span class="text-secondary">(12)</span></p>
+                        <p>Category 2 <span class="text-secondary">(1)</span></p>
+                        <p>Category 3 <span class="text-secondary">(3)</span></p>
+                        <p>Category 4 <span class="text-secondary">(5)</span></p>
+                        <p>Category 5 <span class="text-secondary">(4)</span></p>
+                        <p>Category 6 <span class="text-secondary">(8)</span></p>
+                        <p>Category 7 <span class="text-secondary">(10)</span></p>
+                    </div>
 
-                <div class=" border border-secondary-subtle rounded p-4 mb-5">
-                    <h5 class="fw-bold ">Filter By Price</h5>
-                    <div class="row g-2">
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <input type="number" class="form-control form-control-sm" id="minPrice"
-                                    placeholder="0.00" value="0">
-                                <label for="floatingInputGrid">GH¢</label>
+                    <div class=" border border-secondary-subtle rounded p-4 mb-5">
+                        <h5 class="fw-bold ">Filter By Price</h5>
+                        <div class="row g-2">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control form-control-sm" id="minPrice"
+                                        placeholder="0.00" value="0">
+                                    <label for="floatingInputGrid">GH¢</label>
+                                </div>
+                            </div>
+                            <div class="col-2 h-100">
+                                <div class="h-50 my-3 text-center">
+                                    <span class="fa fa-minus fa-lg "></span>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control form-control-sm" id="maxPrice"
+                                        placeholder="500.00" value="500">
+                                    <label for="floatingInputGrid">GH¢</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-2 h-100">
-                            <div class="h-50 my-3 text-center">
-                                <span class="fa fa-minus fa-lg "></span>
+                        <div class="mt-4">
+                            <a href="#" class="text-decoration-underline text-dark">Reset</a>
+                        </div>
+                    </div>
+
+
+                    <div class=" border border-secondary-subtle rounded p-4">
+                        <h5 class="fw-bold ">Minimum Rating</h5>
+                        <div>
+                            <div class="star-rating text-secondary my-4">
+                                <i class="fa fa-star fa-lg star" data-value="1"></i>
+                                <i class="fa fa-star fa-lg star" data-value="2"></i>
+                                <i class="fa fa-star fa-lg star" data-value="3"></i>
+                                <i class="fa fa-star fa-lg star" data-value="4"></i>
+                                <i class="fa fa-star fa-lg star" data-value="5"></i>
                             </div>
                         </div>
-                        <div class="col-md">
-                            <div class="form-floating">
-                                <input type="number" class="form-control form-control-sm" id="maxPrice"
-                                    placeholder="500.00" value="500">
-                                <label for="floatingInputGrid">GH¢</label>
-                            </div>
+                        <input type="hidden" name="minRating" id="minRating" value="">
+                        <div class="">
+                            <a href="#" class="text-decoration-underline text-dark">Reset</a>
                         </div>
                     </div>
-                    <div class="mt-4">
-                        <a href="#" class="text-decoration-underline text-dark">Reset</a>
-                    </div>
                 </div>
-
-
-                <div class=" border border-secondary-subtle rounded p-4">
-                    <h5 class="fw-bold ">Minimum Rating</h5>
-                    <div>
-                        <div class="star-rating text-secondary my-4">
-                            <i class="fa fa-star fa-lg star" data-value="1"></i>
-                            <i class="fa fa-star fa-lg star" data-value="2"></i>
-                            <i class="fa fa-star fa-lg star" data-value="3"></i>
-                            <i class="fa fa-star fa-lg star" data-value="4"></i>
-                            <i class="fa fa-star fa-lg star" data-value="5"></i>
-                        </div>
-                    </div>
-                    <input type="hidden" name="minRating" id="minRating" value="">
-                    <div class="">
-                        <a href="#" class="text-decoration-underline text-dark">Reset</a>
-                    </div>
-                </div>
-
             </div>
 
             <!-- RIGHT CONTENT -->
@@ -235,9 +236,15 @@
 
 
                 <!-- BOOKLIST -->
-                <div id="bookList" class="mt-4 pt-2">
-                    <div class="row">
-                        <div class="col-3">
+                <div class="mt-4 pt-2">
+                    <div class="row" id="bookList">
+                        <div class="text-center bs-loader">
+                            <div class="spinner-grow text-success" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-3">
                             <div class="position-relative">
                                 <div class="position-absolute w-100 d-flex justify-content-between">
                                     <span class="fa fa-heart fa-2x p-2 rounded-circle text-light shadow m-1"></span>
@@ -332,28 +339,125 @@
                             <div>
                                 GH¢ 50.00
                             </div>
-                        </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <hr class="my-5">
+
+                <!-- PAGINATION -->
+                <div>
+                    <div class="text-center d-flex justify-content-center fw-bold h6 gap-1" id="pagination">
+                        <div class="text-light bg-success rounded-circle pagination-number">1</div>
+                        <div class="text-dark rounded-circle pagination-number">2</div>
+                        <div class="text-dark rounded-circle pagination-number fa fa-arrow-right"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- SUBSCRIBE FORM START -->
+    <div class="container-fluid px-5 my-5">
+        <div class="p-5 bg-success rounded-4 shadow-sm ">
+            <div class="display-4 text-center text-light w-50 mx-auto my-5">
+                Subscribe to Our Newsletter and Get 10% Off.
+            </div>
+            <div class="w-50 mx-auto my-5 border border-2 border-light rounded-pill p-1 d-flex ">
+                <div class="w-75">
+                    <input type="email" id="subscriberEmail" placeholder="Your Email"
+                        class="form-control p-3 bg-transparent border-0 rounded-pill text-white focus-ring focus-ring-success">
+                    <!-- <label for="floatingInputGrid">Your Email</label> -->
+                </div>
+                <div class="w-25 text-end">
+                    <button class="btn btn-light btn-lg m-1 rounded-pill">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SUBSCRIBE FORM END -->
+
+    <!-- FOOTER START -->
+    <footer class="container-fluid px-5">
+        <div class="row p-5">
+            <div class="col-4">
+                <h5>Connect</h5>
+                <div class="mt-5">
+                    <p>329 Queensberry Street, North Melbourne</p>
+                    <p>VIC3051, Australia.</p>
+                    <p>sales@bookix.com</p>
+                    <p>1234567890</p>
+                </div>
+            </div>
+            <div class="col-2">
+                <h5>Categories</h5>
+                <ul class="mt-5 list-unstyled">
+                    <li>Category 1</li>
+                    <li>Category 2</li>
+                    <li>Category 3</li>
+                    <li>Category 4</li>
+                    <li>Category 5</li>
+                    <li>Category 6</li>
+                    <li>Category 7</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <h5>Explore</h5>
+                <ul class="mt-5 list-unstyled">
+                    <li>About Us</li>
+                    <li>Contact Us</li>
+                    <li>Help Center</li>
+                    <li>Career</li>
+                    <li>Policy</li>
+                    <li>Sitemap</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <h5>Account</h5>
+                <ul class="mt-5 list-unstyled">
+                    <li>Account</li>
+                    <li>Manage Account</li>
+                    <li>Saved Items</li>
+                    <li>Orders & Returns</li>
+                    <li>Redeem a Gift card</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <h5>Get in touch</h5>
+                <ul class="mt-5 list-unstyled">
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>Instagram</li>
+                    <li>Linkedin</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="mx-2">
+        <div class="container-fluid d-flex justify-content-between my-3">
+            <div class="pt-2">© 2023 Bookix. All rights reserved.</div>
+            <div>
+                <span class="fa fa-credit-card fa-2x"></span>
+            </div>
+        </div>
+
+    </footer>
+    <!-- FOOTER END -->
 
 </body>
 
 <!-- BASE SCRIPTS TEMPLATE START -->
-<script type="text/javascript" src="./public/js/jquery-3.7.0.min.js"></script>
-<script type="text/javascript" src="./public/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="./public/js/select2.min.js"></script>
-<script type="text/javascript" src="./public/js/datatables.min.js"></script>
-<script type="text/javascript" src="./public/js/bootstrap-typeahead.min.js"></script>
-<script type="text/javascript" src="./public/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/select2.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/datatables.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/bootstrap-typeahead.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/owl.carousel.min.js"></script>
 <!-- BASE SCRIPTS TEMPLATE END -->
 
-<script type="text/javascript" src="./public/js/bookList.js"></script>
-<script type="text/javascript" src="./public/js/booksScript.js"></script>
-<script type="text/javascript" src="./public/js/templatemo.custom.js"></script>
+<script type="text/javascript" src="../backend/public/js/bookList.js"></script>
+<script type="text/javascript" src="../backend/public/js/booksScript.js"></script>
+<script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script>
 
 
 </html>

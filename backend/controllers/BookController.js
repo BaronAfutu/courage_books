@@ -136,7 +136,7 @@ const updateBook = async (req, res) => {
     }
 };
 
-// Delete a book by ID
+
 const featureBook = async (req, res) => {
     const feature = req.body.feature || true;
     try {
@@ -164,12 +164,13 @@ const deleteBook = async (req, res) => {
 };
 
 module.exports = {
-    createBook,
     getBooks,
     getBookById,
+    searchBooks,
+    createBook,
     updateBook,
     deleteBook,
-    searchBooks,
-    addBookCover,
-    addBookFile
+    featureBook, // *
+    addBookCover, // *
+    addBookFile // *
 };

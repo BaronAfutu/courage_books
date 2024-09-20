@@ -15,6 +15,7 @@ Domain name and Hosting: 2 years = 360 + 880 = 1240 #I made a mistage sending to
 -> Earthy tones like brown and gold
 -> On admin side, all models can be queried by all their fields including period range
 -> Homepage last due to too much pressure to make it perfect
+-> https://bookix.madrasthemes.com/shop/
 
 
 TODOS - Before September
@@ -30,9 +31,10 @@ TODOS - Before September
 [ ] Email
 
 ------ FRONTEND ------------
-[X] Navbar
-[X] Hero
-[ ] Footer
-[ ] Row 1 - Remains Parallax
+[ ] Homepage
+[ ] Books
+[ ] Book Details
+[ ] Wishlist Page
+[ ] Cart Page
 [ ] Brief About Author
-[ ] Books Page
+[ ] Eccomerce operations (add to wishlist, add to cart, checkout, payment)

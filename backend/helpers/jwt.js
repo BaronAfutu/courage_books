@@ -7,12 +7,12 @@ function authJwt() {
         algorithms: ['HS256'],
     }).unless({
         path: [
-            // {url: /\/api\/v1\/parts(.*)/, methods: ['GET','OPTIONS']},
-            // {url: /\/api\/shops(.*)/, methods: ['GET','OPTIONS']},
+            {url: /\/api\/v1\/books(.*)/, methods: ['GET','OPTIONS']},
+            {url: /\/api\/v1\/reviews(.*)/, methods: ['GET','OPTIONS']},
             // {url: /\/api\/categories(.*)/, methods: ['GET','OPTIONS']},
             // {url: /\/api\/info(.*)/, methods: ['GET','OPTIONS']},
-            // '/api/users/login',
-            // '/api/users/signup',
+            // '/api/v1/users/login',
+            // '/api/v1/users/signup',
             // '/api/users/join-waitlist',
             // '/'
         ]

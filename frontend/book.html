@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD TEMPLATE START -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- <meta http-equiv="Content-Security-Policy" -->
+    <!-- content="script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net"> -->
+
+    <title>Courage Books</title>
+
+    <!-- <link rel="shortcut icon" href="/img/ripfavicon.png"> -->
+    <!-- <link rel="stylesheet" href="../backend/public/fontawesome-5.15/css/all.min.css" /> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://fonts.googleapis.com/css?family=Libre Baskerville' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Plus Jakarta Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="../backend/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../backend/public/css/select2.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.css"> -->
+    <link rel="stylesheet" href="../backend/public/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../backend/public/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../backend/public/css/datatables.min.css" />
+    <!-- <link rel="stylesheet" href="../backend/public/css/templatemo-pod-talk.css" /> -->
+    <link rel="stylesheet" href="../backend/public/css/style.css" />
+</head>
+<!-- HEAD TEMPLATE END -->
+
+<body>
+
+    <!-- NAVBAR START -->
+    <nav class="navbar navbar-expand-lg py-4 px-5">
+        <div class="container-fluid px-5">
+            <a class="navbar-brand" href="#">JP Alorwu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Books
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+
+
+                </ul>
+                <button class="btn btn-outline-dark rounded-pill border-0 shadow-sm mx-2"> <span
+                        class="fa fa-search "></span> Search</button>
+                <button class="btn btn-outline-dark rounded-pill border-0 shadow-sm mx-2"> Login</button>
+                <button class="btn btn-outline-dark rounded-pill border-0 shadow-sm mx-2">
+                    Cart
+                    <span id="cartCount" class="bg-dark rounded-circle px-2 py-1 text-white mx-2">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- NAVBAR END -->
+
+
+
+    <!-- MAIN CONTENT START -->
+    <div class="container-fluid px-5">
+        <div class="row px-5 justify-content-between py-5">
+
+            <!-- LEFT SIDE -->
+            <div class="col-6">
+                <div class="rounded-4 border border-secondary-subtle border-1 w-100">
+                    <div class="w-75 p-5 mx-auto">
+                        <img src="https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg"
+                            class="img-fluid w-100 shadow" alt="Book Cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="col-6 py-3 px-5">
+                <div class="ps-5">
+                    <div class="h5 fw-bolder">
+                        $33.95
+                    </div>
+
+                    <div class="h1 mt-5 mb-3 title">
+                        Romancing Mister Bridgerton Penelope & Colin’s Story
+                    </div>
+                    <div>
+                        Bionec rutrum congue leo eget malesuada. Vivamus magna justo, lacinia eget consectetur sed,
+                        convallis at tellus. Pellentesque in ipsum id orci porta dapibus. Mauris blandit aliquet elit.
+                    </div>
+                    <div class="my-5">
+                        <button class="btn btn-dark btn-lg rounded-pill ">Add to Cart</button>
+                    </div>
+
+                    <hr>
+
+                    <div class=" mt-4">
+                        <div class="d-flex">
+                            <p class="w-25">ISBN</p>
+                            <div>BKB23444536464645</div>
+                        </div>
+                        <div class="d-flex">
+                            <p class="w-25">Category</p>
+                            <div>
+                                <a href="/books.html#hot-deals">
+                                    Hot Deals
+                                </a>
+                                ,
+                                <a href="/books.html#romance">
+                                    Romance
+                                </a>
+                                ,
+                                <a href="/books.html#travel">Travel</a>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <p class="w-25">Tags</p>
+                            <div>
+                                <a href="/books.html#hot-deals">
+                                    Hot Deals
+                                </a>
+                                ,
+                                <a href="/books.html#romance">
+                                    Romance
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <p class="w-25">Share</p>
+                            <div>
+                                <span class="fab fa-facebook mx-1"></span>
+                                <span class="fab fa-twitter mx-1"></span>
+                                <span class="fab fa-instagram mx-1"></span>
+                                <span class="fab fa-linkedin-in mx-1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-5">
+            <div>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-description" aria-expanded="true"
+                                aria-controls="flush-description">
+                                <span class="h1 title">Description</span>
+                            </button>
+                        </h2>
+                        <div id="flush-description" class="accordion-collapse collapse show"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                Tiny Changes, Remarkable Results
+
+                                No matter your goals, Atomic Habits offers a proven framework for improving–every day.
+                                James Clear, one of the world’s leading experts on habit formation, reveals practical
+                                strategies that will teach you exactly how to form good habits, break bad ones, and
+                                master the tiny behaviors that lead to remarkable results.If you’re having trouble
+                                changing your habits, the problem isn’t you. The problem is your system.
+
+                                Bad habits repeat themselves again and again not because you don’t want to change, but
+                                because you have the wrong system for change. You do not rise to the level of your
+                                goals. You fall to the level of your systems. Here, you’ll get a proven system that can
+                                take you to new heights.Clear is known for his ability to distill complex topics into
+                                simple behaviors that can be easily applied to daily life and work. Here, he draws on
+                                the most proven ideas from biology, psychology, and neuroscience to create an
+                                easy-to-understand guide for making good habits inevitable and bad habits impossible.
+
+                                Learn how to:
+
+                                make time for new habits (even when life gets crazy);
+                                overcome a lack of motivation and willpower;
+                                design your environment to make success easier;
+                                get back on track when you fall off course;
+
+                                …and much more.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                <span class="h1 title">Reviews</span>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <h3>Reviews</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                aria-controls="flush-collapseThree">
+                                Accordion Item #3
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                                demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion
+                                body. Nothing more exciting happening here in terms of content, but just filling up the
+                                space to make it look, at least at first glance, a bit more representative of how this
+                                would look in a real-world application.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-5">
+            <h2>
+                You may also like
+            </h2>
+            <div id="booklist">
+                books..
+            </div>
+        </div>
+    </div>
+    <!-- MAIN CONTENT END -->
+
+
+
+
+    <!-- SUBSCRIBE FORM START -->
+    <div class="container-fluid px-5 my-5">
+        <div class="p-5 bg-success rounded-4 shadow-sm ">
+            <div class="display-4 text-center text-light w-50 mx-auto my-5">
+                Subscribe to Our Newsletter and Get 10% Off.
+            </div>
+            <div class="w-50 mx-auto my-5 border border-2 border-light rounded-pill p-1 d-flex ">
+                <div class="w-75">
+                    <input type="email" id="subscriberEmail" placeholder="Your Email"
+                        class="form-control p-3 bg-transparent border-0 rounded-pill text-white focus-ring focus-ring-success">
+                    <!-- <label for="floatingInputGrid">Your Email</label> -->
+                </div>
+                <div class="w-25 text-end">
+                    <button class="btn btn-light btn-lg m-1 rounded-pill">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SUBSCRIBE FORM END -->
+
+    <!-- FOOTER -->
+    <footer class="container-fluid px-5">
+        <div class="row p-5">
+            <div class="col-4">
+                <h5>Connect</h5>
+                <div class="mt-5">
+                    <p>329 Queensberry Street, North Melbourne</p>
+                    <p>VIC3051, Australia.</p>
+                    <p>sales@bookix.com</p>
+                    <p>1234567890</p>
+                </div>
+            </div>
+            <div class="col-2">
+                <h5>Categories</h5>
+                <ul class="mt-5 list-unstyled">
+                    <li>Category 1</li>
+                    <li>Category 2</li>
+                    <li>Category 3</li>
+                    <li>Category 4</li>
+                    <li>Category 5</li>
+                    <li>Category 6</li>
+                    <li>Category 7</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <h5>Explore</h5>
+                <ul class="mt-5 list-unstyled">
+                    <li>About Us</li>
+                    <li>Contact Us</li>
+                    <li>Help Center</li>
+                    <li>Career</li>
+                    <li>Policy</li>
+                    <li>Sitemap</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <h5>Account</h5>
+                <ul class="mt-5 list-unstyled">
+                    <li>Account</li>
+                    <li>Manage Account</li>
+                    <li>Saved Items</li>
+                    <li>Orders & Returns</li>
+                    <li>Redeem a Gift card</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <h5>Get in touch</h5>
+                <ul class="mt-5 list-unstyled">
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>Instagram</li>
+                    <li>Linkedin</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="mx-2">
+        <div class="container-fluid d-flex justify-content-between my-3">
+            <div class="pt-2">© 2023 Bookix. All rights reserved.</div>
+            <div>
+                <span class="fa fa-credit-card fa-2x"></span>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+<!-- BASE SCRIPTS TEMPLATE START -->
+<script type="text/javascript" src="../backend/public/js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/select2.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/datatables.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/bootstrap-typeahead.min.js"></script>
+<script type="text/javascript" src="../backend/public/js/owl.carousel.min.js"></script>
+<!-- BASE SCRIPTS TEMPLATE END -->
+
+<script type="text/javascript" src="../backend/public/js/bookList.js"></script>
+<script type="text/javascript" src="../backend/public/js/bookDetails.js"></script>
+<script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script>
+
+
+</html>

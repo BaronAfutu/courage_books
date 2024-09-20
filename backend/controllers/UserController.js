@@ -13,7 +13,7 @@ const getAllUsers = async (req, res) => {
         if (!isAdmin) return res.status(401).json({ status: false, message: "Unathorized!!" });
 
         const users = await User.find().select('-password -cart -wishlist')
-        .populate('books','id slug title subtitle rating.averageRating');
+            .populate('books', 'id slug title subtitle rating.averageRating');
         res.status(200).json(users);
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -26,15 +26,15 @@ const getUserById = async (req, res) => {
         //Getting UserId and Admin Status
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
-        const { id:userId, isAdmin } = decoded;
+        const { id: userId, isAdmin } = decoded;
 
-        if (!isAdmin && userId!=req.params.id) return res.status(401).json({ status: false, message: "Unathorized!!" });
+        if (!isAdmin && userId != req.params.id) return res.status(401).json({ status: false, message: "Unathorized!!" });
 
         const user = await User.findById(req.params.id).select('-password')
-        .populate('books')
-        .populate('books','id slug title subtitle rating.averageRating')
-        .populate('cart.book','id slug title subtitle rating.averageRating')
-        .populate('wishlist','id slug title subtitle rating.averageRating');
+            .populate('books')
+            .populate('books', 'id slug title subtitle rating.averageRating')
+            .populate('cart.book', 'id slug title subtitle rating.averageRating')
+            .populate('wishlist', 'id slug title subtitle rating.averageRating');
 
         if (!user) return res.status(404).json({ message: "User not found" });
         res.status(200).json(user);
@@ -52,11 +52,11 @@ const updateUser = async (req, res) => {
         //Getting UserId and Admin Status
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
-        const { id:userId, isAdmin } = decoded;
+        const { id: userId, isAdmin } = decoded;
 
-        if (!isAdmin && userId!==req.params.id) return res.status(401).json({ status: false, message: "Unathorized!!" });
+        if (!isAdmin && userId !== req.params.id) return res.status(401).json({ status: false, message: "Unathorized!!" });
 
-        const user = await User.findByIdAndUpdate(req.params.id,value);
+        const user = await User.findByIdAndUpdate(req.params.id, value);
         if (!user) return res.status(404).json({ message: "User not found" });
 
         const updatedUser = await user.save();
@@ -69,7 +69,14 @@ const updateUser = async (req, res) => {
 // Delete a user
 const deleteUser = async (req, res) => {
     try {
-        const user = await User.findByIdAndUpdate(req.params.id,{status:0});
+        //Getting UserId and Admin Status
+        const decoded = await decodeToken(req.headers.authorization);
+        if (!decoded.success) return res.status(500).json({ status: false });
+        const { id: userId, isAdmin } = decoded;
+
+        if (!isAdmin && userId !== req.params.id) return res.status(401).json({ status: false, message: "Unathorized!!" });
+        
+        const user = await User.findByIdAndUpdate(req.params.id, { status: 0 });
         if (!user) return res.status(404).json({ message: "User not found" });
 
         // await user.remove();
