@@ -130,5 +130,4 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-
-backend/public/fontawesome-5.15/
+Notes.txt
