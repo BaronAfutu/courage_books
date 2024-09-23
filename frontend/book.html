@@ -1,71 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- HEAD TEMPLATE START -->
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JP Alorwu - Book Details</title>
 
-    <!-- <meta http-equiv="Content-Security-Policy" -->
-    <!-- content="script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net"> -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link href="../backend/public/css/style.css" rel="stylesheet">
 
-    <title>Courage Books</title>
-
-    <!-- <link rel="shortcut icon" href="/img/ripfavicon.png"> -->
-    <!-- <link rel="stylesheet" href="../backend/public/fontawesome-5.15/css/all.min.css" /> -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href='https://fonts.googleapis.com/css?family=Libre Baskerville' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Plus Jakarta Sans' rel='stylesheet'>
-    <link rel="stylesheet" href="../backend/public/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../backend/public/css/select2.min.css" />
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.css"> -->
-    <link rel="stylesheet" href="../backend/public/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../backend/public/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../backend/public/css/datatables.min.css" />
-    <!-- <link rel="stylesheet" href="../backend/public/css/templatemo-pod-talk.css" /> -->
-    <link rel="stylesheet" href="../backend/public/css/style.css" />
 </head>
-<!-- HEAD TEMPLATE END -->
 
 <body>
 
-    <!-- NAVBAR START -->
-    <nav class="navbar navbar-expand-lg py-4 px-5">
-        <div class="container-fluid px-5">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <!-- Brand -->
             <a class="navbar-brand" href="#">JP Alorwu</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+
+            <!-- Toggler for mobile view -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold">
+
+            <!-- Centered links -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             Books
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Book 1</a></li>
+                            <li><a class="dropdown-item" href="#">Book 2</a></li>
+                            <li><a class="dropdown-item" href="#">Book 3</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blogs</a>
+                        <a class="nav-link" href="#">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
@@ -73,293 +57,231 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
-
-
                 </ul>
-                <button class="btn btn-outline-dark rounded-pill border-0 shadow-sm mx-2"> <span
-                        class="fa fa-search "></span> Search</button>
-                <button class="btn btn-outline-dark rounded-pill border-0 shadow-sm mx-2"> Login</button>
-                <button class="btn btn-outline-dark rounded-pill border-0 shadow-sm mx-2">
-                    Cart
-                    <span id="cartCount" class="bg-dark rounded-circle px-2 py-1 text-white mx-2">0</span>
-                </button>
+            </div>
+
+            <!-- Right side buttons -->
+            <div class="navbar-icons ms-auto">
+                <a href="#" class="btn btn-outline-light me-2"><i class="fas fa-shopping-cart"></i> Cart</a>
+                <a href="#" class="btn btn-outline-light me-2"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="#" class="btn btn-outline-light me-2"><i class="fas fa-user-plus"></i> Signup</a>
+                <a href="#" class="btn btn-outline-light"><i class="fas fa-user"></i> Profile</a>
             </div>
         </div>
     </nav>
-    <!-- NAVBAR END -->
 
+    <!-- Book Description Section (Lavender Gradient Background) -->
+    <section class="lavender-gradient section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- Book Cover Image -->
+                <div class="col-md-6">
+                    <img src="https://via.placeholder.com/400x600" alt="Romancing Mister Bridgerton"
+                        class="img-fluid rounded">
+                </div>
 
+                <!-- Book Details and Description -->
+                <div class="col-md-6">
+                    <h1 class="mb-4" style="font-size: 2.5rem;">Romancing Mister Bridgerton: Penelope & Colin’s Story
+                    </h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat mauris non urna
+                        fermentum, a dapibus erat facilisis. In egestas augue in mi pharetra, et lacinia metus mollis.
+                    </p>
 
-    <!-- MAIN CONTENT START -->
-    <div class="container-fluid px-5">
-        <div class="row px-5 justify-content-between py-5">
+                    <!-- Book Details -->
+                    <ul class="list-unstyled">
+                        <li><strong>Author:</strong> JP Alorwu</li>
+                        <li><strong>Genre:</strong> Fiction, Romance</li>
+                        <li><strong>Publisher:</strong> GreatReads Publishing</li>
+                        <li><strong>Release Date:</strong> January 5, 2024</li>
+                        <li><strong>Pages:</strong> 320</li>
+                        <li><strong>ISBN:</strong> 978-3-16-148410-0</li>
+                    </ul>
 
-            <!-- LEFT SIDE -->
-            <div class="col-6">
-                <div class="rounded-4 border border-secondary-subtle border-1 w-100">
-                    <div class="w-75 p-5 mx-auto">
-                        <img src="https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg"
-                            class="img-fluid w-100 shadow" alt="Book Cover">
+                    <!-- Price, Quantity, and Add to Cart -->
+                    <p class="mt-4">
+                        <strong class="h4 accent-color-bright">$19.99</strong>
+                    </p>
+                    <div class="d-flex align-items-center mb-4">
+                        <label for="quantity" class="me-2">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" class="form-control w-25 me-3" min="1"
+                            value="1">
+                        <button class="btn btn-secondary"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+
+                    <!-- Share Options -->
+                    <p class="mt-4">Share this book:</p>
+                    <div class="d-flex">
+                        <a href="#" class="btn btn-outline-secondary me-2" title="Share on Facebook"><i
+                                class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" class="btn btn-outline-secondary me-2" title="Share on Instagram"><i
+                                class="fab fa-instagram"></i> Instagram</a>
+                        <a href="#" class="btn btn-outline-secondary me-2" title="Share on X (formerly Twitter)"><i
+                                class="fab fa-x-twitter"></i> X</a>
+                        <a href="#" class="btn btn-outline-secondary" title="Share on LinkedIn"><i
+                                class="fab fa-linkedin-in"></i> LinkedIn</a>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- RIGHT SIDE -->
-            <div class="col-6 py-3 px-5">
-                <div class="ps-5">
-                    <div class="h5 fw-bolder">
-                        $33.95
-                    </div>
 
-                    <div class="h1 mt-5 mb-3 title">
-                        Romancing Mister Bridgerton Penelope & Colin’s Story
-                    </div>
-                    <div>
-                        Bionec rutrum congue leo eget malesuada. Vivamus magna justo, lacinia eget consectetur sed,
-                        convallis at tellus. Pellentesque in ipsum id orci porta dapibus. Mauris blandit aliquet elit.
-                    </div>
-                    <div class="my-5">
-                        <button class="btn btn-dark btn-lg rounded-pill ">Add to Cart</button>
-                    </div>
-
-                    <hr>
-
-                    <div class=" mt-4">
-                        <div class="d-flex">
-                            <p class="w-25">ISBN</p>
-                            <div>BKB23444536464645</div>
-                        </div>
-                        <div class="d-flex">
-                            <p class="w-25">Category</p>
+    <!-- Reviews Section (No Background) -->
+    <section class="section-padding">
+        <div class="container">
+            <h3 class="mb-5 text-center">Reader Reviews</h3>
+            <div class="row">
+                <!-- Review 1 -->
+                <div class="col-md-6 mb-4">
+                    <div class="border p-3 rounded	">
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="https://via.placeholder.com/60" alt="Sarah Johnson" class="rounded-circle me-3">
                             <div>
-                                <a href="/books.html#hot-deals">
-                                    Hot Deals
-                                </a>
-                                ,
-                                <a href="/books.html#romance">
-                                    Romance
-                                </a>
-                                ,
-                                <a href="/books.html#travel">Travel</a>
+                                <h5 class="mb-0">Sarah Johnson</h5>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <small class="text-muted">Reviewed on March 10, 2024</small>
                             </div>
                         </div>
-                        <div class="d-flex">
-                            <p class="w-25">Tags</p>
+                        <p class="mt-3">"An engaging read with unforgettable characters! The story kept me hooked from
+                            the first page to the last."</p>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="col-md-6 mb-4">
+                    <div class="border p-3 rounded">
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="https://via.placeholder.com/60" alt="David Martinez" class="rounded-circle me-3">
                             <div>
-                                <a href="/books.html#hot-deals">
-                                    Hot Deals
-                                </a>
-                                ,
-                                <a href="/books.html#romance">
-                                    Romance
-                                </a>
+                                <h5 class="mb-0">David Martinez</h5>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <small class="text-muted">Reviewed on February 25, 2024</small>
                             </div>
                         </div>
-                        <div class="d-flex">
-                            <p class="w-25">Share</p>
-                            <div>
-                                <span class="fab fa-facebook mx-1"></span>
-                                <span class="fab fa-twitter mx-1"></span>
-                                <span class="fab fa-instagram mx-1"></span>
-                                <span class="fab fa-linkedin-in mx-1"></span>
-                            </div>
+                        <p class="mt-3">"The writing style is beautiful, but the pacing felt a bit slow at times.
+                            However, the ending was worth the wait."</p>
+                    </div>
+                </div>
+                <!-- Additional reviews with rounded profile images can go here -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Add a Review Section (Lavender Gradient Background) -->
+    <section class="lavender-gradient section-padding">
+        <div class="container">
+            <h3 class="mb-5 text-center">Add Your Review</h3>
+            <form action="" method="post" class="review-form">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label for="reviewerName" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="reviewerName" required>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <label for="reviewRating" class="form-label">Rating</label>
+                        <select class="form-select" id="reviewRating" required>
+                            <option value="" disabled selected>Select rating</option>
+                            <option value="5">5 stars</option>
+                            <option value="4">4 stars</option>
+                            <option value="3">3 stars</option>
+                            <option value="2">2 stars</option>
+                            <option value="1">1 star</option>
+                        </select>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <label for="reviewText" class="form-label">Your Review</label>
+                        <textarea class="form-control" id="reviewText" required></textarea>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-secondary">Submit Review</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Similar Books Section (No Background) -->
+    <section class="section-padding">
+        <div class="container">
+            <h3 class="mb-5 text-center">Similar Books</h3>
+            <div class="row">
+                <!-- Book 1 -->
+                <div class="col-md-3">
+                    <div class="card book-card border-0 shadow-sm">
+                        <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Book 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Book Title 1</h5>
+                            <a href="#" class="btn btn-outline-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Book 2 -->
+                <div class="col-md-3">
+                    <div class="card book-card border-0 shadow-sm">
+                        <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Book 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Book Title 2</h5>
+                            <a href="#" class="btn btn-outline-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Book 3 -->
+                <div class="col-md-3">
+                    <div class="card book-card border-0 shadow-sm">
+                        <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Book 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Book Title 3</h5>
+                            <a href="#" class="btn btn-outline-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Book 4 -->
+                <div class="col-md-3">
+                    <div class="card book-card border-0 shadow-sm">
+                        <img src="https://via.placeholder.com/200x300" class="card-img-top" alt="Book 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Book Title 4</h5>
+                            <a href="#" class="btn btn-outline-secondary">View Details</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="p-5">
-            <div>
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-description" aria-expanded="true"
-                                aria-controls="flush-description">
-                                <span class="h1 title">Description</span>
-                            </button>
-                        </h2>
-                        <div id="flush-description" class="accordion-collapse collapse show"
-                            data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                Tiny Changes, Remarkable Results
-
-                                No matter your goals, Atomic Habits offers a proven framework for improving–every day.
-                                James Clear, one of the world’s leading experts on habit formation, reveals practical
-                                strategies that will teach you exactly how to form good habits, break bad ones, and
-                                master the tiny behaviors that lead to remarkable results.If you’re having trouble
-                                changing your habits, the problem isn’t you. The problem is your system.
-
-                                Bad habits repeat themselves again and again not because you don’t want to change, but
-                                because you have the wrong system for change. You do not rise to the level of your
-                                goals. You fall to the level of your systems. Here, you’ll get a proven system that can
-                                take you to new heights.Clear is known for his ability to distill complex topics into
-                                simple behaviors that can be easily applied to daily life and work. Here, he draws on
-                                the most proven ideas from biology, psychology, and neuroscience to create an
-                                easy-to-understand guide for making good habits inevitable and bad habits impossible.
-
-                                Learn how to:
-
-                                make time for new habits (even when life gets crazy);
-                                overcome a lack of motivation and willpower;
-                                design your environment to make success easier;
-                                get back on track when you fall off course;
-
-                                …and much more.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                aria-controls="flush-collapseTwo">
-                                <span class="h1 title">Reviews</span>
-                            </button>
-                        </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                            data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                <h3>Reviews</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                aria-controls="flush-collapseThree">
-                                Accordion Item #3
-                            </button>
-                        </h2>
-                        <div id="flush-collapseThree" class="accordion-collapse collapse"
-                            data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion
-                                body. Nothing more exciting happening here in terms of content, but just filling up the
-                                space to make it look, at least at first glance, a bit more representative of how this
-                                would look in a real-world application.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="p-5">
-            <h2>
-                You may also like
-            </h2>
-            <div id="booklist">
-                books..
-            </div>
-        </div>
-    </div>
-    <!-- MAIN CONTENT END -->
-
-
-
-
-    <!-- SUBSCRIBE FORM START -->
-    <div class="container-fluid px-5 my-5">
-        <div class="p-5 bg-success rounded-4 shadow-sm ">
-            <div class="display-4 text-center text-light w-50 mx-auto my-5">
-                Subscribe to Our Newsletter and Get 10% Off.
-            </div>
-            <div class="w-50 mx-auto my-5 border border-2 border-light rounded-pill p-1 d-flex ">
-                <div class="w-75">
-                    <input type="email" id="subscriberEmail" placeholder="Your Email"
-                        class="form-control p-3 bg-transparent border-0 rounded-pill text-white focus-ring focus-ring-success">
-                    <!-- <label for="floatingInputGrid">Your Email</label> -->
-                </div>
-                <div class="w-25 text-end">
-                    <button class="btn btn-light btn-lg m-1 rounded-pill">Subscribe</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- SUBSCRIBE FORM END -->
-
-    <!-- FOOTER -->
-    <footer class="container-fluid px-5">
-        <div class="row p-5">
-            <div class="col-4">
-                <h5>Connect</h5>
-                <div class="mt-5">
-                    <p>329 Queensberry Street, North Melbourne</p>
-                    <p>VIC3051, Australia.</p>
-                    <p>sales@bookix.com</p>
-                    <p>1234567890</p>
-                </div>
-            </div>
-            <div class="col-2">
-                <h5>Categories</h5>
-                <ul class="mt-5 list-unstyled">
-                    <li>Category 1</li>
-                    <li>Category 2</li>
-                    <li>Category 3</li>
-                    <li>Category 4</li>
-                    <li>Category 5</li>
-                    <li>Category 6</li>
-                    <li>Category 7</li>
-                </ul>
-            </div>
-            <div class="col-2">
-                <h5>Explore</h5>
-                <ul class="mt-5 list-unstyled">
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Help Center</li>
-                    <li>Career</li>
-                    <li>Policy</li>
-                    <li>Sitemap</li>
-                </ul>
-            </div>
-            <div class="col-2">
-                <h5>Account</h5>
-                <ul class="mt-5 list-unstyled">
-                    <li>Account</li>
-                    <li>Manage Account</li>
-                    <li>Saved Items</li>
-                    <li>Orders & Returns</li>
-                    <li>Redeem a Gift card</li>
-                </ul>
-            </div>
-            <div class="col-2">
-                <h5>Get in touch</h5>
-                <ul class="mt-5 list-unstyled">
-                    <li>Facebook</li>
-                    <li>Twitter</li>
-                    <li>Instagram</li>
-                    <li>Linkedin</li>
-                </ul>
-            </div>
-        </div>
-
-        <hr class="mx-2">
-        <div class="container-fluid d-flex justify-content-between my-3">
-            <div class="pt-2">© 2023 Bookix. All rights reserved.</div>
-            <div>
-                <span class="fa fa-credit-card fa-2x"></span>
-            </div>
-        </div>
-
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 JP Alorwu - All Rights Reserved</p>
+        <p>
+            <a href="#" class="text-decoration-none"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-decoration-none"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-decoration-none"><i class="fab fa-instagram"></i></a>
+        </p>
     </footer>
 
+    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- <script type="text/javascript" src="../backend/public/js/bookList.js"></script>
+    <script type="text/javascript" src="../backend/public/js/mainscript.js"></script>
+    <script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script> -->
+
 </body>
-
-<!-- BASE SCRIPTS TEMPLATE START -->
-<script type="text/javascript" src="../backend/public/js/jquery-3.7.0.min.js"></script>
-<script type="text/javascript" src="../backend/public/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../backend/public/js/select2.min.js"></script>
-<script type="text/javascript" src="../backend/public/js/datatables.min.js"></script>
-<script type="text/javascript" src="../backend/public/js/bootstrap-typeahead.min.js"></script>
-<script type="text/javascript" src="../backend/public/js/owl.carousel.min.js"></script>
-<!-- BASE SCRIPTS TEMPLATE END -->
-
-<script type="text/javascript" src="../backend/public/js/bookList.js"></script>
-<script type="text/javascript" src="../backend/public/js/bookDetails.js"></script>
-<script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script>
-
 
 </html>

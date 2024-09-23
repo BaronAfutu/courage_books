@@ -1,443 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- HEAD TEMPLATE START -->
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JP Alorwu - Author</title>
 
-    <!-- <meta http-equiv="Content-Security-Policy" -->
-    <!-- content="script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net"> -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link href="../backend/public/css/style.css" rel="stylesheet">
 
-    <title>Courage Books</title>
-
-    <!-- <link rel="shortcut icon" href="/img/ripfavicon.png"> -->
-    <!-- <link rel="stylesheet" href="../backend/public/fontawesome-5.15/css/all.min.css" /> -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="../backend/public/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../backend/public/css/select2.min.css" />
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.css"> -->
-    <link rel="stylesheet" href="../backend/public/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../backend/public/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../backend/public/css/datatables.min.css" />
-    <link rel="stylesheet" href="../backend/public/css/templatemo-pod-talk.css" />
-    <link rel="stylesheet" href="../backend/public/css/style.css" />
 </head>
-<!-- HEAD TEMPLATE END -->
 
 <body>
 
-    <!-- JUMBOTRON START -->
-    <!-- <div class="p-5 text-center bg-primary-subtle bg-gradient">
-        <div class="container py-5">
-            <h1 class="text-body-emphasis">Full-width jumbotron</h1>
-            <p class="col-lg-8 mx-auto lead">
-                This takes the basic jumbotron above and makes its background edge-to-edge with a
-                <code>.container</code> inside to align content. Similar to above, it's been recreated with built-in
-                grid and utility classes.
-            </p>
-        </div>
-    </div> -->
-    <!-- JUMBOTRON END -->
-
-    <!-- NAVBAR 2 TESTING START -->
-    <nav class="navbar navbar-expand-lg">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand me-lg-5 me-0" href="index.html">
-                <img src="../backend/public/images/logo/logo.jpg" class="logo-image img-fluid rounded-circle shadow-lg" alt="JP Alorwu">
+            <!-- Brand -->
+
+            <a class="navbar-brand" href="/frontend/index.html">
+                <img src="../backend/public/images/logo/logo.jpg" class="img-fluid rounded-circle " alt="Bootstrap"
+                    width="60">
             </a>
 
-            <!-- <form action="#" method="get" class="custom-form search-form flex-fill me-3" role="search">
-                <div class="input-group input-group-lg">    
-                    <input name="search" type="search" class="form-control" id="searchBooks" placeholder="Search Podcast" aria-label="Search">
-
-                    <button type="submit" class="form-control" id="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </form> -->
-
+            <!-- Toggler for mobile view -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-lg-auto">
+            <!-- Centered links -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active text-dark" href="index.html">Home</a>
+                        <a class="nav-link" href="/frontend/index.html">Home</a>
                     </li>
-
-
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarLightDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Books</a>
-
-                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink"
-                            id="navbarBooksListing">
-
-                            <!-- <li><a class="dropdown-item" href="listing-page.html">Listing Page</a></li>
-
-                            <li><a class="dropdown-item" href="detail-page.html">Detail Page</a></li> -->
+                        <a class="nav-link dropdown-toggle" href="/frontend/books.html" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Books
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/frontend/books.html">All</a></li>
+                            <li><a class="dropdown-item" href="/frontend/book.html">Book 1</a></li>
+                            <li><a class="dropdown-item" href="/frontend/book.html">Book 2</a></li>
+                            <li><a class="dropdown-item" href="/frontend/book.html">Book 3</a></li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="about.html">Blog</a>
+                        <a class="nav-link" href="#">Blog</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="about.html">Extras</a>
-                    </li> -->
-
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="about.html">About</a>
+                        <a class="nav-link" href="/frontend/about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/frontend/contact.html">Contact</a>
                     </li>
 
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                            <li><a class="dropdown-item" href="listing-page.html">Listing Page</a></li>
-
-                            <li><a class="dropdown-item" href="detail-page.html">Detail Page</a></li>
+                    <!-- Mobile Only Views -->
+                    <li class="nav-item d-block d-lg-none">
+                        <a class="nav-link" href="/frontend/cart.html">
+                            <i class="fas fa-shopping-cart"></i> Cart
+                        </a>
+                    </li>
+                    <li class="nav-item d-block d-lg-none">
+                        <a class="nav-link" href="/frontend/login.html">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item d-block d-lg-none">
+                        <a class="nav-link" href="/frontend/login.html">
+                            <i class="fas fa-user-plus"></i> Signup
+                        </a>
+                    </li>
+                    <li class="nav-item d-block d-lg-none dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
                         </ul>
-                    </li> -->
-
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="contact.html">Contact</a>
                     </li>
                 </ul>
+            </div>
 
-                <div class="ms-4">
-                    <a href="#section_3" class="btn btn-outline-dark rounded-pill smoothscroll">Get Reading</a>
+            <!-- Right side buttons -->
+            <div class="navbar-icons ms-auto d-none d-lg-block">
+                <a href="/frontend/cart.html" class="btn btn-outline-light me-2 position-relative">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-secondary">
+                        9
+                        <span class="visually-hidden">cart items</span>
+                      </span>
+                </a>
+                <a href="login.html" class="btn btn-outline-light me-2"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="login.html" class="btn btn-outline-light me-2"><i class="fas fa-user-plus"></i> Signup</a>
+
+                <!-- Profile Dropdown -->
+                <div class="btn-group">
+                    <a href="#" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </nav>
-    <!-- NAVBAR 2 TESTING END-->
 
-
-    <!-- NAVBAR TEMPLATE START TO USE THIS REMOVE TEMPLATEMO NAVBAR-->
-    <!-- <nav class="navbar  sticky-top navbar-expand-lg bg-body-tertiary shadow">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24"
-                    class="d-inline-block align-text-top">
-                Bootstrap
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" id="searchBooks"
-                        aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav> -->
-    <!-- NAVBAR TEMPLATE END -->
-
-
-    <!-- HERO SECTION START -->
-    <section class="hero-section">
+    <!-- Header -->
+    <header class="header">
         <div class="container">
-            <div class="row">
+            <h1>Welcome to the Official Website of JP Alorwu</h1>
+            <p>Explore my collection of books and discover new adventures</p>
+            <a href="#" class="btn btn-lg">Browse Books</a>
+        </div>
+    </header>
 
-                <div class="col-lg-12 col-12">
-                    <div class="text-center mb-5 pb-2">
-                        <h1 class="text-white">JPAlorwu</h1>
-
-                        <p class="text-white">Listen it everywhere. Explore your fav podcasts.</p>
-
-                        <a href="#section_2" class="btn custom-btn smoothscroll mt-3">Start listening</a>
-                    </div>
-
-                    <div class="owl-carousel owl-theme" id="carouselBookListing">
-
-                        <!-- <div class="owl-carousel-info-wrap item">
-                            <img src="https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg" class="owl-carousel-image img-fluid" alt="">
-
-                            <div class="owl-carousel-info">
-                                <h6 class="mb-2">
-                                    Specification by Example
-                                    <img src="../backend/public/images/verified.png" class="owl-carousel-verified-image img-fluid" alt="">
-                                     <span class="fa fa-check-circle fa-sm text-primary"></span>
-                                </h6>
-
-                                <span class="badge">Open Source</span>
-
-                                <span class="badge">Mobile</span>
-                            </div>
-
-                            <div class="social-share">
-                                <ul class="social-icon">
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link fa fa-heart"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link fa fa-cart-arrow-down"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-
-                        <div class="owl-carousel-info-wrap item">
-                            <img src="../backend/public/images/profile/handsome-asian-man-listening-music-through-headphones.jpg" class="owl-carousel-image img-fluid" alt="">
-
-                            <div class="owl-carousel-info">
-                                <h4 class="mb-2">
-                                    William
-                                    <img src="../backend/public/images/verified.png" class="owl-carousel-verified-image img-fluid" alt="">
-                                </h4>
-
-                                <span class="badge">Creative</span>
-
-                                <span class="badge">Design</span>
-                            </div>
-
-                            <div class="social-share">
-                                <ul class="social-icon">
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-twitter"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-facebook"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-pinterest"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="owl-carousel-info-wrap item">
-                            <img src="../backend/public/images/profile/cute-smiling-woman-outdoor-portrait.jpg" class="owl-carousel-image img-fluid" alt="">
-
-                            <div class="owl-carousel-info">
-                                <h4 class="mb-2">Taylor</h4>
-
-                                <span class="badge">Modeling</span>
-
-                                <span class="badge">Fashion</span>
-                            </div>
-
-                            <div class="social-share">
-                                <ul class="social-icon">
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-twitter"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-facebook"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-pinterest"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="owl-carousel-info-wrap item">
-                            <img src="../backend/public/images/profile/man-portrait.jpg" class="owl-carousel-image img-fluid" alt="">
-
-                            <div class="owl-carousel-info">
-                                <h4 class="mb-2">Nick</h4>
-
-                                <span class="badge">Acting</span>
-                            </div>
-
-                            <div class="social-share">
-                                <ul class="social-icon">
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-instagram"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-youtube"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="owl-carousel-info-wrap item">
-                            <img src="../backend/public/images/profile/woman-posing-black-dress-medium-shot.jpg" class="owl-carousel-image img-fluid" alt="">
-
-                            <div class="owl-carousel-info">
-                                <h4 class="mb-2">
-                                    Elsa
-                                    <img src="../backend/public/images/verified.png" class="owl-carousel-verified-image img-fluid" alt="">
-                                </h4>
-
-                                <span class="badge">Influencer</span>
-                            </div>
-
-                            <div class="social-share">
-                                <ul class="social-icon">
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-instagram"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-youtube"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="owl-carousel-info-wrap item">
-                            <img src="../backend/public/images/profile/smart-attractive-asian-glasses-male-standing-smile-with-freshness-joyful-casual-blue-shirt-portrait-white-background.jpg" class="owl-carousel-image img-fluid" alt="">
-
-                            <div class="owl-carousel-info">
-                                <h4 class="mb-2">Chan</h4>
-
-                                <span class="badge">Education</span>
-                            </div>
-
-                            <div class="social-share">
-                                <ul class="social-icon">
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-linkedin"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-whatsapp"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
-                    </div>
+    <!-- Book Categories Row with Images -->
+    <section class="book-categories py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Explore Book Categories</h2>
+            <div class="row justify-content-center">
+                <div class="col-5 col-md-2 text-center mb-4">
+                    <img src="https://via.placeholder.com/150" alt="Fiction" class="img-fluid rounded-circle mb-2">
+                    <a href="#" class="btn btn-outline-secondary w-100">Fiction</a>
                 </div>
-
+                <div class="col-5 col-md-2 text-center mb-4">
+                    <img src="https://via.placeholder.com/150" alt="Non-Fiction" class="img-fluid rounded-circle mb-2">
+                    <a href="#" class="btn btn-outline-secondary w-100">Non-Fiction</a>
+                </div>
+                <div class="col-5 col-md-2 text-center mb-4">
+                    <img src="https://via.placeholder.com/150" alt="Mystery" class="img-fluid rounded-circle mb-2">
+                    <a href="#" class="btn btn-outline-secondary w-100">Mystery</a>
+                </div>
+                <div class="col-5 col-md-2 text-center mb-4">
+                    <img src="https://via.placeholder.com/150" alt="Romance" class="img-fluid rounded-circle mb-2">
+                    <a href="#" class="btn btn-outline-secondary w-100">Romance</a>
+                </div>
+                <div class="col-5 col-md-2 text-center mb-4">
+                    <img src="https://via.placeholder.com/150" alt="Fantasy" class="img-fluid rounded-circle mb-2">
+                    <a href="#" class="btn btn-outline-secondary w-100">Fantasy</a>
+                </div>
+                <div class="col-5 col-md-2 text-center mb-4">
+                    <img src="https://via.placeholder.com/150" alt="Science Fiction"
+                        class="img-fluid rounded-circle mb-2">
+                    <a href="#" class="btn btn-outline-secondary w-100">Science Fiction</a>
+                </div>
             </div>
         </div>
     </section>
-    <!-- HERO SECTION END -->
 
-
-    <div id="main" class="container-fluid px-0 mt-5 d-none">
-
-        <div class="p-1 p-md-5 bg-info text-center">
-            <div class="py-5">
-                <h3 class="">Featured Books by JP Alorwu</h3>
-                <h2 class="text-uppercase text-white">The Help Series</h2>
-                <p class="text-white">See how you can find help in the most trying times. Made for the weak but strong
-                    at heart.</p>
-            </div>
-            <div class="container">
-                <div class="loader-img"></div>
-                <div class="row mx-auto w-100 px-0 px-md-5" id="featuredSeries">
-
-                    <!-- <div class="col-3">
-                        <a href="" class="w-100">
-                            <div class="shadow w-100">
-                                <img src="https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg"
-                                    class="img-fluid rounded-2 w-100" alt="Featured Book 1">
-                            </div>
-                            <button class="btn btn-primary my-3">Read More</button>
-                        </a>
-                    </div>
-
-                    <div class="col-3">
-                        <a href="" class="w-100">
-                            <div class="shadow w-100">
-                                <img src="https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg"
-                                    class="img-fluid rounded-2 w-100" alt="Featured Book 1">
-                            </div>
-                            <button class="btn btn-primary my-3">Read More</button>
-                        </a>
-                    </div>
-
-                    <div class="col-3">
-                        <a href="" class="w-100">
-                            <div class="shadow w-100">
-                                <img src="https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg"
-                                    class="img-fluid rounded-2 w-100" alt="Featured Book 1">
-                            </div>
-                            <button class="btn btn-primary my-3">Read More</button>
-                        </a>
-                    </div> -->
-
-                </div>
-            </div>
-
-            <div class="w-75 mx-auto">
-                <button class="btn btn-primary btn-lg rounded-pill shadow mb-3 mb-md-0">Explore More</button>
-            </div>
-        </div>
-
-
+    <!-- Featured Books Section -->
+    <section class="featured-books">
         <div class="container">
-
-            <div class="row justify-content-between">
-
-
-
-                <div class="col-6" id="bookList">
-                    <div class="loader-img"></div>
-                </div>
-
-
-                <div class="col-5 h-100 shadow px-0">
-                    <div class="position-relative" id="featuredBook">
-                        <div class="position-absolute">
-                            <div class="bg-warning px-2 shadow rounded-top-0 rounded-bottom-3 rounded-start-0">
-                                <h4>Featured</h4>
-                            </div>
+            <h2 class="text-center mb-5">Featured Books</h2>
+            <div class="row justify-content-center">
+                <div class="col-6 col-md-4">
+                    <div class="card book-card my-1 my-md-0">
+                        <img src="https://via.placeholder.com/300" class="img-fluid card-img-top" alt="Book 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Book Title 1</h5>
+                            <p class="card-text">A brief description of the book goes here.</p>
+                            <a href="#" class="btn btn-secondary">Learn More</a>
                         </div>
-                        <img src="" alt="Featured Book Cover" class="img-fluid w-100 rounded overflow-hidden">
-                        <div class="loader-img"></div>
-                        <div class="w-100 text-info-emphasis px-2 py-2 h3" id="featuredTitle"></div>
-                        <div id="featuredTags" class="my-3"></div>
-                        <div id="featuredDescription" class="my-3 mx-2 h6 "></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="card book-card my-1 my-md-0">
+                        <img src="https://via.placeholder.com/300" class="card-img-top" alt="Book 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Book Title 2</h5>
+                            <p class="card-text">A brief description of the book goes here.</p>
+                            <a href="#" class="btn btn-secondary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 my-1 my-md-0">
+                    <div class="card book-card">
+                        <img src="https://via.placeholder.com/300" class="card-img-top" alt="Book 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Book Title 3</h5>
+                            <p class="card-text">A brief description of the book goes here.</p>
+                            <a href="#" class="btn btn-secondary">Learn More</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Book Showcase Section -->
+    <section class="py-5 lavender-gradient">
+        <div class="container">
+            <h2 class="text-center mb-4 text-lavender-dark">Explore More Books by J.P. Alorwu</h2>
+            <div class="row text-center">
+                <!-- Loop through books (10 total) -->
+                <div class="col-6 col-md-2 mb-4">
+                    <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 1">
+                    <h6 class="mt-2">Book Title 2 -
+                        5 <i class="fas fa-star text-warning"></i></h6>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 2">
+                    <h6 class="mt-2">Book Title 2 - The revenge of avengers - 4.5 <i
+                            class="fas fa-star text-warning"></i></h6>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 3">
+                    <h6 class="mt-2">Book Title 3</h6>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 4">
+                    <h6 class="mt-2">Book Title 4</h6>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 5">
+                    <h6 class="mt-2">Book Title 5</h6>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 6">
+                    <h6 class="mt-2">Book Title 6</h6>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 7">
+                    <h6 class="mt-2">Book Title 7</h6>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 8">
+                    <h6 class="mt-2">Book Title 8</h6>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 9">
+                    <h6 class="mt-2">Book Title 9</h6>
+                </div>
+                <div class="col-6 col-md-2 mb-4">
+                    <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 10">
+                    <h6 class="mt-2">Book Title 10</h6>
+                </div>
+            </div>
+
+            <!-- Button to view more books -->
+            <div class="text-center mt-4">
+                <a href="books.html" class="btn btn-lg  btn-secondary">View All Books</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About the Author Section -->
+    <section class="py-5 no-lavender-gradient" >
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Text Content -->
+                <div class="col-md-6 order-md-1">
+                    <h2 class="mb-4 text-lavender-dark">About J.P. Alorwu</h2>
+                    <p class="about-section-text">
+                        J.P. Alorwu is a renowned African author whose works transcend cultural boundaries and captivate
+                        readers with profound storytelling. With a passion for narrating stories that inspire,
+                        challenge, and uplift, J.P. Alorwu brings characters to life and addresses themes of love,
+                        resilience, and self-discovery.
+                    </p>
+                    <p class="about-section-text">
+                        Her books have touched the hearts of readers around the world, and her unique voice continues to
+                        shine in the literary world. Discover her stories and immerse yourself in tales that leave a
+                        lasting impact.
+                    </p>
+                    <p class="about-section-text">
+                        When not writing, J.P. Alorwu enjoys mentoring young writers and participating in community
+                        projects aimed at promoting literacy and education.
+                    </p>
+                </div>
+                <!-- Author Image -->
+                <div class="col-md-6 text-center order-md-2">
+                    <img src="https://via.placeholder.com/350x450" class="img-fluid rounded" alt="J.P. Alorwu">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials py-5 lavender-gradient">
+        <div class="container">
+            <h2 class="text-center mb-5 text-secondary">What Readers Are Saying</h2>
+            <div class="row">
+                <!-- Testimonial 1 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://via.placeholder.com/60" alt="Sarah Johnson"
+                                    class="rounded-circle me-3">
+                                <h5 class="mb-0 accent-color">Sarah Johnson</h5>
+                            </div>
+                            <p class="card-text">"I was completely captivated by the characters and the depth of the
+                                story. JP Alorwu is a phenomenal author!"</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://via.placeholder.com/60" alt="David Martinez"
+                                    class="rounded-circle me-3">
+                                <h5 class="mb-0 accent-color">David Martinez</h5>
+                            </div>
+                            <p class="card-text">"An emotional rollercoaster from start to finish. I couldn't put the
+                                book down. Highly recommend!"</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://via.placeholder.com/60" alt="Emily Clark" class="rounded-circle me-3">
+                                <h5 class="mb-0 accent-color">Emily Clark</h5>
+                            </div>
+                            <p class="card-text">"JP Alorwu's writing style is poetic and immersive. I felt like I was
+                                right there in the world she created."</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 4 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://via.placeholder.com/60" alt="Michael Lee" class="rounded-circle me-3">
+                                <h5 class="mb-0 accent-color">Michael Lee</h5>
+                            </div>
+                            <p class="card-text">"A beautifully written book with unforgettable characters. I can't wait
+                                for the next one!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 JP Alorwu - All Rights Reserved</p>
+        <p>
+            <a href="#" class="text-decoration-none"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-decoration-none"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-decoration-none"><i class="fab fa-instagram"></i></a>
+        </p>
+    </footer>
 
     <section class="container bg-primary-subtle d-none">
         <form id="fileUpload" enctype="multipart/form-data">
@@ -448,36 +383,17 @@
         </form>
     </section>
 
+    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- <script type="text/javascript" src="../backend/public/js/bookList.js"></script>
+    <script type="text/javascript" src="../backend/public/js/mainscript.js"></script>
+    <script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script> -->
 
 
 </body>
-<!-- BASE SCRIPTS TEMPLATE START -->
-<script type="text/javascript" src="../backend/public/js/jquery-3.7.0.min.js"></script>
-<script type="text/javascript" src="../backend/public/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../backend/public/js/select2.min.js"></script>
-<script type="text/javascript" src="../backend/public/js/datatables.min.js"></script>
-<script type="text/javascript" src="../backend/public/js/bootstrap-typeahead.min.js"></script>
-<script type="text/javascript" src="../backend/public/js/owl.carousel.min.js"></script>
-<!-- BASE SCRIPTS TEMPLATE END -->
-
-<script type="text/javascript" src="../backend/public/js/bookList.js"></script>
-<script type="text/javascript" src="../backend/public/js/mainscript.js"></script>
-<script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script>
-
 
 </html>
