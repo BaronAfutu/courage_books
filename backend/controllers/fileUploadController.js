@@ -3,7 +3,6 @@ const { bookCoverUpload, profileImageUpload, bookUpload } = require('../helpers/
 
 // TODO add book or userID to query for saving filepath into database
 
-// Controller function for book cover upload
 const uploadBookCover = (req, res, next) => {
     bookCoverUpload.single('bookCover')(req, res, (err) => {
         if (err) {
@@ -15,7 +14,6 @@ const uploadBookCover = (req, res, next) => {
     });
 };
 
-// Controller function for user profile upload
 const uploadProfilePicture = (req, res) => {
     profileImageUpload.single('profilePic')(req, res, (err) => {
         if (err) {
@@ -27,7 +25,6 @@ const uploadProfilePicture = (req, res) => {
 };
 
 
-// Controller function for PDF upload
 const uploadPDFFile = (req, res, next) => {
     bookUpload.single('bookFile')(req, res, (err) => {
         if (err) {

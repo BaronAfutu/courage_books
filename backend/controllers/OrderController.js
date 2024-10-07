@@ -4,26 +4,24 @@ const User = require('../models/User');
 const { decodeToken } = require('./GeneralController');
 const { OrderValidation } = require('../helpers/validation');
 
-// Create a new order
 exports.createOrder = async (req, res) => {
     const { error, value } = OrderValidation.create.validate(req.body);
     if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
     
     try {
-        //Getting User ID
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id: userId, isAdmin } = decoded;
 
-        const { items, shippingAddress } = value;
+        const { items, shippingAddress } = req.body;
 
-        // Calculate total price
         let totalAmount = 0;
-        for (const item of items) {
+        for (let item of items) {
             const book = await Book.findById(item.book);
             if (!book) {
                 return res.status(404).json({ message: 'Book not found' });
             }
+            item['price'] = book.price;
             totalAmount += book.price * item.quantity;
         }
 
@@ -47,7 +45,6 @@ exports.createOrder = async (req, res) => {
 // Get all orders (Admin only)
 exports.getAllOrders = async (req, res) => {
     try {
-        //Getting User ID
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id: userId, isAdmin } = decoded;
@@ -64,10 +61,8 @@ exports.getAllOrders = async (req, res) => {
     }
 };
 
-// Get orders by user ID
 exports.getOrdersByUser = async (req, res) => {
     try {
-        //Getting User ID
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id: userId, isAdmin } = decoded;
@@ -80,7 +75,6 @@ exports.getOrdersByUser = async (req, res) => {
     }
 };
 
-// Get order by ID
 exports.getOrderById = async (req, res) => {
     try {
         const order = await Order.findById(req.params.id)
@@ -94,7 +88,6 @@ exports.getOrderById = async (req, res) => {
     }
 };
 
-// Update order status
 exports.updateOrderStatus = async (req, res) => {
     const { error, value } = OrderValidation.updateStatus.validate(req.body);
     if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });

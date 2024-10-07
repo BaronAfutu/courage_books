@@ -2,24 +2,13 @@ const User = require('../models/User');
 const Book = require('../models/Book');
 const { decodeToken } = require('./GeneralController');
 
-/*
-Recommendations:
-Authentication Middleware: Ensure that routes using these controllers are protected by authentication middleware to prevent unauthorized access to a user's wishlist.
-Validation: Implement input validation to ensure that the book ID is a valid MongoDB ObjectId.
-Error Handling: Expand error handling to cover more specific scenarios, such as database connection errors or validation failures.
-Wishlist Limitations: Depending on the use case, consider setting a maximum number of items that can be added to the wishlist.
-This wishlistController will allow users to manage their wishlist by adding and removing books and viewing or clearing the entire list. It provides the basic functionality required for a wishlist feature in an e-commerce platform.
-*/
 
-// Add a book to the wishlist
 exports.addToWishlist = async (req, res) => {
     try {
-        //Getting User ID
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id: userId, isAdmin } = decoded;
 
-        // Getting Book ID
         const { bookId = ''} = req.body;
         if (typeof bookId !== 'string') return res.status(400).json({ status: false, errMsg: "bookid should be a string!!" });
 
@@ -42,15 +31,12 @@ exports.addToWishlist = async (req, res) => {
     }
 };
 
-// Remove a book from the wishlist
 exports.removeFromWishlist = async (req, res) => {
     try {
-        //Getting User ID
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id: userId, isAdmin } = decoded;
 
-        // Getting Book ID
         const { bookId = ''} = req.body;
         if (typeof bookId !== 'string') return res.status(400).json({ status: false, errMsg: "bookid should be a string!!" });
 
@@ -59,7 +45,6 @@ exports.removeFromWishlist = async (req, res) => {
         const wishlistIndex = user.wishlist.indexOf(bookId);
 
         if (wishlistIndex > -1) {
-            // Remove the book from the wishlist
             user.wishlist.splice(wishlistIndex, 1);
             await user.save();
             res.status(200).json({ message: 'Book removed from wishlist successfully', wishlist: user.wishlist });
@@ -71,10 +56,8 @@ exports.removeFromWishlist = async (req, res) => {
     }
 };
 
-// Get the user's wishlist
 exports.getWishlist = async (req, res) => {
     try {
-        //Getting User ID
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id: userId, isAdmin } = decoded;
@@ -90,16 +73,14 @@ exports.getWishlist = async (req, res) => {
     }
 };
 
-// Clear the wishlist
 exports.clearWishlist = async (req, res) => {
     try {
-        //Getting User ID
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id: userId, isAdmin } = decoded;
 
         const user = await User.findById(userId);
-        user.wishlist = []; // Clear the wishlist
+        user.wishlist = [];
         await user.save();
 
         res.status(200).json({ message: 'Wishlist cleared successfully', wishlist: user.wishlist });

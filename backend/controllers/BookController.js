@@ -2,7 +2,6 @@ const Book = require('../models/Book');
 const { BookValidation } = require('../helpers/validation');
 
 
-// Get all books with pagination and optional filtering by category
 const getBooks = async (req, res) => {
     const { error, value } = BookValidation.get.validate(req.body);
     if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
@@ -15,7 +14,9 @@ const getBooks = async (req, res) => {
         if (authors) query['authors'] = authors;
         if (genres.length > 0) query['genre'] = { $in: genres };
         if (tags.length > 0) query['tags'] = { $in: tags };
-        if (rating) query['rating.averageRating'] = { $gt: rating };
+        if (rating) query['rating.averageRating'] = { $gte: rating };
+
+        console.log(query);
 
         const books = await Book.find(query)
             .limit(limit * 1)
@@ -36,7 +37,6 @@ const getBooks = async (req, res) => {
     }
 };
 
-// Get a single book by ID
 const getBookById = async (req, res) => {
     try {
         const book = await Book.findById(req.params.id);
@@ -50,14 +50,13 @@ const getBookById = async (req, res) => {
     }
 };
 
-// Search books by title, author, or description
 const searchBooks = async (req, res) => {
     const { error, value } = BookValidation.search.validate(req.query);
     if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
 
     try {
         const { q } = value;
-        const regex = new RegExp(q, 'i'); // Case-insensitive search
+        const regex = new RegExp(q, 'i');
         const books = await Book.find({
             $or: [
                 { title: { $regex: regex } },
@@ -74,8 +73,6 @@ const searchBooks = async (req, res) => {
 };
 
 
-
-// Create a new book
 const createBook = async (req, res) => {
     const { error, value } = BookValidation.create.validate(req.body);
     if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
@@ -89,7 +86,7 @@ const createBook = async (req, res) => {
     }
 };
 
-// Add Book Cover
+
 const addBookCover = async (req, res) => {
     try {
         const coverUrl = `/uploads/coverImages/${req.file.filename}`;
@@ -103,7 +100,6 @@ const addBookCover = async (req, res) => {
     }
 };
 
-// Add Book File
 const addBookFile = async (req, res) => {
     try {
         const bookUrl = `/uploads/books/${req.file.filename}`;
@@ -118,7 +114,6 @@ const addBookFile = async (req, res) => {
 };
 
 
-// Update a book by ID
 const updateBook = async (req, res) => {
     const { error, value } = BookValidation.create.validate(req.body);
     if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
@@ -150,7 +145,6 @@ const featureBook = async (req, res) => {
     }
 };
 
-// Delete a book by ID
 const deleteBook = async (req, res) => {
     try {
         const book = await Book.findByIdAndUpdate(req.params.id, { status: 0 });

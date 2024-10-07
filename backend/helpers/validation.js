@@ -26,7 +26,7 @@ class BookValidation {
     static get = Joi.object({
         authors: Joi.string().trim().default(''),
         genres: Joi.array().items(Joi.string().trim().lowercase()).default([]),
-        category: Joi.string().trim().lowercase().default(""),
+        category: Joi.string().trim().lowercase().allow("",null).default(""),
         tags: Joi.array().items(Joi.string().trim().lowercase()).default([]),
         page: Joi.number().default(1),
         limit: Joi.number().default(10),
@@ -54,8 +54,7 @@ class OrderValidation {
         // userId: Joi.string().required(),
         items: Joi.array().items(Joi.object({
             book: Joi.string().required(),
-            quantity: Joi.number().min(1).default(1),
-            price: Joi.number().required()
+            quantity: Joi.number().min(1).default(1)
         })).required(),
         shippingAddress: Joi.string().allow("", null).default("")
     });

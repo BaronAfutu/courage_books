@@ -6,13 +6,11 @@ const { PaymentValidation } = require('../helpers/validation');
 
 // TODO Testing Endpoints
 
-// Create a new payment
 exports.createPayment = async (req, res) => {
     const { error, value } = PaymentValidation.create.validate(req.body);
     if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
 
     try {
-        //Getting User ID
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id: userId, isAdmin } = decoded;
@@ -20,7 +18,6 @@ exports.createPayment = async (req, res) => {
 
         const { order, amount, transactionId, paymentMethod } = value;
 
-        // Check if the order exists
         const existingOrder = await Order.findById(order);
         if (!existingOrder) {
             return res.status(404).json({ message: 'Order not found' });
@@ -29,7 +26,6 @@ exports.createPayment = async (req, res) => {
             return res.status(400).json({message: `Order already ${existingOrder.orderStatus}`})
         }
 
-        // Check if transaction ID already used
         const existingPayment = await Payment.findOne({ transactionId: transactionId });
         if (existingPayment) {
             return res.status(404).json({ message: 'Payment already recorded' });
@@ -55,7 +51,6 @@ exports.createPayment = async (req, res) => {
 
         // console.log(...existingOrder.items.map(item=>item.book));
 
-        // Create a new payment record
         const payment = new Payment({
             order,
             paymentMethod,
@@ -98,7 +93,6 @@ exports.getAllPayments = async (req, res) => {
     }
 };
 
-// Get payment by ID
 exports.getPaymentById = async (req, res) => {
     try {
         const payment = await Payment.findById(req.params.id).populate('order', 'user totalAmount orderStatus');
@@ -111,7 +105,6 @@ exports.getPaymentById = async (req, res) => {
     }
 };
 
-// Get payments by order ID
 exports.getPaymentsByOrder = async (req, res) => {
     try {
         const payments = await Payment.find({ order: req.params.orderId }).populate('order', 'user totalAmount orderStatus');
@@ -124,7 +117,6 @@ exports.getPaymentsByOrder = async (req, res) => {
 // Update payment status (Admins Only)
 exports.updatePaymentStatus = async (req, res) => {
     try {
-        //Getting User Admin Status
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id, isAdmin } = decoded;
@@ -150,7 +142,6 @@ exports.updatePaymentStatus = async (req, res) => {
 // Delete a payment by ID (Admin only)
 exports.deletePayment = async (req, res) => {
     try {
-        //Getting User Admin Status
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id, isAdmin } = decoded;

@@ -1,7 +1,6 @@
 const Book = require('../models/Book');
 const { ReviewValidation } = require('../helpers/validation');
 
-// Add a review to a book
 exports.addReview = async (req, res) => {
     const { error, value } = ReviewValidation.create.validate(req.body);
     if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
@@ -21,10 +20,8 @@ exports.addReview = async (req, res) => {
             reviewDate: new Date(),
         };
 
-        // Add the review to the book's reviews array
         book.reviews.push(newReview);
 
-        // Update the average rating and number of ratings
         book.rating.numberOfRatings += 1;
         book.rating.averageRating =
             (book.rating.averageRating * (book.rating.numberOfRatings - 1) + rating) /
@@ -37,7 +34,6 @@ exports.addReview = async (req, res) => {
     }
 };
 
-// Add a rating to a book
 exports.addRating = async (req, res) => {
     const { error, value } = ReviewValidation.rate.validate(req.body);
     if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
@@ -55,7 +51,6 @@ exports.addRating = async (req, res) => {
             reviewDate: new Date(),
         };
 
-        // Update the average rating and number of ratings
         book.rating.numberOfRatings += 1;
         book.rating.averageRating =
             (book.rating.averageRating * (book.rating.numberOfRatings - 1) + rating) /
@@ -69,7 +64,6 @@ exports.addRating = async (req, res) => {
     }
 };
 
-// Update a review for a book
 exports.updateReview = async (req, res) => {
     const { error, value } = ReviewValidation.create.validate(req.body);
     if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
@@ -87,13 +81,11 @@ exports.updateReview = async (req, res) => {
             return res.status(404).json({ message: 'Review not found' });
         }
 
-        // Update review details
         const oldRating = review.rating;
         review.reviewText = reviewText || review.reviewText;
         review.rating = rating || review.rating;
         review.reviewDate = new Date();
 
-        // Update the average rating
         if (oldRating !== rating) {
             book.rating.averageRating =
                 (book.rating.averageRating * book.rating.numberOfRatings - oldRating + rating) /
@@ -107,7 +99,6 @@ exports.updateReview = async (req, res) => {
     }
 };
 
-// Delete a review from a book
 exports.deleteReview = async (req, res) => {
     try {
         const { bookId, reviewId } = req.params;
@@ -122,7 +113,6 @@ exports.deleteReview = async (req, res) => {
             return res.status(404).json({ message: 'Review not found' });
         }
 
-        // Remove the review and update the average rating and number of ratings
         const oldRating = review.rating;
         book.reviews.pull(reviewId);
         book.rating.numberOfRatings -= 1;
@@ -132,7 +122,7 @@ exports.deleteReview = async (req, res) => {
                 (book.rating.averageRating * (book.rating.numberOfRatings + 1) - oldRating) /
                 book.rating.numberOfRatings;
         } else {
-            book.rating.averageRating = 0; // No ratings left
+            book.rating.averageRating = 0;
         }
 
         await book.save();
@@ -142,7 +132,6 @@ exports.deleteReview = async (req, res) => {
     }
 };
 
-// Get all reviews for a book
 exports.getReviews = async (req, res) => {
     try {
         const { bookId } = req.params;

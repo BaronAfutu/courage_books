@@ -9,7 +9,6 @@ const { UserValidation } = require('../helpers/validation')
 const User = require('../models/User');
 
 
-// Create a new user
 exports.signup = async (req, res) => {
 
     const { error, value } = UserValidation.create.validate(req.body);
@@ -62,7 +61,7 @@ exports.login = async (req, res) => {
             }, process.env.SECRET || 'this_is_@_temp.secret')
             return res.status(200).json({ success: true, id: user.id, token })
         } else {
-            return res.status(404).json({ success: true });
+            return res.status(404).json({ success: false });
         }
     } catch (error) {
         return res.status(500).json({ success: false });

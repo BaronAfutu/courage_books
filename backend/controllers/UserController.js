@@ -5,7 +5,6 @@ const { UserValidation } = require('../helpers/validation');
 // Fetch all users (Admins Only)
 const getAllUsers = async (req, res) => {
     try {
-        //Getting User Admin Status
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id, isAdmin } = decoded;
@@ -23,7 +22,6 @@ const getAllUsers = async (req, res) => {
 // Fetch a single user by ID (Admin and User himself only)
 const getUserById = async (req, res) => {
     try {
-        //Getting UserId and Admin Status
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id: userId, isAdmin } = decoded;
@@ -49,7 +47,6 @@ const updateUser = async (req, res) => {
     if (error) return res.status(400).json({ status: false, errMsg: error.details[0].message });
 
     try {
-        //Getting UserId and Admin Status
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id: userId, isAdmin } = decoded;
@@ -66,10 +63,8 @@ const updateUser = async (req, res) => {
     }
 };
 
-// Delete a user
 const deleteUser = async (req, res) => {
     try {
-        //Getting UserId and Admin Status
         const decoded = await decodeToken(req.headers.authorization);
         if (!decoded.success) return res.status(500).json({ status: false });
         const { id: userId, isAdmin } = decoded;
