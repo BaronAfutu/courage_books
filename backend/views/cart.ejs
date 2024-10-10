@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('templates/main/head', {title}) %>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div>
+        <%- include('templates/main/navbar', {title}) %>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Your Shopping Cart</h1>
+            <p>Review the books in your cart and proceed to checkout.</p>
+        </div>
+    </section>
+
+    <!-- Cart Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Left Pane: Cart Items Listing -->
+            <div class="col-md-8">
+                <!-- Cart Item 1 -->
+                <div class="cart-item border-bottom mb-4 pb-3 d-flex align-items-center">
+                    <img src="https://via.placeholder.com/100x150" alt="Book Cover" class="me-3 rounded">
+                    <div>
+                        <h5>Romancing Mister Bridgerton: Penelope & Colin’s Story</h5>
+                        <p class="text-muted">Price: $19.99</p>
+                        <div class="d-flex align-items-center mb-2">
+                            <label for="quantity1" class="me-2">Quantity:</label>
+                            <input type="number" id="quantity1" name="quantity" value="1" min="1"
+                                class="form-control w-25 d-inline-block me-3">
+                            <p class="mb-0"><strong>Total: $19.99</strong></p>
+                        </div>
+                        <button class="btn btn-outline-danger btn-sm">Remove</button>
+                    </div>
+                </div>
+
+                <!-- Cart Item 2 -->
+                <div class="cart-item border-bottom mb-4 pb-3 d-flex align-items-center">
+                    <img src="https://via.placeholder.com/100x150" alt="Book Cover" class="me-3 rounded">
+                    <div>
+                        <h5>Book Title 2</h5>
+                        <p class="text-muted">Price: $24.99</p>
+                        <div class="d-flex align-items-center mb-2">
+                            <label for="quantity2" class="me-2">Quantity:</label>
+                            <input type="number" id="quantity2" name="quantity" value="2" min="1"
+                                class="form-control w-25 d-inline-block me-3">
+                            <p class="mb-0"><strong>Total: $49.98</strong></p>
+                        </div>
+                        <button class="btn btn-outline-danger btn-sm">Remove</button>
+                    </div>
+                </div>
+
+                <!-- Cart Item 3 -->
+                <div class="cart-item mb-4 pb-3 d-flex align-items-center">
+                    <img src="https://via.placeholder.com/100x150" alt="Book Cover" class="me-3 rounded">
+                    <div>
+                        <h5>Book Title 3</h5>
+                        <p class="text-muted">Price: $17.99</p>
+                        <div class="d-flex align-items-center mb-2">
+                            <label for="quantity3" class="me-2">Quantity:</label>
+                            <input type="number" id="quantity3" name="quantity" value="1" min="1"
+                                class="form-control w-25 d-inline-block me-3">
+                            <p class="mb-0"><strong>Total: $17.99</strong></p>
+                        </div>
+                        <button class="btn btn-outline-danger btn-sm">Remove</button>
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary btn-update">Update Cart</button>
+            </div>
+
+
+            <!-- Right Pane: Cart Summary -->
+            <div class="col-md-4">
+                <div class="cart-summary">
+                    <h4>Cart Summary</h4>
+                    <hr>
+                    <p><strong>Subtotal:</strong> $62.97</p>
+                    <p><strong>Shipping:</strong> Free</p>
+                    <hr>
+                    <p><strong>Total:</strong> <span class="h4 accent-color">$62.97</span></p>
+                    <a href="/checkout" class="btn btn-success btn-checkout"><i class="fas fa-check"></i>
+                        Proceed to
+                        Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <%- include('templates/main/footer') %>
+    </footer>
+
+    <%- include('templates/main/baseScripts') %>
+        <!-- <script type="text/javascript" src="../backend/public/js/bookList.js"></script>
+    <script type="text/javascript" src="../backend/public/js/mainscript.js"></script>
+    <script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script> -->
+
+</body>
+
+</html>

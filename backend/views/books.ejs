@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('templates/main/head', {title}) %>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div>
+        <%- include('templates/main/navbar', {title}) %>
+    </div>
+
+    <!-- Page Header Section with Lavender Gradient Background -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Books</h1>
+            <p>Explore a wide collection of books across various genres. Find your next great read here!</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Sidebar (Categories) -->
+            <div class="col-md-3">
+                <div class="sidebar">
+                    <h4>Categories</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Fiction</a></li>
+                        <li><a href="#">Non-Fiction</a></li>
+                        <li><a href="#">Mystery</a></li>
+                        <li><a href="#">Romance</a></li>
+                        <li><a href="#">Fantasy</a></li>
+                        <li><a href="#">Science Fiction</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Books Listing -->
+            <div class="col-md-9">
+                <!-- Filters Dropdown at the top right -->
+                <div class="filter-dropdown">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Filters
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="filterDropdown">
+                            <li><a class="dropdown-item" href="#">Newest Releases</a></li>
+                            <li><a class="dropdown-item" href="#">Best Sellers</a></li>
+                            <li><a class="dropdown-item" href="#">Top Rated</a></li>
+                            <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
+                            <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Books Grid -->
+                <div class="row" id="bookList">
+
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card book-card mb-4">
+                            <img src="https://via.placeholder.com/300" class="card-img-top" alt="Book 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Book Title 1</h5>
+                                <p>
+                                    <span class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </span>
+                                    <span class="text-muted">4.5</span>
+                                </p>
+                                <p class="card-text">Price: <strong>$19.99</strong></p>
+                                <a href="#" class="btn btn-secondary">Learn More</a>
+                                <a href="#" class="btn btn-outline-secondary"><i class="fas fa-cart-plus"></i> Add to
+                                    Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <!-- More book cards can go here... -->
+
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Books Pagination">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <%- include('templates/main/footer') %>
+    </footer>
+
+    <%- include('templates/main/baseScripts') %>
+        <!-- <script-- type="text/javascript" src="../backend/public/js/bookList.js"></script-->
+        <script type="text/javascript" src="/js/mainFuncs.js"></script>
+        <script type="text/javascript" src="/js/pages/books.js"></script>
+
+</body>
+
+</html>

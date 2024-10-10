@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('templates/main/head', {title}) %>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div>
+        <%- include('templates/main/navbar', {title}) %>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Checkout</h1>
+            <p>Complete your order by filling in the details below.</p>
+        </div>
+    </section>
+
+    <!-- Checkout Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Left Pane: Billing Information -->
+            <div class="col-md-8">
+                <h4>Billing Address</h4>
+                <form class="billing-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" id="firstName" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" id="lastName" class="form-control" required>
+                        </div>
+                    </div>
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-control" required>
+                    <label for="address" class="form-label">Street Address</label>
+                    <input type="text" id="address" class="form-control" required>
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" id="city" class="form-control" required>
+                    <label for="country" class="form-label">Country</label>
+                    <select id="country" class="form-select" required>
+                        <option value="">Select Country</option>
+                        <option value="USA">United States</option>
+                        <option value="CAN">Canada</option>
+                        <option value="UK">United Kingdom</option>
+                        <!-- More country options -->
+                    </select>
+                    <label for="zip" class="form-label">Zip/Postal Code</label>
+                    <input type="text" id="zip" class="form-control" required>
+                    <button type="submit" class="btn btn-success btn-pay"><i class="fas fa-credit-card"></i> Pay
+                        Now</button>
+                </form>
+            </div>
+
+            <!-- Right Pane: Order Summary -->
+            <div class="col-md-4">
+                <div class="order-summary border sticky-top">
+                    <h4>Order Summary</h4>
+                    <hr>
+                    <p><strong>Subtotal:</strong> $62.97</p>
+                    <p><strong>Shipping:</strong> Free</p>
+                    <hr>
+                    <p><strong>Total:</strong> <span class="h4 accent-color">$62.97</span></p>
+                    <div>
+                        <label for="coupon" class="form-label">Have a coupon?</label>
+                        <input type="text" id="coupon" class="form-control" placeholder="Enter coupon code">
+                        <button class="btn btn-secondary btn-apply-coupon">Apply Coupon</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <%- include('templates/main/footer') %>
+    </footer>
+
+    <%- include('templates/main/baseScripts') %>
+        <!-- <script type="text/javascript" src="../backend/public/js/bookList.js"></script>
+    <script type="text/javascript" src="../backend/public/js/mainscript.js"></script>
+    <script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script> -->
+
+</body>
+
+</html>

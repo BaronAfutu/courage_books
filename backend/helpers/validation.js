@@ -15,7 +15,7 @@ class BookValidation {
         category: Joi.string().trim().lowercase(),
         edition: Joi.string().trim(),
         description: Joi.string().trim().required(),
-        chapter1: Joi.string().trim().lowercase(),
+        chapter1: Joi.string().trim().lowercase().allow("",null),
         bookfileUrl: Joi.string().trim().lowercase(),
         coverImageUrl: Joi.string().trim().lowercase(),
         price: Joi.number().required(),

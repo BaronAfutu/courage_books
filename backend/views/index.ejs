@@ -1,11 +1,251 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <%- include('templates/main/head', {title}) %>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div>
+    <%- include('templates/main/navbar', {title}) %>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1>Welcome to the Official Website of JP Alorwu</h1>
+      <p>Explore my collection of books and discover new adventures</p>
+      <a href="/books" class="btn btn-lg">Browse Books</a>
+    </div>
+  </header>
+
+  <!-- Book Categories Row with Images -->
+  <section class="book-categories py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Explore Book Categories</h2>
+      <div class="row justify-content-center">
+        <div class="col-5 col-md-2 text-center mb-4">
+          <img src="https://via.placeholder.com/150" alt="Fiction" class="img-fluid rounded-circle mb-2">
+          <a href="#" class="btn btn-outline-secondary w-100">Fiction</a>
+        </div>
+        <div class="col-5 col-md-2 text-center mb-4">
+          <img src="https://via.placeholder.com/150" alt="Non-Fiction" class="img-fluid rounded-circle mb-2">
+          <a href="#" class="btn btn-outline-secondary w-100">Non-Fiction</a>
+        </div>
+        <div class="col-5 col-md-2 text-center mb-4">
+          <img src="https://via.placeholder.com/150" alt="Mystery" class="img-fluid rounded-circle mb-2">
+          <a href="#" class="btn btn-outline-secondary w-100">Mystery</a>
+        </div>
+        <div class="col-5 col-md-2 text-center mb-4">
+          <img src="https://via.placeholder.com/150" alt="Romance" class="img-fluid rounded-circle mb-2">
+          <a href="#" class="btn btn-outline-secondary w-100">Romance</a>
+        </div>
+        <div class="col-5 col-md-2 text-center mb-4">
+          <img src="https://via.placeholder.com/150" alt="Fantasy" class="img-fluid rounded-circle mb-2">
+          <a href="#" class="btn btn-outline-secondary w-100">Fantasy</a>
+        </div>
+        <div class="col-5 col-md-2 text-center mb-4">
+          <img src="https://via.placeholder.com/150" alt="Science Fiction" class="img-fluid rounded-circle mb-2">
+          <a href="#" class="btn btn-outline-secondary w-100">Science Fiction</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Books Section -->
+  <section class="featured-books">
+    <div class="container">
+      <h2 class="text-center mb-5">Featured Books</h2>
+      <div class="row justify-content-center" id="featuredBooks">
+        
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <!-- <div id="attempting">
+          <img src="/uploads/coverimages/bookcover-1725212260547-thebook.png" class="img-fluid object-fit-cover" alt="Book 1">
+        </div> -->
+        
+        <!-- <div class="col-6 col-md-4">
+          <div class="card book-card my-1 my-md-0">
+            <img src="/uploads/coverimages/bookcover-1725212260547-thebook.png" class="img-fluid object-fit-cover" alt="Book 1">
+            <div class="card-body">
+              <h5 class="card-title">Book Title 1</h5>
+              <p class="card-text">A brief description of the book goes here.</p>
+              <a href="#" class="btn btn-secondary">Learn More</a>
+            </div>
+          </div>
+        </div> -->
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Book Showcase Section -->
+  <section class="py-5 lavender-gradient">
+    <div class="container">
+      <h2 class="text-center mb-4 text-lavender-dark">Explore More Books by J.P. Alorwu</h2>
+      <div class="row text-center index-booklist" id="bookList">
+        
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+
+        <!-- Loop through books (10 total) -->
+        <!-- <div class="col-6 col-md-2 mb-4">
+          <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 1">
+          <h6 class="mt-2">Book Title 2 -
+            5 <i class="fas fa-star text-warning"></i></h6>
+        </div> -->
+        <!-- <div class="col-6 col-md-2 mb-4">
+          <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 2">
+          <h6 class="mt-2">Book Title 2 - The revenge of avengers - 4.5 <i class="fas fa-star text-warning"></i></h6>
+        </div>
+        <div class="col-6 col-md-2 mb-4">
+          <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 3">
+          <h6 class="mt-2">Book Title 3</h6>
+        </div>
+        <div class="col-6 col-md-2 mb-4">
+          <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 4">
+          <h6 class="mt-2">Book Title 4</h6>
+        </div>
+        <div class="col-6 col-md-2 mb-4">
+          <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 5">
+          <h6 class="mt-2">Book Title 5</h6>
+        </div>
+        <div class="col-6 col-md-2 mb-4">
+          <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 6">
+          <h6 class="mt-2">Book Title 6</h6>
+        </div>
+        <div class="col-6 col-md-2 mb-4">
+          <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 7">
+          <h6 class="mt-2">Book Title 7</h6>
+        </div>
+        <div class="col-6 col-md-2 mb-4">
+          <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 8">
+          <h6 class="mt-2">Book Title 8</h6>
+        </div>
+        <div class="col-6 col-md-2 mb-4">
+          <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 9">
+          <h6 class="mt-2">Book Title 9</h6>
+        </div>
+        <div class="col-6 col-md-2 mb-4">
+          <img src="https://via.placeholder.com/150x200" class="img-fluid rounded" alt="Book 10">
+          <h6 class="mt-2">Book Title 10</h6>
+        </div> -->
+      </div>
+
+      <!-- Button to view more books -->
+      <div class="text-center mt-4">
+        <a href="/books" class="btn btn-lg  btn-secondary">View All Books</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the Author Section -->
+  <section class="py-5 no-lavender-gradient">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Text Content -->
+        <div class="col-md-6 order-md-1">
+          <h2 class="mb-4 text-lavender-dark">About J.P. Alorwu</h2>
+          <p class="about-section-text">
+            J.P. Alorwu is a renowned African author whose works transcend cultural boundaries and captivate
+            readers with profound storytelling. With a passion for narrating stories that inspire,
+            challenge, and uplift, J.P. Alorwu brings characters to life and addresses themes of love,
+            resilience, and self-discovery.
+          </p>
+          <p class="about-section-text">
+            Her books have touched the hearts of readers around the world, and her unique voice continues to
+            shine in the literary world. Discover her stories and immerse yourself in tales that leave a
+            lasting impact.
+          </p>
+          <p class="about-section-text">
+            When not writing, J.P. Alorwu enjoys mentoring young writers and participating in community
+            projects aimed at promoting literacy and education.
+          </p>
+        </div>
+        <!-- Author Image -->
+        <div class="col-md-6 text-center order-md-2">
+          <!-- <img src="https://via.placeholder.com/350x450" class="img-fluid rounded" alt="J.P. Alorwu"> -->
+          <img src="/images/JP_alorwu_trans.png" class="img-fluid rounded" alt="J.P. Alorwu">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials py-5 lavender-gradient">
+    <div class="container">
+      <h2 class="text-center mb-5 text-secondary">What Readers Are Saying</h2>
+      <div class="row">
+        <!-- Testimonial 1 -->
+        <div class="col-md-6 mb-4">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                <img src="https://via.placeholder.com/60" alt="Sarah Johnson" class="rounded-circle me-3">
+                <h5 class="mb-0 accent-color">Sarah Johnson</h5>
+              </div>
+              <p class="card-text">"I was completely captivated by the characters and the depth of the
+                story. JP Alorwu is a phenomenal author!"</p>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="col-md-6 mb-4">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                <img src="https://via.placeholder.com/60" alt="David Martinez" class="rounded-circle me-3">
+                <h5 class="mb-0 accent-color">David Martinez</h5>
+              </div>
+              <p class="card-text">"An emotional rollercoaster from start to finish. I couldn't put the
+                book down. Highly recommend!"</p>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="col-md-6 mb-4">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                <img src="https://via.placeholder.com/60" alt="Emily Clark" class="rounded-circle me-3">
+                <h5 class="mb-0 accent-color">Emily Clark</h5>
+              </div>
+              <p class="card-text">"JP Alorwu's writing style is poetic and immersive. I felt like I was
+                right there in the world she created."</p>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 4 -->
+        <div class="col-md-6 mb-4">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                <img src="https://via.placeholder.com/60" alt="Michael Lee" class="rounded-circle me-3">
+                <h5 class="mb-0 accent-color">Michael Lee</h5>
+              </div>
+              <p class="card-text">"A beautifully written book with unforgettable characters. I can't wait
+                for the next one!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <%- include('templates/main/footer') %>
+  </footer>
+
+  <%- include('templates/main/baseScripts') %>
+    <!-- <script-- type="text/javascript" src="../backend/public/js/bookList.js"></script-->
+    <script type="text/javascript" src="/js/mainFuncs.js"></script>
+    <script type="text/javascript" src="/js/pages/index.js"></script>
+    <!--script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></!--script> -->
+</body>
+
 </html>
