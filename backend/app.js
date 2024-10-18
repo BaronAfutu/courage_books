@@ -60,36 +60,40 @@ app.use(helmet.contentSecurityPolicy({
   },
 }));
 app.use(cors());
-app.options('*',cors());
+app.options('*', cors());
 
 
 
 // ************** USE ROUTES *********
 app.use('/', indexRouter);
 
-app.use('/api/v1/',authJwt());
+app.use('/api/v1/', authJwt());
 app.use('/api/v1/users', usersRouter);
-app.use('/api/v1/books',booksRouter);
-app.use('/api/v1/reviews',reviewRouter);
-app.use('/api/v1/cart',cartRouter);
-app.use('/api/v1/wishlist',wishlistRouter);
-app.use('/api/v1/orders',orderRouter);
-app.use('/api/v1/payments',paymentRouter);
-app.use('/api/v1/uploads',uploadRouter);
+app.use('/api/v1/books', booksRouter);
+app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/cart', cartRouter);
+app.use('/api/v1/wishlist', wishlistRouter);
+app.use('/api/v1/orders', orderRouter);
+app.use('/api/v1/payments', paymentRouter);
+app.use('/api/v1/uploads', uploadRouter);
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'DEV' ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error',{title:'Not Found'});
+  if (process.env.NODE_ENV === 'DEV') {
+    res.render('error', { title: 'Not Found' });
+  } else {
+    res.render('notfound', { title: 'Not Found' });
+  }
 });
 
 module.exports = app;

@@ -77,18 +77,20 @@ exports.login = async (req, res) => {
 exports.signin = async (req, res) => { // Returns Page, user session
     const { error, value } = UserValidation.login.validate(req.body);
     if (error) {
+        console.log(error)
         return res.status(400).render('login', {
-            subTitle: '- Login',
+            subTitle: 'Login',
             status: {
                 form: 'login',
                 status: 'danger',
                 message: error.details[0].message
             },
+            title:"huh1",
             formData: req.body
         });
 
     }
-    let message = 'Couldn\'t register. Something went wrong.';
+    let message = 'Couldn\'t Login. Something went wrong.';
 
 
     const { email, password } = value;
@@ -100,7 +102,7 @@ exports.signin = async (req, res) => { // Returns Page, user session
             isAdmin: user.isAdmin
         }, process.env.SECRET || 'this_is_@_temp.secret')
         req.session.user = { id: user.id, isAdmin: user.isAdmin, token: token };
-        return res.redirect('/search');
+        return res.redirect('/');
     }
     return res.status(404).render('login', {
         subTitle: '- Login',
@@ -109,6 +111,7 @@ exports.signin = async (req, res) => { // Returns Page, user session
             status: 'danger',
             message: "Invalid Email or Password!"
         },
+        title:'huh',
         formData: req.body
     });
 }

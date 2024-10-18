@@ -12,6 +12,11 @@
         <%- include('templates/main/navbar', {title}) %>
     </div>
 
+    <!-- Alerts -->
+    <div>
+        <%- include('templates/alerts') %>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -24,7 +29,14 @@
     <div class="container my-5">
         <div class="row">
             <!-- Left Pane: Cart Items Listing -->
-            <div class="col-md-8">
+            <div class="col-md-8" id="cartItems">
+
+                <div class="text-center">
+                    <%- include('templates/loading') %>
+                </div>
+
+
+
                 <!-- Cart Item 1 -->
                 <div class="cart-item border-bottom mb-4 pb-3 d-flex align-items-center">
                     <img src="https://via.placeholder.com/100x150" alt="Book Cover" class="me-3 rounded">
@@ -97,12 +109,13 @@
     <!-- Footer -->
     <footer class="footer">
         <%- include('templates/main/footer') %>
+
     </footer>
 
     <%- include('templates/main/baseScripts') %>
-        <!-- <script type="text/javascript" src="../backend/public/js/bookList.js"></script>
-    <script type="text/javascript" src="../backend/public/js/mainscript.js"></script>
-    <script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script> -->
+        <!-- <script-- type="text/javascript" src="../backend/public/js/bookList.js"></script-->
+        <script type="text/javascript" src="/js/mainFuncs.js"></script>
+        <script type="text/javascript" src="/js/pages/cart.js"></script>
 
 </body>
 

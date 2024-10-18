@@ -35,8 +35,6 @@ $(document).ready(async function () {
 
 
 
-
-
     try {
         const booksResponse = await request('/api/v1/books/');
         books = booksResponse.books;
@@ -44,14 +42,15 @@ $(document).ready(async function () {
         alert(error.responseJSON.errMsg || error.responseJSON.message)
     }
 
+    previewBookList('bookList', 6);
+    previewFeaturedBooks(books, "featuredBooks");
+
     // $(".loader-img").removeClass("loader-img");
 
 
     // previewNavBooksList('navbarBooksListing')
     // carouselBookList('carouselBookListing', 6);
-    previewBookList('bookList', 6);
     // previewFeaturedSeries('featuredSeries', 5);
-    previewFeaturedBooks(books, "featuredBooks");
 
     // $('#searchBooks').typeahead({
     //     source: books,

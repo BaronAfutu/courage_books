@@ -2,130 +2,20 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JP Alorwu - Login/Signup</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Custom Styles -->
-    <link href="../backend/public/css/style.css" rel="stylesheet">
-
+    <%- include('templates/main/head', {title}) %>
 </head>
 
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <!-- Brand -->
+    <div>
+        <%- include('templates/main/navbar', {title}) %>
+    </div>
 
-            <a class="navbar-brand" href="/frontend/index.html">
-                <img src="../backend/public/images/logo/logo.jpg" class="img-fluid rounded-circle " alt="Bootstrap"
-                    width="60">
-            </a>
-
-            <!-- Toggler for mobile view -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Centered links -->
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/frontend/index.html">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/frontend/books.html" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Books
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/frontend/books.html">All</a></li>
-                            <li><a class="dropdown-item" href="/frontend/book.html">Book 1</a></li>
-                            <li><a class="dropdown-item" href="/frontend/book.html">Book 2</a></li>
-                            <li><a class="dropdown-item" href="/frontend/book.html">Book 3</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/frontend/about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/frontend/contact.html">Contact</a>
-                    </li>
-
-                    <!-- Mobile Only Views -->
-                    <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link" href="/frontend/cart.html">
-                            <i class="fas fa-shopping-cart"></i> Cart
-                        </a>
-                    </li>
-                    <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link" href="/frontend/login.html">
-                            <i class="fas fa-sign-in-alt"></i> Login
-                        </a>
-                    </li>
-                    <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link" href="/frontend/login.html">
-                            <i class="fas fa-user-plus"></i> Signup
-                        </a>
-                    </li>
-                    <li class="nav-item d-block d-lg-none dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user"></i> Profile
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Right side buttons -->
-            <div class="navbar-icons ms-auto d-none d-lg-block">
-                <a href="/frontend/cart.html" class="btn btn-outline-light me-2 position-relative">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-secondary">
-                        9
-                        <span class="visually-hidden">cart items</span>
-                      </span>
-                </a>
-                <a href="login.html" class="btn btn-outline-light me-2"><i class="fas fa-sign-in-alt"></i> Login</a>
-                <a href="login.html" class="btn btn-outline-light me-2"><i class="fas fa-user-plus"></i> Signup</a>
-
-                <!-- Profile Dropdown -->
-                <div class="btn-group">
-                    <a href="#" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="fas fa-user"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Alerts -->
+    <div>
+        <%- include('templates/alerts') %>
+     </div>
 
     <div class="p-4">
         &nbsp;
@@ -153,14 +43,17 @@
         <div class="tab-content">
             <!-- Login Form -->
             <div class="tab-pane active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                <form>
+                <form id="loginForm" action="/signin" method="POST">
                     <div class="mb-3">
                         <label for="loginEmail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="loginEmail" required>
+                        <input type="email" name="email" class="form-control" id="loginEmail" required>
+                        <div id="loginEmailHelp" class="form-text d-none text-danger"></div>
                     </div>
                     <div class="mb-3">
                         <label for="loginPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="loginPassword" required>
+                        <input type="password" name="password" class="form-control" id="loginPassword" minlength="5" required>
+                        <div id="loginPasswordHelp" class="form-text d-none text-danger"></div>
+                        
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                 </form>
@@ -168,18 +61,27 @@
 
             <!-- Signup Form -->
             <div class="tab-pane" id="signup" role="tabpanel" aria-labelledby="signup-tab">
-                <form>
+                <form action="">
                     <div class="mb-3">
                         <label for="signupName" class="form-label">Full Name</label>
                         <input type="text" class="form-control" id="signupName" required>
+                        <div id="signupNameHelp" class="form-text d-none text-danger"></div>
                     </div>
                     <div class="mb-3">
                         <label for="signupEmail" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="signupEmail" required>
+                        <div id="signupEmailHelp" class="form-text d-none text-danger"></div>
+                        <div id="signupEmailHelp" class="form-text d-none text-danger"></div>
                     </div>
                     <div class="mb-3">
                         <label for="signupPassword" class="form-label">Password</label>
                         <input type="password" class="form-control" id="signupPassword" required>
+                        <div id="signupPasswordHelp" class="form-text d-none text-danger"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmPassword" required>
+                        <div id="confirmPasswordHelp" class="form-text d-none text-danger"></div>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Sign Up</button>
                 </form>
@@ -203,25 +105,15 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 JP Alorwu - All Rights Reserved</p>
-        <p>
-            <a href="#" class="text-decoration-none"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-decoration-none"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-decoration-none"><i class="fab fa-instagram"></i></a>
-        </p>
-    </footer>
+  <footer class="footer">
+    <%- include('templates/main/footer') %>
+  </footer>
 
-    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- <script type="text/javascript" src="../backend/public/js/bookList.js"></script>
-    <script type="text/javascript" src="../backend/public/js/mainscript.js"></script>
-    <script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script> -->
-
+  <%- include('templates/main/baseScripts') %>
+    <!-- <script-- type="text/javascript" src="../backend/public/js/bookList.js"></script-->
+    <script type="text/javascript" src="/js/mainFuncs.js"></script>
+    <script type="text/javascript" src="/js/pages/login.js"></script>
+    
 </body>
 
 </html>

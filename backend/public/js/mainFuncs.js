@@ -180,3 +180,101 @@ const previewFeaturedSeries = (books, bookscontainerID, limit = 5) => {
         bookList.appendChild(bookContainer);
     });
 }
+
+const showAlert = (type, message) => {
+    switch (type) {
+        case 'success':
+            $("#successAlert").removeClass("d-none");
+            $("#successAlert").addClass("show");
+            $("#successMessage").text(message);
+            setTimeout(() => {
+                $("#successAlert").removeClass("show");
+                $("#successAlert").addClass("d-none");
+            }, 3000);
+            break;
+        case 'warn':
+            $("#warningAlert").removeClass("d-none");
+            $("#warningAlert").addClass("show");
+            $("#warningMessage").text(message);
+            setTimeout(() => {
+                $("#warningAlert").removeClass("show");
+                $("#warningAlert").addClass("d-none");
+            }, 3000);
+            break;
+        default:
+            break;
+    }
+}
+
+const getCart = async () => {
+    const token = $('#token').val();
+    let cartItems = null;
+    if (typeof token === 'string' && token != '') { //user is logged in, get from database
+        try {
+            cartItems = (await request('/api/v1/cart')).cart;
+        } catch (error) {
+
+        }
+    } else {//get from localstorage
+        cartItems = JSON.parse(localStorage.getItem("cart"));
+        // console.log('logged out')
+    }
+    if (typeof cartItems === 'undefined' || cartItems === null) {
+        cartItems = [];
+        localStorage.setItem("cart", JSON.stringify([]));
+        // console.log("cartitems fixed")
+    }
+    $("#cartCount").text(cartItems.length);
+}
+
+const addToCart = async (bookId, quantity = 1) => {
+    const token = $('#token').val();
+    let cartItems = [];
+    if (typeof token === 'string' && token != '') { //user is logged in, get from database
+        try {
+            let response = await request('/api/v1/cart/', 'POST', { bookId, quantity });
+            cartItems = response.cart;
+        } catch (error) {
+            console.log(error);
+            showAlert("warn","Coould not Add Book to Cart.");
+            return;
+        }
+    } else {//get from localstorage
+        cartItems = JSON.parse(localStorage.getItem("cart"));
+        let isItemInCart = false;
+        for (let item of cartItems) {
+            if (bookId === item.bookId) {
+                item.quantity += 1;
+                isItemInCart = true;
+                break;
+            }
+        }
+
+        if (!isItemInCart) {
+            cartItems.push({ bookId, quantity: 1 });
+        }
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+    }
+
+    $("#cartCount").text(cartItems.length);
+
+    showAlert("success","Book Added to Cart Successfully.");
+}
+
+const makeFieldInvalid = (selector)=>{
+    if(! $(selector).hasClass('is-invalid')){
+        $(selector).removeClass('is-valid');
+        $(selector).addClass('is-invalid');
+    }
+}
+
+const makeFieldValid = (selector)=>{
+    if(! $(selector).hasClass('is-valid')){
+        $(selector).removeClass('is-invalid');
+        $(selector).addClass('is-valid');
+    }
+}
+
+$(document).ready(function () {
+    getCart();
+});

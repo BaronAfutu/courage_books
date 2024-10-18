@@ -40,7 +40,7 @@
                     <a class="nav-link <%= title==='About'?'active':'' %>" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
+                    <a class="nav-link <%= title==='Contact'?'active':'' %>" href="/contact">Contact</a>
                 </li>
 
                 <!-- Mobile Only Views -->
@@ -49,16 +49,27 @@
                         <i class="fas fa-shopping-cart"></i> Cart
                     </a>
                 </li>
+
+                <% if(typeof user == 'undefined'){ %>
                 <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link" href="/login">
+                    <a class="nav-link <% if(title=='Login'){ %>disabled<% } %>" href="/login">
                         <i class="fas fa-sign-in-alt"></i> Login
                     </a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link" href="/login">
+                    <a class="nav-link <% if(title=='Login'){ %>disabled<% } %>" href="/login">
                         <i class="fas fa-user-plus"></i> Signup
                     </a>
                 </li>
+
+                <% } else { %>
+                    <% if(user.admin){ %>
+                        <li class="nav-item d-block d-lg-none">
+                            <a class="nav-link <% if(title=='Panel'){ %>disabled<% } %>" href="/panel">
+                                <i class="fas fa-user-plus"></i> Panel
+                            </a>
+                        </li>
+                    <% } %>
                 <li class="nav-item d-block d-lg-none dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -73,6 +84,7 @@
                         <li><a class="dropdown-item" href="/logout">Sign out</a></li>
                     </ul>
                 </li>
+                <% } %>
             </ul>
         </div>
 
@@ -80,15 +92,17 @@
         <div class="navbar-icons ms-auto d-none d-lg-block">
             <a href="/cart" class="btn btn-outline-light me-2 position-relative">
                 <i class="fas fa-shopping-cart"></i>
-                <span
+                <span id="cartCount"
                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-secondary">
-                    9
+                    #
                     <span class="visually-hidden">cart items</span>
                 </span>
             </a>
-            <a href="/login" class="btn btn-outline-light me-2"><i class="fas fa-sign-in-alt"></i> Login</a>
-            <a href="/login" class="btn btn-outline-light me-2"><i class="fas fa-user-plus"></i> Signup</a>
 
+            <% if(typeof user == 'undefined'){ %>
+            <a href="/login" class="btn btn-outline-light me-2 <% if(title=='Login'){ %>disabled<% } %>"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a href="/login" class="btn btn-outline-light me-2 <% if(title=='Login'){ %>disabled<% } %>"><i class="fas fa-user-plus"></i> Signup</a>
+            <% } else { %>
             <!-- Profile Dropdown -->
             <div class="btn-group">
                 <a href="#" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown"
@@ -104,6 +118,8 @@
                     <li><a class="dropdown-item" href="logout">Sign out</a></li>
                 </ul>
             </div>
+            <% } %>
         </div>
     </div>
 </nav>
+<input type="hidden" id="token" value="<%= token %>" hidden>

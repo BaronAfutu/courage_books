@@ -21,7 +21,7 @@ $(document).ready(async function () {
         }
 
         if(typeof pageBook.authors === 'undefined'){
-            window.location.replace("http://www.w3schools.com")
+            window.location.replace("/not-found");
         }
 
         books = books.filter((book) => {

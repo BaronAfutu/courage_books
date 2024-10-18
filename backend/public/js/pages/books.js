@@ -40,7 +40,7 @@ $(document).ready(async function () {
                                 </p>
                                 <p class="card-text">Price: <strong>GHc ${book.price}</strong></p>
                                 <a href="/books/${book.category}/${book.slug}" class="btn btn-secondary">Learn More</a>
-                                <a href="#" class="btn btn-outline-secondary"><i class="fas fa-cart-plus"></i></a>
+                                <a href="#" class="btn btn-outline-secondary cart" data-id="${book._id}"><i class="fas fa-cart-plus"></i></a>
                             </div>
                         </div>
             `;
@@ -59,12 +59,18 @@ $(document).ready(async function () {
         alert(error.responseJSON.errMsg || error.responseJSON.message)
     }
 
+    previewBookList('bookList', 10);
+    
+    $("#bookList").on('click', ".cart", async function () {
+        let response = await addToCart($(this).data('id'))
+        // console.log(response);
+    });
     // $(".loader-img").removeClass("loader-img");
 
 
     // previewNavBooksList('navbarBooksListing')
     // carouselBookList('carouselBookListing', 6);
-    previewBookList('bookList', 10);
+
 
     // $('#searchBooks').typeahead({
     //     source: books,
