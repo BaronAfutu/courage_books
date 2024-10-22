@@ -27,11 +27,11 @@ exports.signup = async (req, res) => {
                     break
                 }
             }
-            return res.status(403).json({ success: true, errMsg: `${existKey} Already Taken!!` });
+            return res.status(403).json({ success: false, message: `${existKey} Already Taken!!` });
         }
     } catch (error) {
         console.log(error)
-        return res.status(500).json({ success: true, errMsg: `${existKey} Already Taken!!` });
+        return res.status(500).json({ success: false, message: `Error Signing Up. Try again later...` });
     }
 
     const user = new User({

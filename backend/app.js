@@ -92,7 +92,7 @@ app.use(function (err, req, res, next) {
   if (process.env.NODE_ENV === 'DEV') {
     res.render('error', { title: 'Not Found' });
   } else {
-    res.render('notfound', { title: 'Not Found' });
+    res.render('notfound', { title: 'Not Found', user:undefined, token:'' });
   }
 });
 

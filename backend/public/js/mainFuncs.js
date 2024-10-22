@@ -4,7 +4,7 @@ const request = (url, method = "GET", data = {}) => {
             url: url,
             type: method,
             contentType: 'application/json',
-            data: (method == "POST") ? JSON.stringify(data) : data,
+            data: (method == "GET") ? data : JSON.stringify(data),
             beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + $('#token').val()); },
             success: function (response) {
                 resolve(response)
@@ -216,7 +216,11 @@ const getCart = async () => {
 
         }
     } else {//get from localstorage
-        cartItems = JSON.parse(localStorage.getItem("cart"));
+        try {
+            cartItems = JSON.parse(localStorage.getItem("cart"));
+        } catch (error) {
+            cartItems = [];
+        }
         // console.log('logged out')
     }
     if (typeof cartItems === 'undefined' || cartItems === null) {
@@ -228,6 +232,7 @@ const getCart = async () => {
 }
 
 const addToCart = async (bookId, quantity = 1) => {
+    quantity = parseInt(quantity);
     const token = $('#token').val();
     let cartItems = [];
     if (typeof token === 'string' && token != '') { //user is logged in, get from database
@@ -236,7 +241,7 @@ const addToCart = async (bookId, quantity = 1) => {
             cartItems = response.cart;
         } catch (error) {
             console.log(error);
-            showAlert("warn","Coould not Add Book to Cart.");
+            showAlert("warn", "Could not Add Book to Cart.");
             return;
         }
     } else {//get from localstorage
@@ -244,32 +249,59 @@ const addToCart = async (bookId, quantity = 1) => {
         let isItemInCart = false;
         for (let item of cartItems) {
             if (bookId === item.bookId) {
-                item.quantity += 1;
+                item.quantity += quantity;
                 isItemInCart = true;
                 break;
             }
         }
 
         if (!isItemInCart) {
-            cartItems.push({ bookId, quantity: 1 });
+            cartItems.push({ bookId, quantity });
         }
         localStorage.setItem("cart", JSON.stringify(cartItems));
     }
 
     $("#cartCount").text(cartItems.length);
 
-    showAlert("success","Book Added to Cart Successfully.");
+    showAlert("success", "Book Added to Cart Successfully.");
 }
 
-const makeFieldInvalid = (selector)=>{
-    if(! $(selector).hasClass('is-invalid')){
+const removeFromCart = async (bookId) => {
+    const token = $('#token').val();
+    let cartItems = [];
+    if (typeof token === 'string' && token != '') { //user is logged in, get from database
+        try {
+            let response = await request('/api/v1/cart/', 'DELETE', { bookId });
+            cartItems = response.cart;
+        } catch (error) {
+            console.log(error);
+            showAlert("warn", "Could not Remove Book from Cart.");
+            return cartItems;
+        }
+    } else {
+        cartItems = JSON.parse(localStorage.getItem("cart"));
+        cartItems = cartItems.filter(book => {
+            return bookId !== book.bookId;
+        })
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+    }
+
+    $("#cartCount").text(cartItems.length);
+
+    showAlert('success', 'Book Removed from Cart');
+
+    return cartItems;
+}
+
+const makeFieldInvalid = (selector) => {
+    if (!$(selector).hasClass('is-invalid')) {
         $(selector).removeClass('is-valid');
         $(selector).addClass('is-invalid');
     }
 }
 
-const makeFieldValid = (selector)=>{
-    if(! $(selector).hasClass('is-valid')){
+const makeFieldValid = (selector) => {
+    if (!$(selector).hasClass('is-valid')) {
         $(selector).removeClass('is-invalid');
         $(selector).addClass('is-valid');
     }

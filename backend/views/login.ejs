@@ -61,17 +61,24 @@
 
             <!-- Signup Form -->
             <div class="tab-pane" id="signup" role="tabpanel" aria-labelledby="signup-tab">
-                <form action="">
+                <form action="/login" id="signupForm">
                     <div class="mb-3">
-                        <label for="signupName" class="form-label">Full Name</label>
-                        <input type="text" class="form-control" id="signupName" required>
+                        <label for="signupFirstName" class="form-label">Full Name</label>
+                        <div class="d-flex">
+                            <input type="text" class="form-control w-50" id="signupFirstName" placeholder="First Name" required>
+                            <input type="text" class="form-control w-50" id="signupLastName" placeholder="Last Name" required>
+                        </div>
                         <div id="signupNameHelp" class="form-text d-none text-danger"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupUserName" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="signupUserName" required>
+                        <div id="signupUserNameHelp" class="form-text text-danger"></div>
                     </div>
                     <div class="mb-3">
                         <label for="signupEmail" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="signupEmail" required>
-                        <div id="signupEmailHelp" class="form-text d-none text-danger"></div>
-                        <div id="signupEmailHelp" class="form-text d-none text-danger"></div>
+                        <div id="signupEmailHelp" class="form-text text-danger"></div>
                     </div>
                     <div class="mb-3">
                         <label for="signupPassword" class="form-label">Password</label>
@@ -83,7 +90,7 @@
                         <input type="password" class="form-control" id="confirmPassword" required>
                         <div id="confirmPasswordHelp" class="form-text d-none text-danger"></div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                    <button id="registerSubmit" type="submit" class="btn btn-primary w-100" disabled>Sign Up</button>
                 </form>
             </div>
 

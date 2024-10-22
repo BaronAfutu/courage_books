@@ -49,7 +49,7 @@ router.get('/login',(req,res)=>{
 router.get('/books/', (req, res) => {
   res.render('books', {
     title: 'Books',
-    user: req.session.user || {},
+    user: req.session.user || undefined,
     token: req.session.user? jwt.sign(req.session.user,process.env.SECRET):''
   });
 })

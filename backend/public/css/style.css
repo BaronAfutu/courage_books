@@ -262,6 +262,10 @@ body {
   /* Gold for stars */
 }
 
+.user-profile-img{
+  width: 60px;
+}
+
 
 /* Section padding */
 .section-padding,

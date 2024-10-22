@@ -65,7 +65,7 @@ $(document).ready(async function () {
                         <label for="quantity" class="me-2">Quantity:</label>
                         <input type="number" id="quantity" name="quantity" class="form-control w-25 me-3" min="1"
                             value="1">
-                        <button class="btn btn-secondary cart" data-id="${pageBook.id}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn btn-secondary cart" data-id="${pageBook._id}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                     </div>
 
                     <!-- Share Options -->
@@ -106,6 +106,12 @@ $(document).ready(async function () {
                     </div>`;
             similarBooksContainer.appendChild(similarBook);
         }
+
+        $("#bookInformation").on('click', ".cart", async function () {
+            const qty = $("#quantity").val();
+            let response = await addToCart($(this).data('id'),qty);
+            // console.log(response);
+        });
 
 
 
