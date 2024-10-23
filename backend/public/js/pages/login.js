@@ -124,7 +124,7 @@ $(document).ready(async function () {
 
     $('#signupForm').submit(async function (e) {
         e.preventDefault(); // Prevent form from refreshing the page
-        console.log('Processing')
+        $('#spinner').removeClass('d-none'); // Show spinner
 
         // Capture form data
         const username = $('#signupUserName').val().trim();
@@ -153,12 +153,15 @@ $(document).ready(async function () {
                 lastName: lastName,
                 password: password
             })
+            window.location.href="#";
             showAlert('success', "Signup successful! Redirecting to login page...");
             setTimeout(() => {
                 window.location.href = "/login";
             }, 3000);
         } catch (error) {
             const errorMessage = error.responseJSON?.message || "Signup failed. Please try again.";
+            $("#signupUserNameHelp").text(null);
+            $("#signupEmailHelp").text(null);
             if (errorMessage.indexOf('username') > -1) {
                 makeFieldInvalid("#signupUserName");
                 $("#signupUserNameHelp").text(errorMessage);
@@ -168,6 +171,8 @@ $(document).ready(async function () {
             } else {
                 showAlert('warn', errorMessage);
             }
+        }finally{
+            $('#spinner').addClass('d-none'); // Show spinner
         }
     });
 

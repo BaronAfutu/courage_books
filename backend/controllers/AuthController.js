@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const { UserValidation } = require('../helpers/validation')
+const { sendMail } = require('../config/email');
 
 /**
  * @type {mongoose.Model}
@@ -27,24 +28,79 @@ exports.signup = async (req, res) => {
                     break
                 }
             }
-            return res.status(403).json({ success: false, message: `${existKey} Already Taken!!` });
+            return res.status(403).json({ success: false, message: `${existKey} already taken!!` });
         }
     } catch (error) {
         console.log(error)
         return res.status(500).json({ success: false, message: `Error Signing Up. Try again later...` });
     }
 
+
+
+    const verificationCode = Date.now().toString(16);
+    const verificationCodeExpires = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes from now
+
     const user = new User({
-        username, firstName, lastName, email, password: bcrypt.hashSync(password, 10)
+        username, firstName, lastName, email, password: bcrypt.hashSync(password, 10), verificationCode, verificationCodeExpires
     });
 
     try {
         let newUser = await user.save();
+        const verificationLink = `${process.env.NODE_ENV==='DEV'?'localhost:3000':'www.jpalorwu.com'}/verify?user=${newUser._id}&code=${verificationCode}`;
+        const html = `
+            <h1>Welcome to JP Alorwu</h1>
+            <p>Hello, ${username},</p>
+            <br>
+            <p>Please <a href="${verificationLink}">click here</a> to verify your Email Address. It is valid for 15 minutes</p>
+            <p>You can also copy and paste this link in your browser if clicking does not work.</p>
+            <p>Link: <a href="${verificationLink}">${verificationLink}</a></p>
+            <br>
+            <p>If you did not ask create an account with us, you can ignore this email</p>
+            <p>Thanks,<br>JP Alorwu</p>
+        `;
+        await sendMail(email, "JP Alorwu - Please Verify your email address", html);
+
+        console.log("Verification code sent to " + email);
         return res.status(201).json(newUser);
+
     } catch (err) {
         return res.status(400).json({ success: false, message: err.message });
     }
 };
+
+exports.verifyEmailCode = async (req, res) => {
+    try {
+      const { user, code } = req.query; // Get email and code from request body
+  
+      // Find the user by email
+      let theUser = await User.findById(user, 'email password verificationCode');
+      console.log(user);
+  
+      if (!theUser) {
+        return res.status(404).json({ message: "User not found." });
+      }
+  
+      //Check if the verification code matches and is still valid
+      if (
+        theUser.verificationCode !== code ||
+        Date.now() > theUser.verificationCodeExpires
+      ) {
+        return res
+          .status(400)
+          .json({ message: "Invalid or expired verification code." });
+      }
+  
+      //Mark the user as verified
+      theUser.isVerified = true;
+      theUser.verificationCode = null; // Clear verification code after successful verification
+      theUser.verificationCodeExpires = null; // Clear expiration after verification
+      await theUser.save();
+  
+      res.redirect('/login?msg=verified');
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  };
 
 exports.login = async (req, res) => {
     const { error, value } = UserValidation.login.validate(req.body);
@@ -85,7 +141,7 @@ exports.signin = async (req, res) => { // Returns Page, user session
                 status: 'danger',
                 message: error.details[0].message
             },
-            title:"huh1",
+            title: "huh1",
             formData: req.body
         });
 
@@ -111,7 +167,7 @@ exports.signin = async (req, res) => { // Returns Page, user session
             status: 'danger',
             message: "Invalid Email or Password!"
         },
-        title:'huh',
+        title: 'huh',
         formData: req.body
     });
 }
