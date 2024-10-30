@@ -74,7 +74,6 @@ exports.verifyEmailCode = async (req, res) => {
   
       // Find the user by email
       let theUser = await User.findById(user, 'email password verificationCode');
-      console.log(user);
   
       if (!theUser) {
         return res.status(404).json({ message: "User not found." });

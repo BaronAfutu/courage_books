@@ -14,26 +14,29 @@
     <!-- Alerts -->
     <div>
         <%- include('templates/alerts') %>
-     </div>
+    </div>
 
     <!-- Book Description Section (Lavender Gradient Background) -->
-    <section class="lavender-gradient section-padding">
-        <div class="container">
-            <div class="row" id="bookInformation">
-
-                <div class="text-center">
-                    <%- include('templates/loading') %>
-                </div>
+    <section class="featured-background">
+        <div class="featured-content-bg section-padding">
 
 
-                <!-- Book Cover Image -->
-                <!-- <div class="col-md-6">
+            <div class="container">
+                <div class="row" id="bookInformation">
+
+                    <div class="text-center">
+                        <%- include('templates/loading') %>
+                    </div>
+
+
+                    <!-- Book Cover Image -->
+                    <!-- <div class="col-md-6">
                     <img src="https://via.placeholder.com/400x600" alt="Romancing Mister Bridgerton"
                         class="img-fluid object-fit-cover  rounded" id="bookImage">
                 </div> -->
 
-                <!-- Book Details and Description -->
-                <!-- <div class="col-md-6" >
+                    <!-- Book Details and Description -->
+                    <!-- <div class="col-md-6" >
                     <h1 class="mb-4" id="title">Romancing Mister Bridgerton: Penelope & Colin’s Story
                     </h1>
                     <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat mauris non urna
@@ -74,23 +77,24 @@
                                 class="fab fa-linkedin-in"></i> LinkedIn</a>
                     </div>
                 </div> -->
+                </div>
             </div>
         </div>
     </section>
 
 
     <!-- Reviews Section (No Background) -->
-    <section class="section-padding">
+    <section class="section-padding lavender-gradient">
         <div class="container">
             <h3 class="mb-5 text-center">Reader Reviews</h3>
             <div class="row">
                 <!-- Review 1 -->
                 <div class="col-md-6 mb-4">
-                    <div class="border p-3 rounded	">
+                    <div class="border border-black p-3 rounded bg-light-subtle">
                         <div class="d-flex align-items-center mb-2">
                             <img src="https://via.placeholder.com/60" alt="Sarah Johnson" class="rounded-circle me-3">
                             <div>
-                                <h5 class="mb-0">Sarah Johnson</h5>
+                                <h5 class="mb-0 text-jp-dark">Sarah Johnson</h5>
                                 <div class="star-rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -107,11 +111,11 @@
                 </div>
                 <!-- Review 2 -->
                 <div class="col-md-6 mb-4">
-                    <div class="border p-3 rounded">
+                    <div class="border border-black p-3 rounded bg-light-subtle">
                         <div class="d-flex align-items-center mb-2">
                             <img src="https://via.placeholder.com/60" alt="David Martinez" class="rounded-circle me-3">
                             <div>
-                                <h5 class="mb-0">David Martinez</h5>
+                                <h5 class="mb-0 text-jp-dark">David Martinez</h5>
                                 <div class="star-rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -133,40 +137,43 @@
 
 
     <!-- Add a Review Section (Lavender Gradient Background) -->
-    <section class="lavender-gradient section-padding">
-        <div class="container">
-            <h3 class="mb-5 text-center">Add Your Review</h3>
-            <form action="" method="post" class="review-form">
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <label for="reviewerName" class="form-label">Your Name</label>
-                        <input type="text" class="form-control" id="reviewerName" required>
+    <section class="featured-background">
+        <div class="featured-content-bg section-padding">
+
+            <div class="container text-lavender-dark">
+                <h3 class="mb-5 text-center">Add Your Review</h3>
+                <form action="" method="post" class="review-form">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label for="reviewerName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="reviewerName" required>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="reviewRating" class="form-label">Rating</label>
+                            <select class="form-select" id="reviewRating" required>
+                                <option value="" disabled selected>Select rating</option>
+                                <option value="5">5 stars</option>
+                                <option value="4">4 stars</option>
+                                <option value="3">3 stars</option>
+                                <option value="2">2 stars</option>
+                                <option value="1">1 star</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <label for="reviewText" class="form-label">Your Review</label>
+                            <textarea class="form-control" id="reviewText" required></textarea>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                        </div>
                     </div>
-                    <div class="col-md-6 mb-4">
-                        <label for="reviewRating" class="form-label">Rating</label>
-                        <select class="form-select" id="reviewRating" required>
-                            <option value="" disabled selected>Select rating</option>
-                            <option value="5">5 stars</option>
-                            <option value="4">4 stars</option>
-                            <option value="3">3 stars</option>
-                            <option value="2">2 stars</option>
-                            <option value="1">1 star</option>
-                        </select>
-                    </div>
-                    <div class="col-12 mb-4">
-                        <label for="reviewText" class="form-label">Your Review</label>
-                        <textarea class="form-control" id="reviewText" required></textarea>
-                    </div>
-                    <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-secondary">Submit Review</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- Similar Books Section (No Background) -->
-    <section class="section-padding">
+    <section class="lavender-gradient section-padding">
         <div class="container">
             <h3 class="mb-5 text-center">Similar Books</h3>
             <div class="row" id="similarBooks">

@@ -20,7 +20,7 @@ $(document).ready(async function () {
             }
         }
 
-        if(typeof pageBook.authors === 'undefined'){
+        if (typeof pageBook.authors === 'undefined') {
             window.location.replace("/not-found");
         }
 
@@ -39,51 +39,56 @@ $(document).ready(async function () {
 
         const bookCover = document.createElement('div');
         bookCover.className = "col-md-6";
-        bookCover.innerHTML = `<img src="${pageBook.coverImageUrl}" alt="Romancing Mister Bridgerton"
-                    class="img-fluid object-fit-cover rounded" id="bookImage">`
+        bookCover.innerHTML = `<img src="${pageBook.coverImageUrl}" alt="${pageBook.title}"
+                    class="img-fluid object-fit-contain rounded w-100" id="bookImage">`
 
         const bookDetails = document.createElement('div');
         bookDetails.className = "col-md-6";
-        bookDetails.innerHTML = `<h1 class="mb-4">${pageBook.title}</h1>
-                    <p>${pageBook.description}</p>
-
+        bookDetails.innerHTML = `<h1 class="mb-4 text-lavender-dark">${pageBook.title}</h1>
                     <!-- Book Details -->
-                    <ul class="list-unstyled">
-                        <li><strong>Author:</strong> ${pageBook.authors[0]}</li>
-                        <li><strong>Genre:</strong> ${pageBook.genres.join(", ")}</li>
-                        <li><strong>Publisher:</strong> ${pageBook.publisher}</li>
-                        <li><strong>Release Date:</strong> ${pageBook.publicationDate}</li>
-                        <li><strong>Pages:</strong> ${pageBook.numberOfPages}</li>
-                        <li><strong>ISBN:</strong> ${pageBook.isbn}</li>
+                    <ul class="list-unstyled text-light">
+                        <li class="my-1"><strong>Author:</strong> ${pageBook.authors[0]}</li>
+                        <li class="my-1"><strong>Genre:</strong> ${pageBook.genres.join(", ")}</li>
+                        <li class="my-1"><strong>Publisher:</strong> ${pageBook.publisher}</li>
+                        <li class="my-1"><strong>Release Date:</strong> ${pageBook.publicationDate}</li>
+                        <li class="my-1"><strong>Pages:</strong> ${pageBook.numberOfPages}</li>
+                        <li class="my-1"><strong>ISBN:</strong> ${pageBook.isbn}</li>
                     </ul>
 
                     <!-- Price, Quantity, and Add to Cart -->
                     <p class="mt-4">
                         <strong class="h4 accent-color-bright">GHc ${pageBook.price}</strong>
                     </p>
-                    <div class="d-flex align-items-center mb-4">
+                    <div class="d-flex align-items-center mb-4 text-light">
                         <label for="quantity" class="me-2">Quantity:</label>
                         <input type="number" id="quantity" name="quantity" class="form-control w-25 me-3" min="1"
                             value="1">
-                        <button class="btn btn-secondary cart" data-id="${pageBook._id}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn btn-primary cart" data-id="${pageBook._id}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
                     </div>
 
                     <!-- Share Options -->
-                    <p class="mt-4">Share this book:</p>
+                    <p class="mt-4 text-light">Share this book:</p>
                     <div class="d-flex">
-                        <a href="#" class="btn btn-outline-secondary me-2" title="Share on Facebook"><i
+                        <a href="#" class="btn btn-outline-light me-2" title="Share on Facebook"><i
                                 class="fab fa-facebook-f"></i> Facebook</a>
-                        <a href="#" class="btn btn-outline-secondary me-2" title="Share on Instagram"><i
+                        <a href="#" class="btn btn-outline-light me-2" title="Share on Instagram"><i
                                 class="fab fa-instagram"></i> Instagram</a>
-                        <a href="#" class="btn btn-outline-secondary me-2" title="Share on X (formerly Twitter)"><i
+                        <a href="#" class="btn btn-outline-light me-2" title="Share on X (formerly Twitter)"><i
                                 class="fab fa-x-twitter"></i> X</a>
-                        <a href="#" class="btn btn-outline-secondary" title="Share on LinkedIn"><i
+                        <a href="#" class="btn btn-outline-light" title="Share on LinkedIn"><i
                                 class="fab fa-linkedin-in"></i> LinkedIn</a>
                     </div>`;
+
+        const bookDescription = document.createElement('div');
+        bookDescription.className = "col-md-12 pt-5";
+        bookDescription.innerHTML = pageBook.description.split('\\n').map(paragraph => {
+            return `<p class="featured-section-text">${paragraph}</p>`
+        }).join(' ');
 
         bookInformationContainer.innerHTML = '';
         bookInformationContainer.appendChild(bookCover);
         bookInformationContainer.appendChild(bookDetails);
+        bookInformationContainer.appendChild(bookDescription);
 
 
 
@@ -109,7 +114,7 @@ $(document).ready(async function () {
 
         $("#bookInformation").on('click', ".cart", async function () {
             const qty = $("#quantity").val();
-            let response = await addToCart($(this).data('id'),qty);
+            let response = await addToCart($(this).data('id'), qty);
             // console.log(response);
         });
 

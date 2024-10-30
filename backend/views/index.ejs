@@ -12,17 +12,52 @@
     <%- include('templates/main/navbar', {title}) %>
   </div>
 
+  <!-- Alerts -->
+  <div>
+    <%- include('templates/alerts') %>
+</div>
+
   <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <h1>Welcome to the Official Website of JP Alorwu</h1>
-      <p>Explore my collection of books and discover new adventures</p>
-      <a href="/books" class="btn btn-lg">Browse Books</a>
+  <!-- Hero Section with Overlay -->
+  <section class="hero-section">
+    <h1>Welcome to JP Alorwu Bookstore</h1>
+    <p>Your gateway to the world of books</p>
+    <a href="/books" class="btn btn-primary">Explore Books</a>
+
+    <div class="hero-overlay h-100 w-25">
+      <img src="/images/JP_alorwu_trans.png" alt="The Discover You Book" class="img-fluid w-75 rounded ">
     </div>
-  </header>
+
+    <!-- Flyer Overlay in Hero Section -->
+    <div class="event-overlay">
+      <h5>Upcoming Event</h5>
+      <p>Join us for a special book reading on Nov 1st!</p>
+      <a href="#" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#eventFlyerModal">
+        Learn More</a>
+    </div>
+  </section>
+
+
+  <!-- Event Flyer Popup Modal -->
+  <div class="modal fade" id="eventFlyerModal" tabindex="-1" aria-labelledby="eventFlyerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eventFlyerModalLabel">Special Event Announcement</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="/images/flier.jpeg" alt="Event Flyer" class="img-fluid mb-3">
+          <p>Don’t miss our book reading event with JP Alorwu on Friday 1st November, 2024.</p>
+          <a href="https://maps.app.goo.gl/tKhzW357ASeGzv9C7" target="_blank" class="btn btn-primary"><i
+              class="fa fa-location-dot"></i> Find Location</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Book Categories Row with Images -->
-  <section class="book-categories py-5">
+  <!-- <section class="book-categories py-5">
     <div class="container">
       <h2 class="text-center mb-4">Explore Book Categories</h2>
       <div class="row justify-content-center">
@@ -52,21 +87,21 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Featured Books Section -->
-  <section class="featured-books">
+  <section class="featured-books d-none">
     <div class="container">
       <h2 class="text-center mb-5">Featured Books</h2>
       <div class="row justify-content-center" id="featuredBooks">
-        
+
         <div class="spinner-border" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
         <!-- <div id="attempting">
           <img src="/uploads/coverimages/bookcover-1725212260547-thebook.png" class="img-fluid object-fit-cover" alt="Book 1">
         </div> -->
-        
+
         <!-- <div class="col-6 col-md-4">
           <div class="card book-card my-1 my-md-0">
             <img src="/uploads/coverimages/bookcover-1725212260547-thebook.png" class="img-fluid object-fit-cover" alt="Book 1">
@@ -77,17 +112,53 @@
             </div>
           </div>
         </div> -->
-        
+
       </div>
     </div>
   </section>
 
+
+  <!-- FEATURED BOOK FOR EVENT -->
+  <section class="featured-background">
+    <div class=" py-5 featured-content-bg">
+      <div class="container my-3">
+        <!-- <div class="row align-items-center"> -->
+        <h1 class="text-center text-lavender-dark text-uppercase my-5">Featured Book</h1>
+        <div class="row">
+          <!-- Author Image -->
+          <div class="col-md-4 text-center order-md-2">
+            <!-- <img src="https://via.placeholder.com/350x450" class="img-fluid rounded" alt="J.P. Alorwu"> -->
+            <img src="/images/JP_alorwu.jpg" class="img-fluid rounded" alt="J.P. Alorwu" id="bookImage">
+          </div>
+
+          <!-- Text Content -->
+          <div class="col-md-8 order-md-1">
+            <p class="mb-4 text-lavender-dark display-3">Discover You</p>
+            <p class="featured-section-text my-4">
+              Discover You is a transformative journey crafted for every Ghanaian seeking to connect with their true essence. Rooted in the rich cultural heritage and vibrant spirit of Ghana, this book leads readers on a path of profound self-discovery, guided by the voices, stories, and wisdom of the local context.
+            </p>
+            <p class="featured-section-text my-4">
+              Each chapter dives into universal themes of purpose, resilience, and personal growth but is intricately woven with the traditions, challenges, and triumphs unique to Ghanaian life. Discover You is not just a book; it’s an invitation to uncover the strength, passion, and potential that lies within, drawing from the beauty of one’s roots.
+            </p>
+            <p class="featured-section-text">
+              <a href="#" class="btn btn-primary rounded btn-lg " id="buyFeaturedBook">Buy Now</a>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
   <!-- Book Showcase Section -->
-  <section class="py-5 lavender-gradient">
+  <section class="py-5 no-lavender-gradient">
     <div class="container">
-      <h2 class="text-center mb-4 text-lavender-dark">Explore More Books by J.P. Alorwu</h2>
+      <h2 class="text-center mb-5 text-jp-dark">Explore More Books by J.P. Alorwu</h2>
       <div class="row text-center index-booklist" id="bookList">
-        
+
         <div class="spinner-border" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
@@ -138,30 +209,32 @@
 
       <!-- Button to view more books -->
       <div class="text-center mt-4">
-        <a href="/books" class="btn btn-lg  btn-secondary">View All Books</a>
+        <a href="/books" class="btn btn-lg  btn-primary">View All Books</a>
       </div>
     </div>
   </section>
 
   <!-- About the Author Section -->
-  <section class="py-5 no-lavender-gradient">
+  <section class="featured-background shadow">
+    <div class="py-5 featured-content-bg">
+
     <div class="container">
       <div class="row align-items-center">
         <!-- Text Content -->
         <div class="col-md-6 order-md-1">
           <h2 class="mb-4 text-lavender-dark">About J.P. Alorwu</h2>
-          <p class="about-section-text">
+          <p class="featured-section-text">
             J.P. Alorwu is a renowned African author whose works transcend cultural boundaries and captivate
             readers with profound storytelling. With a passion for narrating stories that inspire,
             challenge, and uplift, J.P. Alorwu brings characters to life and addresses themes of love,
             resilience, and self-discovery.
           </p>
-          <p class="about-section-text">
+          <p class="featured-section-text">
             Her books have touched the hearts of readers around the world, and her unique voice continues to
             shine in the literary world. Discover her stories and immerse yourself in tales that leave a
             lasting impact.
           </p>
-          <p class="about-section-text">
+          <p class="featured-section-text">
             When not writing, J.P. Alorwu enjoys mentoring young writers and participating in community
             projects aimed at promoting literacy and education.
           </p>
@@ -173,20 +246,22 @@
         </div>
       </div>
     </div>
+  </div>
   </section>
 
   <!-- Testimonials Section -->
-  <section class="testimonials py-5 lavender-gradient">
+  <section class="testimonials py-5 no-lavender-gradient">
     <div class="container">
-      <h2 class="text-center mb-5 text-secondary">What Readers Are Saying</h2>
+      <h2 class="text-center mb-5 text-jp-dark">What Readers Are Saying</h2>
       <div class="row">
         <!-- Testimonial 1 -->
         <div class="col-md-6 mb-4">
           <div class="card border-0 shadow-sm">
             <div class="card-body">
               <div class="d-flex align-items-center mb-3">
-                <img src="/images/user_profile.webp" alt="Sarah Johnson" class="img-fluid rounded-circle me-3 user-profile-img">
-                <h5 class="mb-0 accent-color">Sarah Johnson</h5>
+                <img src="/images/user_profile.webp" alt="Sarah Johnson"
+                  class="img-fluid rounded-circle me-3 user-profile-img">
+                <h5 class="mb-0 text-jp-dark">Sarah Johnson</h5>
               </div>
               <p class="card-text">"I was completely captivated by the characters and the depth of the
                 story. JP Alorwu is a phenomenal author!"</p>
@@ -198,8 +273,9 @@
           <div class="card border-0 shadow-sm">
             <div class="card-body">
               <div class="d-flex align-items-center mb-3">
-                <img src="/images/user_profile.webp" alt="David Martinez" class="img-fluid rounded-circle me-3 user-profile-img">
-                <h5 class="mb-0 accent-color">David Martinez</h5>
+                <img src="/images/user_profile.webp" alt="David Martinez"
+                  class="img-fluid rounded-circle me-3 user-profile-img">
+                <h5 class="mb-0 text-jp-dark">David Martinez</h5>
               </div>
               <p class="card-text">"An emotional rollercoaster from start to finish. I couldn't put the
                 book down. Highly recommend!"</p>
@@ -211,8 +287,9 @@
           <div class="card border-0 shadow-sm">
             <div class="card-body">
               <div class="d-flex align-items-center mb-3">
-                <img src="/images/user_profile.webp" alt="Emily Clark" class="img-fluid rounded-circle me-3 user-profile-img">
-                <h5 class="mb-0 accent-color">Emily Clark</h5>
+                <img src="/images/user_profile.webp" alt="Emily Clark"
+                  class="img-fluid rounded-circle me-3 user-profile-img">
+                <h5 class="mb-0 text-jp-dark">Emily Clark</h5>
               </div>
               <p class="card-text">"JP Alorwu's writing style is poetic and immersive. I felt like I was
                 right there in the world she created."</p>
@@ -224,8 +301,9 @@
           <div class="card border-0 shadow-sm">
             <div class="card-body">
               <div class="d-flex align-items-center mb-3">
-                <img src="/images/user_profile.webp" alt="Michael Lee" class="img-fluid rounded-circle me-3 user-profile-img">
-                <h5 class="mb-0 accent-color">Michael Lee</h5>
+                <img src="/images/user_profile.webp" alt="Michael Lee"
+                  class="img-fluid rounded-circle me-3 user-profile-img">
+                <h5 class="mb-0 text-jp-dark">Michael Lee</h5>
               </div>
               <p class="card-text">"A beautifully written book with unforgettable characters. I can't wait
                 for the next one!"</p>

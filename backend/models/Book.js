@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bookSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true },
   subtitle: { type: String, trim: true, default: "" },
-  slug: { type: String, required: true },
+  slug: { type: String, required: true, trim: true },
   authors: { type: [String], required: true }, // An array of author names
   isbn: { type: String, required: true, unique: true },
   publisher: { type: String, trim: true, default: "" },
@@ -32,7 +32,7 @@ const bookSchema = new mongoose.Schema({
     rating: { type: Number, min: 0, max: 5 }
   }],
   price: { type: Number, required: true },
-  discount: { type: Number, default: 0 }, // Discount percentage, if any
+  discount: { type: Number, default: 0 }, // Discounted Price, if any
   stock: { type: Number, required: true, min: 0 },
   // sold: {type: Number,default: 0}
   tags: { type: [String], index: true }, // Tags for easier searching

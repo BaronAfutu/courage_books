@@ -9,6 +9,6 @@ router.use('/cover',uploadController.uploadBookCover);
 router.post('/cover/:id',addBookCover);
 router.post('/profile',uploadController.uploadProfilePicture);
 router.use('/book',uploadController.uploadPDFFile);
-router.post('/book/:id',addBookFile);
+router.post('/book/:id',addBookFile); //req.query.slug required
 
 module.exports = router;

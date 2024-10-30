@@ -12,6 +12,26 @@ body {
   --bs-secondary: #6c757d;
   /* Grey for secondary */
   --bs-secondary-rgb: 108, 117, 125;
+
+  --bs-bg-secondary: #9E690C;
+  --bs-bg-secondary-rgb: 158, 105, 12;
+
+}
+
+/* Color theme styling */
+.btn-primary {
+  background-color: #CD8F1B;
+  border-color: #CD8F1B;
+}
+
+.btn-primary:hover {
+  background-color: #9E690C;
+  border-color: #9E690C;
+}
+
+.btn-secondary {
+  background-color: #F5BB24;
+  border-color: #F5BB24;
 }
 
 /* Accent color: Gold */
@@ -26,27 +46,29 @@ body {
 
 /* Navbar */
 .navbar {
-  background-color: var(--bs-secondary);
+  background-color: var(--bs-bg-secondary);
   /* Grey tone */
 }
 
 .navbar a {
-  color: var(--bs-primary);
+  color: white;
+  /* color: var(--bs-primary); */
   /* Lavender tone */
 }
 
 .navbar a.active {
-  color: #d8bfd8 !important;
+  color: #F5BB24 !important;
   /* Lavender tone */
 }
 
 .navbar a:hover {
-  color: #d8bfd8;
+  color: #F5BB24;
   /* Darker lavender */
 }
 
 .dropdown-menu {
-  background-color: var(--bs-secondary);
+  background-color: #CD8F1B;
+  /* background-color: var(--bs-secondary); */
 }
 
 .dropdown-item {
@@ -54,32 +76,86 @@ body {
 }
 
 .dropdown-item:hover {
-  background-color: #d8bfd8;
-  color: var(--bs-secondary) !important;
+  background-color: black;
+  color: #CD8F1B !important;
+}
+
+.hero-section {
+  background-color: #E8D463;
+  color: #9E690C;
+  position: relative;
+  padding: 60px;
+  text-align: center;
+  box-shadow: 0 .5rem 3rem rgba(0, 0, 0, .8) !important;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  /* background-color: rgba(205, 143, 27, 0.8); */
+  /* padding: 15px; */
+  border-radius: 5px;
+  color: white;
+  /* max-width: 300px; */
+}
+
+.hero-overlay img {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .9) !important;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.event-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(205, 143, 27, 0.8);
+  padding: 15px;
+  border-radius: 5px;
+  color: white;
+  max-width: 250px;
+}
+
+.modal-header {
+  background-color: #CD8F1B;
+  color: white;
+}
+
+/* Popup Modal styling */
+.modal-content {
+  border: none;
 }
 
 /* Lavender gradient section */
 .lavender-gradient {
-  background: linear-gradient(135deg, #e6e6fa 0%, #d8bfd8 100%);
+  background: linear-gradient(135deg, #F9E467 20%, #F5BB24 100%);
   /* color: var(--bs-secondary); */
   color: #50575c;
 }
 
+
 .no-lavender-gradient {
-  background-color: #f4f4f4;
+  background-color: #F9E467;
 }
 
 .text-lavender-dark {
-  color: #4c4c6d;
+  color: #F9E467;
 }
 
+.no-lavender-gradient .text-jp-dark {
+  color: #9E690C;
+}
+
+.lavender-gradient .text-jp-dark{
+  color: #9E690C;
+}
 /* Homepage Header */
-.header {
-  /* background-color: var(--bs-primary); */
-  background-image: url('../images/Hero.jpg');
+/* .header {
+  /* background-color: var(--bs-primary); *
+  background-image: url('../images/Hero2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  /* color: var(--bs-secondary); */
+  /* color: var(--bs-secondary); *
   color: #50575c;
   padding: 100px 0;
   text-align: center;
@@ -91,7 +167,7 @@ body {
 
 .header .btn {
   background-color: #d4af37;
-  /* Gold accent for buttons */
+  /* Gold accent for buttons *
   border-color: #d4af37;
   color: white;
 }
@@ -99,15 +175,38 @@ body {
 .header .btn:hover {
   background-color: #c7a135;
   border-color: #c7a135;
-}
+} */
 
 /* Pages Header */
-.page-header,
-.hero-section {
-  background: linear-gradient(135deg, #e6e6fa 0%, #d8bfd8 100%);
-  color: var(--bs-secondary);
+/* .hero-section,  */
+
+
+.featured-background {
+  /* The image used */
+  background-image: url("/images/featured_background.jpg");
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.featured-content-bg {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.featured-section-text {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+
+.page-header {
+  background: linear-gradient(135deg, #F9E467 20%, #F5BB24 100%);
+  color: #9E690C;;
   padding: 80px 0;
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .page-header h1 {
@@ -183,21 +282,21 @@ body {
   border-color: #c7a135;
 }
 
-#attempting{
+#attempting {
   border-radius: 20px;
   width: 100px;
   height: 100px;
 }
 
-.book-card img{
+.book-card img {
   width: auto;
   height: 300px;
 }
 
 /* Book Details Page */
-#bookImage{
-  width: 400px;
-  height: 600px;
+#bookImage {
+  /* width: 400px; */
+  max-height: 500px;
 }
 
 
@@ -220,17 +319,17 @@ body {
   border-color: #c7a135;
 }
 
-.index-booklist img{
+.index-booklist img {
   width: 150px;
   height: 200px;
 }
 
-.index-booklist a{
+.index-booklist a {
   text-decoration: none;
   color: unset;
 }
 
-.index-booklist img:hover{
+.index-booklist img:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
 }
 
@@ -262,7 +361,7 @@ body {
   /* Gold for stars */
 }
 
-.user-profile-img{
+.user-profile-img {
   width: 60px;
 }
 
@@ -280,7 +379,7 @@ body {
 
 /* Footer */
 .footer {
-  background-color: var(--bs-secondary);
+  background-color: var(--bs-bg-secondary);
   color: var(--bs-primary);
   padding: 20px;
   text-align: center;

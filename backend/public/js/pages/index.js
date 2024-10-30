@@ -14,7 +14,7 @@ $(document).ready(async function () {
             let bookContainer = document.createElement('div');
             bookContainer.className = 'col-6 col-md-2 mb-4';
             bookContainer.innerHTML = `<a href="/books/${book.category}/${book.slug}">
-            <img src="${book.coverImageUrl}" class="img-fluid object-fit-cover rounded" alt="Book 1">
+            <img src="${book.coverImageUrl}" class="img-fluid object-fit-cover rounded border border-black" alt="Book 1">
           <h6 class="mt-2">${book.title} (${book.rating.averageRating} <i class="fas fa-star text-warning"></i>)
           </h6></a>`;
     
@@ -34,7 +34,6 @@ $(document).ready(async function () {
     //   });
 
 
-
     try {
         const booksResponse = await request('/api/v1/books/');
         books = booksResponse.books;
@@ -44,6 +43,24 @@ $(document).ready(async function () {
 
     previewBookList('bookList', 6);
     previewFeaturedBooks(books, "featuredBooks");
+
+
+    // FOR THE BOOK SIGNING EVENT ***************
+
+    $('#eventFlyerModal').modal('show'); // only for the event
+    
+    $("#buyFeaturedBook").click(function (e) { 
+        e.preventDefault();
+        const featuredBook = books.filter(book=>{
+            return book.title === 'Discover You';
+        })[0]
+        addToCart(featuredBook._id);
+        setTimeout(() => {
+            window.location.href = "/cart";
+        }, 2000);
+    });
+
+    // END OF FOR THE BOOK SIGNING EVENT ********
 
     // $(".loader-img").removeClass("loader-img");
 

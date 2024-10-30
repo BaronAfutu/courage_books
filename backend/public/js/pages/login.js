@@ -49,6 +49,16 @@ $(document).ready(async function () {
     // previewBookList('bookList', 10);
 
 
+    const url = new URL(window.location.href);
+
+    if (url.searchParams.has('msg')) {
+        const msg = url.searchParams.get('msg');
+        if(msg==='verified'){
+            showAlert('success',"Your Email has been verified. Proceed to Login...");
+        }
+    }
+
+
     $("#confirmPassword").keyup(function (e) {
         if ($(this).val().length > 0) {
             if ($("#signupPassword").val() != $(this).val()) {
@@ -153,7 +163,6 @@ $(document).ready(async function () {
                 lastName: lastName,
                 password: password
             })
-            window.location.href="#";
             showAlert('success', "Signup successful! Redirecting to login page...");
             setTimeout(() => {
                 window.location.href = "/login";
@@ -171,7 +180,7 @@ $(document).ready(async function () {
             } else {
                 showAlert('warn', errorMessage);
             }
-        }finally{
+        } finally {
             $('#spinner').addClass('d-none'); // Show spinner
         }
     });

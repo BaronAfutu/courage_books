@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const AuthController = require('../controllers/AuthController');
 const jwt = require('jsonwebtoken');
+// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const {testMail} = require('../config/email');
 
@@ -71,7 +72,22 @@ router.get('/cart', (req, res) => {
   });
 })
 
-router.get('/checkout', (req, res) => {
+router.get('/checkout', async (req, res) => {
+  // stripe checkout
+  // const session = await stripe.checkout.sessions.create({
+  //   line_items:[
+  //     {
+  //       price_data:{
+  //         currency: 'usd',
+  //       }
+
+  //     }
+  //   ],
+  //   mode: 'payment', // 'subscription'
+  //   success_url: 'http://localhost:3000/complete',
+  //   cancel_url: 'http://localhost:3000/cancel'
+  // })
+  // manual checkout
   res.render('checkout', {
     title: 'Checkout',
     user: req.session.user || undefined,

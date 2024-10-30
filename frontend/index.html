@@ -13,7 +13,55 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <!-- Custom Styles -->
-    <link href="../backend/public/css/style.css" rel="stylesheet">
+    <!-- <link href="../backend/public/css/style.css" rel="stylesheet"> -->
+     <!-- Custom CSS Styles -->
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Color theme styling */
+        .btn-primary {
+            background-color: #CD8F1B;
+            border-color: #CD8F1B;
+        }
+        .btn-primary:hover {
+            background-color: #9E690C;
+            border-color: #9E690C;
+        }
+        .btn-secondary {
+            background-color: #F5BB24;
+            border-color: #F5BB24;
+        }
+        .hero-section {
+            background-color: #F9E467;
+            color: #9E690C;
+            position: relative;
+            padding: 60px;
+            text-align: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(205, 143, 27, 0.8);
+            padding: 15px;
+            border-radius: 5px;
+            color: white;
+            max-width: 250px;
+        }
+        .modal-header {
+            background-color: #CD8F1B;
+            color: white;
+        }
+
+        /* Popup Modal styling */
+        .modal-content {
+            border: none;
+        }
+
+    </style>
 
 </head>
 
@@ -127,14 +175,36 @@
         </div>
     </nav>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <h1>Welcome to the Official Website of JP Alorwu</h1>
-            <p>Explore my collection of books and discover new adventures</p>
-            <a href="#" class="btn btn-lg">Browse Books</a>
+    <!-- Hero Section with Overlay -->
+    <section class="hero-section">
+        <h1>Welcome to JP Alorwu Bookstore</h1>
+        <p>Your gateway to the world of books</p>
+        <button class="btn btn-primary">Explore Books</button>
+
+        <!-- Flyer Overlay in Hero Section -->
+        <div class="hero-overlay">
+            <h5>Upcoming Event</h5>
+            <p>Join us for a special book signing on Nov 12!</p>
+            <a href="#" class="btn btn-secondary btn-sm">Learn More</a>
         </div>
-    </header>
+    </section>
+
+    <!-- Event Flyer Popup Modal -->
+    <div class="modal fade" id="eventFlyerModal" tabindex="-1" aria-labelledby="eventFlyerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eventFlyerModalLabel">Special Event Announcement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="/backend/public/images/flier.jpeg" alt="Event Flyer" class="img-fluid mb-3">
+                    <p>Don’t miss our exclusive book signing event with JP Alorwu on November 12. Meet the author and get your favorite books signed!</p>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Book Categories Row with Images -->
     <section class="book-categories py-5">
@@ -388,6 +458,13 @@
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Show the event flyer modal when the page loads
+            $('#eventFlyerModal').modal('show');
+        });
+    </script>
 
     <!-- <script type="text/javascript" src="../backend/public/js/bookList.js"></script>
     <script type="text/javascript" src="../backend/public/js/mainscript.js"></script>

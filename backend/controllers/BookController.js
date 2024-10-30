@@ -89,7 +89,7 @@ const createBook = async (req, res) => {
 
 const addBookCover = async (req, res) => {
     try {
-        const coverUrl = `/uploads/coverImages/${req.file.filename}`;
+        const coverUrl = `/uploads/coverimages/${req.file.filename}`;
         const book = await Book.findByIdAndUpdate(req.params.id, { coverImageUrl: coverUrl });
         if (!book) {
             return res.status(404).json({ message: 'Book not found' });
