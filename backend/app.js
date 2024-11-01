@@ -49,8 +49,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: ["'self'"],
-    scriptSrc: ["'self'", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net"],
+    defaultSrc: ["'self'",'https://checkout.paystack.com'],
+    scriptSrc: ["'self'", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net","https://checkout.paystack.com https://*.paystack.co "],
     styleSrc: ["'self'", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net", "https://fonts.googleapis.com"],
     imgSrc: ["'self'", "data:", "https://via.placeholder.com/"],
     connectSrc: ["'self'"],

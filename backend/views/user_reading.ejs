@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('templates/main/head', {title}) %>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div>
+        <%- include('templates/main/navbar', {title}) %>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="page-header">
+        <div class="container">
+            <h1 id="bookTitle">DISCOVER YOU</h1>
+        </div>
+    </section>
+
+
+    <!-- Embedded PDF Reader -->
+    <div class="container my-4 text-center">
+        <a href="https://drive.google.com/file/d/1PQcyDKbKmgJNqmWKywdFtBf-Z9IZ4Z4j/view?usp=sharing" class="btn btn-primary">Read Book</a>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <%- include('templates/main/footer') %>
+    </footer>
+
+    <%- include('templates/main/baseScripts') %>
+        <!-- <script-- type="text/javascript" src="../backend/public/js/bookList.js"></script-->
+        <script type="text/javascript" src="/js/mainFuncs.js"></script>
+        <script type="text/javascript" src="/js/pages/reading.js"></script>
+        <!-- <script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script> -->
+
+</body>
+
+</html>

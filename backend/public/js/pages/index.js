@@ -7,17 +7,17 @@ $(document).ready(async function () {
         const bookList = document.getElementById(containerID);
         bookList.innerHTML = "";
         // console.log(books.length, books[0].title)
-    
+
         books.forEach((book, index) => {
             if (index >= limit) return; // It will still go through all the books
-    
+
             let bookContainer = document.createElement('div');
             bookContainer.className = 'col-6 col-md-2 mb-4';
             bookContainer.innerHTML = `<a href="/books/${book.category}/${book.slug}">
             <img src="${book.coverImageUrl}" class="img-fluid object-fit-cover rounded border border-black" alt="Book 1">
-          <h6 class="mt-2">${book.title} (${book.rating.averageRating} <i class="fas fa-star text-warning"></i>)
-          </h6></a>`;
-    
+          <h6 class="mt-2">${book.title}</h6></a>`;
+            //   (${book.rating.averageRating} <i class="fas fa-star text-warning"></i>)
+
             bookList.appendChild(bookContainer);
         });
     }
@@ -48,10 +48,10 @@ $(document).ready(async function () {
     // FOR THE BOOK SIGNING EVENT ***************
 
     $('#eventFlyerModal').modal('show'); // only for the event
-    
-    $("#buyFeaturedBook").click(function (e) { 
+
+    $("#buyFeaturedBook").click(function (e) {
         e.preventDefault();
-        const featuredBook = books.filter(book=>{
+        const featuredBook = books.filter(book => {
             return book.title === 'Discover You';
         })[0]
         addToCart(featuredBook._id);

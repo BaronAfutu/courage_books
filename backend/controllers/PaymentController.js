@@ -47,6 +47,7 @@ exports.createPayment = async (req, res) => {
 
         // After all has checked out,
         // payment status will be obtained from paystack response
+        // get the payment method through the verification api channel
         const status = 'successful';
 
         // console.log(...existingOrder.items.map(item=>item.book));
@@ -62,7 +63,9 @@ exports.createPayment = async (req, res) => {
         
         // When a payment is made, the books should be assigned to the user.
         existingUser.books.push(...existingOrder.items.map(item => item.book));
+        // And the cart should be emptied
         await existingUser.save();
+
         
         // Then the order will be marked as completed
         existingOrder.orderStatus = "completed";

@@ -500,3 +500,83 @@ body {
 .tab-pane.active {
   display: block;
 }
+
+
+/* CONTACT PAGE */
+.contact-section {
+  /* background-color: #F9E467; */
+  padding: 60px 0;
+}
+.contact-info {
+  /* color: #9E690C; */
+  margin-bottom: 20px;
+}
+.contact-info h5 {
+  color: #CD8F1B;
+}
+.contact-info a {
+  /* color: #9E690C; */
+  text-decoration: none;
+}
+/* .contact-info a:hover {
+  /* color: #F5BB24; *
+} */
+
+
+/* Sidebar */
+.sidebar {
+  min-height: 100vh;
+  background-color: #343a40;
+  padding: 20px;
+  color: white;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+}
+
+.sidebar a:hover {
+  background-color: #495057;
+  border-radius: 4px;
+}
+
+.main-content {
+  padding: 40px;
+}
+
+.pdf-reader {
+  width: 100%;
+  height: 80vh;
+  border: none;
+}
+.reading-controls {
+  /* background-color: #9E690C; */
+  color: black;
+  padding: 15px;
+  text-align: center;
+}
+.reading-controls .btn {
+  background-color: #CD8F1B;
+  color: white;
+  border: none;
+}
+.reading-controls .btn:hover {
+  background-color: #9E690C;
+  color: white;
+}
+
+/* .card {
+  margin-bottom: 20px;
+} */
+
+/* .large-card {
+  height: 30vh;
+} */
+
+/* .card-header {
+  background: linear-gradient(135deg, #e6e6fa 0%, #d8bfd8 100%);
+  color: black;
+} */

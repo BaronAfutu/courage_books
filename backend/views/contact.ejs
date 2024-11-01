@@ -15,18 +15,84 @@
     <!-- Page Header Section with Lavender Gradient Background -->
     <section class="page-header">
         <div class="container">
-            <h1>Contact</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque est totam quam voluptatem? Assumenda
-                ratione doloribus quisquam ex harum, praesentium explicabo architecto dignissimos, quo esse, amet
-                impedit. Qui, non quae?</p>
+            <h1>Contact JP Alorwu</h1>
+            <p>
+                Reach us on
+                <a href="https://wa.me/233552532207" target="_blank" class="text-success h5 text-decoration-none">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                or send us an
+                <a href="mailto:info@jpalorwu.com" class="text-decoration-none text-black">
+                    <i class="fas fa-envelope"></i> Email
+                </a>.
+            </p>
         </div>
     </section>
 
-    <div class="p-5 my-5">
-        <div class="p-5">
-            &nbsp;
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+
+            <!-- Contact Form -->
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="card shadow lavender-gradient">
+                        <div class="card-body">
+                            <h5 class="card-title text-center text-jp-dark fw-bold">Send a Message</h5>
+                            <form id="contactForm">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter your name"
+                                        required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Your Email</label>
+                                            <input type="email" class="form-control" id="email"
+                                                placeholder="Enter your email" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="phone" class="form-label">Your Phone (Optional)</label>
+                                            <input type="tel" class="form-control" id="phone"
+                                                placeholder="Enter your phone number">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Your Message</label>
+                                    <textarea class="form-control" id="message" rows="5"
+                                        placeholder="Type your message here" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Contact Information -->
+            <div class="text-center mt-5">
+                <p>For inquiries, collaborations, or more information about upcoming events, feel free to reach out
+                    through WhatsApp, email, or by filling out the contact form.</p>
+                <p><strong>Phone:</strong> +233 552532207 | <strong>Email:</strong> info@jpalorwu.com</p>
+                <p>Follow JP Alorwu on social media for the latest updates!</p>
+                <p>
+                    <a href="#" class="text-decoration-none me-3"><i class="fab fa-facebook fa-lg"
+                            style="color: #9E690C;"></i></a>
+                    <a href="#" class="text-decoration-none me-3"><i class="fab fa-twitter fa-lg"
+                            style="color: #9E690C;"></i></a>
+                    <a href="#" class="text-decoration-none"><i class="fab fa-instagram fa-lg"
+                            style="color: #9E690C;"></i></a>
+                </p>
+            </div>
         </div>
-    </div>
+    </section>
 
 
 
@@ -37,8 +103,8 @@
 
     <%- include('templates/main/baseScripts') %>
         <!-- <script-- type="text/javascript" src="../backend/public/js/bookList.js"></script-->
-    <script type="text/javascript" src="/js/mainFuncs.js"></script>
-    <!-- <script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script> -->
+        <script type="text/javascript" src="/js/mainFuncs.js"></script>
+        <!-- <script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script> -->
 
 </body>
 

@@ -4,7 +4,7 @@ const AuthController = require('../controllers/AuthController');
 const jwt = require('jsonwebtoken');
 // const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-const {testMail} = require('../config/email');
+const { testMail } = require('../config/email');
 
 // Streamline the token passing later
 /* GET home page. */
@@ -103,6 +103,17 @@ router.get('/contact', (req, res) => {
   });
 })
 
+
+// TEMP ROUTES
+router.get('/dashboard', (req, res) => {
+  res.render('user_reading', {
+    title: 'Dashboard',
+    user: req.session.user || undefined,
+    token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
+  });
+})
+// END TEMP ROUTES
+
 router.post('/signup', AuthController.signup);
 router.post('/login', AuthController.login);
 router.post('/signin', AuthController.signin); // returns page and keys
@@ -113,12 +124,12 @@ router.get('/logout', (req, res) => {
   return res.redirect('/');
 })
 
-router.get('/verify',AuthController.verifyEmailCode);
+router.get('/verify', AuthController.verifyEmailCode);
 
 router.get('/test-email', async (req, res) => {
   await testMail().catch(e => {
     console.log(e);
   });
-  return res.status(200).json({message:"hi"});
+  return res.status(200).json({ message: "hi" });
 })
 module.exports = router;

@@ -27,17 +27,17 @@ $(document).ready(async function () {
             }
             
             let bookContainer = document.createElement('div');
-            bookContainer.className = 'col-md-4';
+            bookContainer.className = 'col-md-3';
             bookContainer.innerHTML = `<div class="card book-card mb-4">
-                            <img src="${book.coverImageUrl}" class="img-fluid object-fit-cover card-img-top" alt="Book 1">
+                            <img src="${book.coverImageUrl}" class="img-fluid object-fit-zoom card-img-top" alt="Book 1">
                             <div class="card-body">
                                 <h5 class="card-title">${book.title}</h5>
-                                <p>
+                                <!--<p>
                                     <span class="star-rating">
                                         ${stars}
                                     </span>
                                     <span class="text-muted">${book.rating.averageRating}</span>
-                                </p>
+                                </p>-->
                                 <p class="card-text">Price: <strong>GHc ${book.price}</strong></p>
                                 <a href="/books/${book.category}/${book.slug}" class="btn btn-secondary">Learn More</a>
                                 <a href="#" class="btn btn-outline-secondary cart" data-id="${book._id}"><i class="fas fa-cart-plus"></i></a>
