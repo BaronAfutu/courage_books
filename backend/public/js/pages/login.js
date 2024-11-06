@@ -55,6 +55,10 @@ $(document).ready(async function () {
         const msg = url.searchParams.get('msg');
         if(msg==='verified'){
             showAlert('success',"Your Email has been verified. Proceed to Login...");
+            $("#loginForm").attr('action', '/signin?newuser=true');
+        }
+        else{
+            showAlert('warn',msg);
         }
     }
 
@@ -119,11 +123,13 @@ $(document).ready(async function () {
                 }, 2000);
             }
         } catch (error) {
-            if (error.status == 404) {
+            if (error.status === 404) {
                 showAlert('warn', 'Email or Password is Incorrect!!');
                 makeFieldInvalid("#loginEmail");
                 makeFieldInvalid("#loginPassword");
-            } else {
+            } else if(error.status === 403){
+                showAlert('warn', 'Account not verified. Check your Email!!!');
+            }else {
                 showAlert('warn', 'Error Logging In!!');
             }
             // console.log(typeof error.status)

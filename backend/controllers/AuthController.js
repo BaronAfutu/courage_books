@@ -107,9 +107,13 @@ exports.login = async (req, res) => {
 
     const { email, password } = value;
     try {
-        let user = await User.findOne({ 'email': email }, 'email password isAdmin');
+        let user = await User.findOne({ 'email': email }, 'email password isAdmin isVerified');
 
-        if (user && bcrypt.compareSync(password, user.password)) {
+        if(user && !user.isVerified){
+            return res.status(403).json({success:false, message:'Verify your account before loggin in!!'});
+        }
+
+        if (user && user.isVerified && bcrypt.compareSync(password, user.password)) {
             const token = jwt.sign({
                 id: user.id,
                 isAdmin: user.isAdmin
@@ -149,14 +153,18 @@ exports.signin = async (req, res) => { // Returns Page, user session
 
 
     const { email, password } = value;
-    let user = await User.findOne({ 'email': email });
+    let user = await User.findOne({ 'email': email }, 'email password isAdmin isVerified');
 
-    if (user && bcrypt.compareSync(password, user.password)) {
+    if (user && user.isVerified && bcrypt.compareSync(password, user.password)) {
         const token = jwt.sign({
             id: user.id,
             isAdmin: user.isAdmin
         }, process.env.SECRET || 'this_is_@_temp.secret')
         req.session.user = { id: user.id, isAdmin: user.isAdmin, token: token };
+        // TODO check for next
+        // if(req.query.newuser){
+        //     return res.redirect('/user/profile');
+        // }
         return res.redirect('/');
     }
     return res.status(404).render('login', {
@@ -164,9 +172,11 @@ exports.signin = async (req, res) => { // Returns Page, user session
         status: {
             form: 'login',
             status: 'danger',
-            message: "Invalid Email or Password!"
+            message: "Invalid Email or Password Or Account not verified!"
         },
-        title: 'huh',
+        title: 'Login',
+        user:undefined,
+        token: '',
         formData: req.body
     });
 }

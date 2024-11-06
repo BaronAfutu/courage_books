@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
   res.render('index', {
     title: 'Home',
     user: req.session.user || undefined,
-    token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
+    // token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
   });
 });
 
@@ -21,7 +21,7 @@ router.get('/about', (req, res) => {
   res.render('about', {
     title: 'About',
     user: req.session.user || undefined,
-    token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
+    // token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
   });
 })
 
@@ -32,7 +32,7 @@ router.get('/login', (req, res) => {
       title: 'Login',
       formData: req.body,
       user: req.session.user || undefined,
-      token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
+      // token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
     });
   } else { // shouldn't have to reach here
     return res.render('login', {
@@ -44,7 +44,7 @@ router.get('/login', (req, res) => {
       },
       formData: req.body,
       user: req.session.user || undefined,
-      token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
+      // token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
     })
   }
 })
@@ -53,14 +53,14 @@ router.get('/books/', (req, res) => {
   res.render('books', {
     title: 'Books',
     user: req.session.user || undefined,
-    token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
+    // token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
   });
 })
 router.get('/books/:category/:slug', (req, res) => {
   res.render('book', {
     title: req.params.slug,
     user: req.session.user || undefined,
-    token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
+    // token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
   });
 })
 
@@ -68,7 +68,7 @@ router.get('/cart', (req, res) => {
   res.render('cart', {
     title: 'Cart',
     user: req.session.user || undefined,
-    token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
+    // token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
   });
 })
 
@@ -91,7 +91,7 @@ router.get('/checkout', async (req, res) => {
   res.render('checkout', {
     title: 'Checkout',
     user: req.session.user || undefined,
-    token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
+    // token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
   });
 })
 
@@ -99,20 +99,9 @@ router.get('/contact', (req, res) => {
   res.render('contact', {
     title: 'Contact',
     user: req.session.user || undefined,
-    token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
+    // token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
   });
 })
-
-
-// TEMP ROUTES
-router.get('/dashboard', (req, res) => {
-  res.render('user_reading', {
-    title: 'Dashboard',
-    user: req.session.user || undefined,
-    token: req.session.user ? jwt.sign(req.session.user, process.env.SECRET) : ''
-  });
-})
-// END TEMP ROUTES
 
 router.post('/signup', AuthController.signup);
 router.post('/login', AuthController.login);

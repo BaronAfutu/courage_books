@@ -11,6 +11,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')
 const db = require('./config/db_mongo');
 const authJwt = require('./helpers/jwt');
+const { loggedInUser, loggedInAdmin } = require('./middlewares/loginRequired');
 
 
 // *******REQUIRE ROUTES*************
@@ -49,8 +50,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: ["'self'",'https://checkout.paystack.com'],
-    scriptSrc: ["'self'", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net","https://checkout.paystack.com https://*.paystack.co "],
+    defaultSrc: ["'self'", 'https://checkout.paystack.com'],
+    scriptSrc: ["'self'", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net", "https://checkout.paystack.com https://*.paystack.co "],
     styleSrc: ["'self'", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net", "https://fonts.googleapis.com"],
     imgSrc: ["'self'", "data:", "https://via.placeholder.com/"],
     connectSrc: ["'self'"],
@@ -66,6 +67,8 @@ app.options('*', cors());
 
 // ************** USE ROUTES *********
 app.use('/', indexRouter);
+app.use('/user',loggedInUser);
+app.use('/user',usersRouter);
 
 app.use('/api/v1/', authJwt());
 app.use('/api/v1/users', usersRouter);
@@ -92,7 +95,7 @@ app.use(function (err, req, res, next) {
   if (process.env.NODE_ENV === 'DEV') {
     res.render('error', { title: 'Not Found' });
   } else {
-    res.render('notfound', { title: 'Not Found', user:undefined, token:'' });
+    res.render('notfound', { title: 'Not Found', user: undefined, token: '' });
   }
 });
 

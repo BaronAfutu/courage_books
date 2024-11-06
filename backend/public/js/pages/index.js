@@ -44,10 +44,16 @@ $(document).ready(async function () {
     previewBookList('bookList', 6);
     previewFeaturedBooks(books, "featuredBooks");
 
+    // const url = new URL(window.location.href);
+    // if (url.searchParams.has('msg')) {
+    //     const msg = url.searchParams.get('msg');
+    //     showAlert('warn',msg);
+    // }
+
 
     // FOR THE BOOK SIGNING EVENT ***************
 
-    $('#eventFlyerModal').modal('show'); // only for the event
+    // $('#eventFlyerModal').modal('show'); // only for the event
 
     $("#buyFeaturedBook").click(function (e) {
         e.preventDefault();

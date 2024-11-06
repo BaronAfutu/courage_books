@@ -60,7 +60,7 @@
 
             <!-- Right Pane: Cart Summary -->
             <div class="col-md-4">
-                <input type="hidden" value="<%= user.id %>" id="user" data-email="" data-phone="+2332342433">
+                <input type="hidden" value="<%= user?.id %>" id="user" data-email="" data-phone="+2332342433">
                 <div class="cart-summary">
                     <h4>Cart Summary</h4>
                     <hr>
@@ -68,8 +68,9 @@
                     <p><strong>Shipping:</strong> Free</p>
                     <hr>
                     <p><strong>Total:</strong> <span class="h4 accent-color">GH¢ <span id="total"></span></span></p>
-                    <a href="#" class="btn btn-success btn-checkout" id="payBtn"><i class="fas fa-check"></i>
-                        Pay Now </a>
+                    <button class="btn btn-success btn-checkout" id="payBtn">
+                        <i class="fas fa-check"></i> Pay Now
+                    </button>
                 </div>
             </div>
         </div>

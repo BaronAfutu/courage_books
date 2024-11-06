@@ -100,6 +100,8 @@ $(document).ready(async function () {
             const book = await request(`/api/v1/books/${item.bookId}`);
             cartItems.push({ _id: book._id, book, quantity: item.quantity });
         }
+        $("#payBtn").text("Login to make Payment");
+        $("#payBtn").attr('disabled', true);
     }
     if (typeof cartItems === 'undefined' || cartItems === null) {
         cartItems = [];
