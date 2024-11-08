@@ -3,6 +3,7 @@ const Order = require('../models/Order');
 const User = require('../models/User');
 const { decodeToken } = require('./GeneralController');
 const { PaymentValidation } = require('../helpers/validation');
+const request = require('request');
 
 // TODO Testing Endpoints
 
@@ -22,8 +23,8 @@ exports.createPayment = async (req, res) => {
         if (!existingOrder) {
             return res.status(404).json({ message: 'Order not found' });
         }
-        if(existingOrder.orderStatus == 'completed' || existingOrder.orderStatus == 'cancelled'){
-            return res.status(400).json({message: `Order already ${existingOrder.orderStatus}`})
+        if (existingOrder.orderStatus == 'completed' || existingOrder.orderStatus == 'cancelled') {
+            return res.status(400).json({ message: `Order already ${existingOrder.orderStatus}` })
         }
 
         const existingPayment = await Payment.findOne({ transactionId: transactionId });
@@ -48,34 +49,60 @@ exports.createPayment = async (req, res) => {
         // After all has checked out,
         // payment status will be obtained from paystack response
         // get the payment method through the verification api channel
-        const status = 'successful';
+        // validate the payment
+        const options = {
+            url: 'https://api.paystack.co/transaction/verify/' + value.transactionId,
+            json: true,
+            method: 'GET',
+            // Authorization: `Bearer ${process.env.PAYSTACK_SECRET}`,
+            headers: {
+                'Authorization': `Bearer ${process.env.PAYSTACK_SECRET}`,
+                'Content-Type': 'application/json',
+                'Accept': 'text/plain',
+            }
+        }
+        request(options, async function (error, response, body) {
+            if (error) return res.status(500).json({ status: false })
+            if (body.status) {
+                const payment = new Payment({
+                    order,
+                    paymentMethod: body.data.channel,
+                    transactionId,
+                    amount: body.data.amount / 100,
+                    status: body.status
+                });
+                await payment.save();
 
-        // console.log(...existingOrder.items.map(item=>item.book));
+                let expectedAmount = Math.round(existingOrder.totalAmount * 100);
+                if (expectedAmount > body.data.amount) {//underpayment
+                    return res.status(200).json({
+                        data: transactionId,
+                        success: false,
+                        amount: expectedAmount,
+                        paid: body.data.amount
+                    })
+                    // overpayment will be added to balance
+                }
+                // When a payment is made, the books should be assigned to the user.
+                existingUser.books.push(...existingOrder.items.map(item => item.book));
+                existingUser.cart = [];
+                await existingUser.save();
 
-        const payment = new Payment({
-            order,
-            paymentMethod,
-            transactionId,
-            amount,
-            status
-        });
-        await payment.save();
-        
-        // When a payment is made, the books should be assigned to the user.
-        existingUser.books.push(...existingOrder.items.map(item => item.book));
-        // And the cart should be emptied
-        await existingUser.save();
 
-        
-        // Then the order will be marked as completed
-        existingOrder.orderStatus = "completed";
-        existingOrder.shippingStatus = "delivered";
-        await existingOrder.save();
+                // Then the order will be marked as completed
+                existingOrder.orderStatus = "completed";
+                existingOrder.shippingStatus = "delivered";
+                await existingOrder.save();
 
-        // Send an email receipt after payment made
-        res.status(201).json({ message: 'Payment created successfully', payment });
+                // Send an email receipt after payment made
+                return res.status(201).json({ message: 'Payment created successfully', payment });
+            }
+            console.log(body);
+            return res.status(400).json(body)
+        })
     } catch (error) {
-        res.status(400).json({ message: 'Error creating payment', error });
+        console.log(error)
+        res.status(400).json({ message: 'Error creating payment' });
     }
 };
 

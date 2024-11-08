@@ -70,7 +70,7 @@ class PaymentValidation{
     static create = Joi.object({
         order: Joi.string().required(),
         transactionId: Joi.string().required(),
-        paymentMethod: Joi.string().trim().required(),
+        // paymentMethod: Joi.string().trim().required(),
         amount: Joi.number().required()
     })
 }

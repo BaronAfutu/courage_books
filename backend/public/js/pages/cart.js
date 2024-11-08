@@ -4,12 +4,26 @@ $(document).ready(async function () {
     let totalCost = 0;
 
 
+    const userId = $("#user").val();
+    let user = null;
+    try {
+        user = await request(`/api/v1/users/${userId}`);
+    } catch (error) {
+        console.log(error);
+        showAlert('ward', 'Could not load profile. Refresh Page!!!');
+    }
+
+
 
     const previewCartItems = (containerID, limit = 0) => {
         const bookList = document.getElementById(containerID);
         bookList.innerHTML = "";
 
-        if (cartItems.length < 1) bookList.textContent = "Your Cart is Empty";
+        if (cartItems.length < 1) {
+            bookList.textContent = "Your Cart is Empty";
+            $("#payBtn").text("No items in cart");
+            $("#payBtn").attr('disabled', true);
+        }
 
         cartItems.forEach((book, index) => {
             // if (index >= limit) return; // It will still go through all the books
@@ -58,32 +72,75 @@ $(document).ready(async function () {
     }
 
 
-    const payWithPaystack = async (cost, phone, email, title) => {
+    const payWithPaystack = async (cost, customer, title, metadata) => {
         // console.log(cost)
         return new Promise((resolve, reject) => {
             var handler = PaystackPop.setup({
-                key: 'pk_test_09f45ee384902e6c34a53ff9e94e8382c8806b6d',
-                email: email,
+                key: 'pk_live_2ff7c874ca266973ae02deb6bda9e8e9ad8656e4',
+                email: customer.email,
+                firstName: customer.firstName,
+                lastName: customer.lastName,
                 amount: parseInt(cost * 100),
+                phone: customer.phone,
                 currency: 'GHS',
                 channels: ['mobile_money', 'card', 'bank', 'ussd', 'bank_transfer'],
                 // ref: '' + Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-                metadata: {
-                    // booking_id: "sdf",
-                    custom_fields: [
-                        {
-                            display_name: "Listing Title",
-                            variable_name: "title",
-                            value: title
-                        }
-                    ]
-                },
-                label: phone,
+                metadata,
                 callback: function (response) {
                     resolve(response);
                 },
+                onLoad: (response) => {
+
+                    console.log("onLoad: ", response);
+                },
                 onClose: function () {
                     // alert('window closed');
+                    $("#payBtn").html('<i class="fas fa-check"></i> Pay Now');
+                    $("#payBtn").removeAttr('disabled');
+                    reject(new Error('Payment Cancelled'));
+                }
+            });
+            handler.openIframe();
+        })
+    }
+
+    const payWithPaystack2 = async (cost, customer, title, metadata) => {
+        // console.log(cost)
+        return new Promise((resolve, reject) => {
+            const popup = new PaystackPop();
+            var handler = PaystackPop.setup({ // PAYSTACK POP
+                key: 'pk_live_2ff7c874ca266973ae02deb6bda9e8e9ad8656e4',
+                email: customer.email,
+                firstName: customer.firstName,
+                lastName: customer.lastName,
+                phone: customer.phone,
+                amount: parseInt(cost * 100),
+                currency: 'GHS',
+                channels: ['mobile_money', 'card', 'bank', 'ussd', 'apple_pay', 'bank_transfer'],
+                // ref: '' + Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                metadata: metadata,
+                onSuccess: (transaction) => {
+
+                    console.log("transaction", transaction);
+
+                },
+
+                onLoad: (response) => {
+
+                    console.log("onLoad: ", response);
+                    resolve(response);
+                },
+
+                onCancel: () => {
+
+                    console.log("onCancel");
+
+                },
+
+                onError: (error) => {
+
+                    console.log("Error: ", error.message);
+
                 }
             });
             handler.openIframe();
@@ -135,23 +192,19 @@ $(document).ready(async function () {
             $(this).closest('.cart-item').remove();
             $("#cartCount").text(cartItems.length);
             updateCartTotal();
-            if (cartItems.length < 1) $("#cartItems").text("Your Cart is Empty");
+            if (cartItems.length < 1) {
+                $("#cartItems").text("Your Cart is Empty");
+                $("#payBtn").text("No items in cart");
+                $("#payBtn").attr('disabled', true);
+            }
         }
     });
 
     $("#payBtn").click(async function (e) {
         e.preventDefault();
-        // const start = moment(new Date(parseInt($("#booking").attr('data-start'))));
-        // const end = moment(new Date(parseInt($("#booking").attr('data-end'))));
+        $("#payBtn").html('<i class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></i>');
+        $("#payBtn").attr('disabled', true);
 
-        // const noDays = end.diff(start, 'days') + 1;
-        // const rate = parseFloat($("#property").data('rate'));
-        // const fee = parseFloat($("#property").data('fee'));
-        // const cost = rate * noDays + fee;
-
-        const phone = $("#user").data('phone');
-        const slugPhone = String(phone).replace(/\s+/g, '');
-        const email = $("#user").data('email') || `customer_${slugify(slugPhone)}@ronaproperties.com`;
         const title = "Book Purchasing";
 
         let orderBooks = {
@@ -160,58 +213,63 @@ $(document).ready(async function () {
             })
         };
 
+        let orderResponse = { _id: '434456577865' };
+        try {
+            orderResponse = await request('/api/v1/orders', 'POST', orderBooks);
+        } catch (error) {
+            showAlert("warn", `Error Creating Order. Please try again later`);
+        }
 
-        // let booking = {
-        //     guest: '6509f5e1fc4da6115b4e83de',
-        //     listing: $("#property").val(),
-        //     checkInDate: Date.parse(start),
-        //     checkOutDate: Date.parse(end),
-        //     status: "pending"
-        // }
-        let response = {}
-        await payWithPaystack(totalCost, phone, email, title)
-            .then(result => {
-                response = result
-                return request('/api/v1/orders', 'POST', orderBooks);
-            }).then(newOrder => {
-                // const userID = $("#user").val();
-                const userID = $("#user").val();
-                return request('/api/v1/payments', 'POST', {
-                    order: newOrder.order._id,
-                    transactionId: response.reference,
-                    paymentMethod: "N/A",
-                    amount: totalCost
-                });
-            }).then(transaction => {
-                if (transaction.payment.status==="successful") {
-                    showAlert("success","The Book has been purchased. Redirecting to your Dashboard");
-                    // Send an email
-                    setTimeout(() => {
-                        window.location.href = '/dashboard';
-                    }, 3000);
+
+        const metadata = {
+            // "cart_id": orderResponse._id,
+            "custom_fields": [
+                {
+                    "display_name": "Invoice ID",
+                    "variable_name": "Invoice ID",
+                    "value": orderResponse.order._id
+                },
+                {
+                    "display_name": "Cart Items",
+                    "variable_name": "cart_items",
+                    "value": cartItems.map(item => {
+                        return {
+                            title: item.book.title,
+                            amount: item.book.price * item.quantity
+                        }
+                    })
+
                 }
-                // else if (transaction.paid >= transaction.amount) {
-                //     showAlert("success",`The Book has been purchased with an overpayment. <br> Paid ${transaction.paid} instead of ${transaction.amount}. <br> Balance will be credited!`);
-                //     // Send an email
-                //     setTimeout(() => {
-                //         // window.location.href = '/dashboard';
-                //     }, 3000);
-                // } else {
-                //     showAlert("warn",`The Book could not be purchased due to an underpayment. <br> Paid ${transaction.paid} instead of ${transaction.amount}. <br> Contact us to resolve this issue!`);
-                //     // Send an email
-                //     setTimeout(() => {
-                //         // window.location.href = '/';
-                //     }, 3000);
-                // }
-                // console.log(transaction)
-                // console.log('success. transaction ref is ' + response.reference);
+
+            ]
+
+        }
+
+        await payWithPaystack(totalCost, user, title, metadata)
+            .then(response => {
+                // console.log(response);
+                // console.log(orderResponse);
+                return request('/api/v1/payments', 'POST', {
+                    order: orderResponse.order._id,
+                    transactionId: response.reference,
+                    // paymentMethod: "N/A",
+                    amount: totalCost
+                }).then(transaction => {
+                    if (transaction.payment.status) {
+                        showAlert("success", "Book(s) purchased. Redirecting to your Dashboard...");
+                        // Send an email
+                        $("#payBtn").html('<i class="fas fa-check"></i> Pay Now');
+                        setTimeout(() => {
+                            window.location.href = '/user/dashboard';
+                        }, 3000);
+                    }
+                });
             }).catch(err => {
-                showAlert("warn",`We encountered an issue and we are working to resolve that. Please try again later`);
-                // Send an email
-                // setTimeout(() => {
-                //     $("#bookingAlert").hide();
-                //     $("#bookingAlert").removeClass("alert-warning");
-                // }, 3000);
+                console.log(err);
+                showAlert("warn", `Couold not process payment. Please try again later`);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
             });
     });
 
