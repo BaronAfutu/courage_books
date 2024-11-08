@@ -55,7 +55,7 @@ exports.signup = async (req, res) => {
             <p>You can also copy and paste this link in your browser if clicking does not work.</p>
             <p>Link: <a href="${verificationLink}">${verificationLink}</a></p>
             <br>
-            <p>If you did not ask create an account with us, you can ignore this email</p>
+            <p>If you did not ask to create an account with us, you can ignore this email</p>
             <p>Thanks,<br>JP Alorwu</p>
         `;
         await sendMail(email, "JP Alorwu - Please Verify your email address", html);
@@ -162,11 +162,15 @@ exports.signin = async (req, res) => { // Returns Page, user session
         }, process.env.SECRET || 'this_is_@_temp.secret')
         req.session.user = { id: user.id, isAdmin: user.isAdmin, token: token };
         // TODO check for next
-        // if(req.query.newuser){
-        //     return res.redirect('/user/profile');
-        // }
+        if(req.query.newuser){ // for first time login to redirect to create profile
+            return res.redirect('/user/profile');
+        }
+        if(req.query.ReturnUrl){
+            return res.redirect(`${req.query.ReturnUrl}`);
+        }
         return res.redirect('/');
     }
+    
     return res.status(404).render('login', {
         subTitle: '- Login',
         status: {

@@ -21,8 +21,8 @@ const profileImageStorage = multer.diskStorage({
         cb(null, 'public/uploads/profilePics/'); // Directory for image uploads
     },
     filename: (req, file, cb) => {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+        // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, file.fieldname + '-' + req.params.id + path.extname(file.originalname));
     }
 });
 

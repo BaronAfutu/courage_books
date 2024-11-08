@@ -67,6 +67,7 @@ app.options('*', cors());
 
 // ************** USE ROUTES *********
 app.use('/', indexRouter);
+
 app.use('/user',loggedInUser);
 app.use('/user',usersRouter);
 

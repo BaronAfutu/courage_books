@@ -1,7 +1,7 @@
 // Controller function for book cover upload
 const loggedInUser = (req, res, next) => {
     if(typeof req.session.user === 'undefined' || req.session.user?.id===''){
-        return res.redirect('/login?msg=Login First!!');
+        return res.redirect(`/login?ReturnUrl=${req.originalUrl}&msg=Login First!!`);
     }
     next();
 };
@@ -10,7 +10,7 @@ const loggedInUser = (req, res, next) => {
 const loggedInAdmin = (req, res, next) => {
     const user = req.session?.user;
     if(typeof user === 'undefined' || user?.id==='' || !user.isAdmin){
-        return res.redirect('/login?msg=Admin Login Required!!');
+        return res.redirect(`/login?ReturnUrl=${req.originalUrl}&msg=Admin Login Required!!`);
     }
 
     if(user.isAdmin) next();

@@ -81,7 +81,7 @@ body {
 }
 
 .hero-section {
-  background-color: #E8D463;
+  background: linear-gradient(135deg, #F9E467 20%, #F5BB24 100%);
   color: #9E690C;
   position: relative;
   padding: 60px;
@@ -146,9 +146,10 @@ body {
   color: #9E690C;
 }
 
-.lavender-gradient .text-jp-dark{
+.lavender-gradient .text-jp-dark {
   color: #9E690C;
 }
+
 /* Homepage Header */
 /* .header {
   /* background-color: var(--bs-primary); *
@@ -203,7 +204,7 @@ body {
 
 .page-header {
   background: linear-gradient(135deg, #F9E467 20%, #F5BB24 100%);
-  color: #9E690C;;
+  color: #9E690C;
   padding: 80px 0;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -225,22 +226,24 @@ body {
 
 /* Sidebar */
 .sidebar {
-  background-color: var(--bs-secondary);
+  min-height: 100vh;
+  background: linear-gradient(135deg, #F9E467 20%, #F5BB24 100%);
   padding: 20px;
-  border-radius: 8px;
-}
-
-.sidebar h4 {
-  color: var(--bs-primary);
+  color: black;
 }
 
 .sidebar a {
-  color: var(--bs-primary);
+  color: black;
   text-decoration: none;
+  padding: 10px;
+  display: block;
 }
 
-.sidebar a:hover {
-  color: #d8bfd8;
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #9E690C;
+  color: #F9E467;
+  border-radius: 4px;
 }
 
 /* Book Categories */
@@ -507,17 +510,21 @@ body {
   /* background-color: #F9E467; */
   padding: 60px 0;
 }
+
 .contact-info {
   /* color: #9E690C; */
   margin-bottom: 20px;
 }
+
 .contact-info h5 {
   color: #CD8F1B;
 }
+
 .contact-info a {
   /* color: #9E690C; */
   text-decoration: none;
 }
+
 /* .contact-info a:hover {
   /* color: #F5BB24; *
 } */
@@ -526,20 +533,23 @@ body {
 /* Sidebar */
 .sidebar {
   min-height: 100vh;
-  background-color: #343a40;
+  background: linear-gradient(135deg, #F9E467 20%, #F5BB24 100%);
   padding: 20px;
-  color: white;
+  color: black;
 }
 
+
 .sidebar a {
-  color: white;
+  color: black;
   text-decoration: none;
   padding: 10px;
   display: block;
 }
 
-.sidebar a:hover {
-  background-color: #495057;
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #9E690C;
+  color: #F9E467;
   border-radius: 4px;
 }
 
@@ -552,20 +562,33 @@ body {
   height: 80vh;
   border: none;
 }
+
 .reading-controls {
   /* background-color: #9E690C; */
   color: black;
   padding: 15px;
   text-align: center;
 }
+
 .reading-controls .btn {
   background-color: #CD8F1B;
   color: white;
   border: none;
 }
+
 .reading-controls .btn:hover {
   background-color: #9E690C;
   color: white;
+}
+
+/* Profile Picture */
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #d4af37;
+  /* Gold border */
 }
 
 /* .card {

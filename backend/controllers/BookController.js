@@ -16,7 +16,7 @@ const getBooks = async (req, res) => {
         if (tags.length > 0) query['tags'] = { $in: tags };
         if (rating) query['rating.averageRating'] = { $gte: rating };
 
-        console.log(query);
+        // console.log(query);
 
         const books = await Book.find(query)
             .limit(limit * 1)
@@ -89,7 +89,7 @@ const createBook = async (req, res) => {
 
 const addBookCover = async (req, res) => {
     try {
-        const coverUrl = `/uploads/coverimages/${req.file.filename}`;
+        const coverUrl = `/uploads/coverImages/${req.file.filename}`;
         const book = await Book.findByIdAndUpdate(req.params.id, { coverImageUrl: coverUrl });
         if (!book) {
             return res.status(404).json({ message: 'Book not found' });

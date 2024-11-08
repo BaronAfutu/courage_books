@@ -81,7 +81,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!-- <li><a class="dropdown-item" href="/user/24324234/user/dashboard">Dashboard</a></li> -->
                         <li><a class="dropdown-item" href="/user/dashboard">Dashboard</a></li>
-                        <!-- <li><a class="dropdown-item" href="/user/24324234/profile">Profile</a></li> -->
+                        <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -98,7 +98,6 @@
                 <i class="fas fa-shopping-cart"></i>
                 <span id="cartCount"
                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-secondary">
-                    #
                     <span class="visually-hidden">cart items</span>
                 </span>
             </a>
@@ -115,11 +114,11 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="/user/dashboard">Dashboard</a></li>
-                    <!-- <li><a class="dropdown-item" href="/user/232342/profile">Profile</a></li> -->
+                    <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="logout">Sign out</a></li>
+                    <li><a class="dropdown-item" href="/logout">Sign out</a></li>
                 </ul>
             </div>
             <% } %>
@@ -127,3 +126,4 @@
     </div>
 </nav>
 <input type="hidden" id="token" value="<%= user?.token %>" hidden>
+<input type="hidden" id="user" value="<%= user?.id %>">

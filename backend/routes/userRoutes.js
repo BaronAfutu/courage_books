@@ -7,8 +7,15 @@ router.get('/', userController.getAllUsers);
 router.get('/dashboard', (req, res) => {
     res.render('user_reading', {
         title: 'Dashboard',
-        user: req.session.user || undefined
+        user: req.session.user
     });
+})
+
+router.get('/profile',(req,res)=>{
+    res.render('user_profile',{
+        title: 'Profile',
+        user: req.session.user
+    })
 })
 
 

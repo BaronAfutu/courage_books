@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('templates/main/head', {title}) %>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div>
+        <%- include('templates/main/navbar', {title}) %>
+    </div>
+
+    <!-- Alerts -->
+    <div>
+        <%- include('templates/alerts') %>
+    </div>
+
+
+
+
+
+
+
+    <!-- Main User Section Layout -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left Sidebar -->
+            <nav class="col-md-3 col-lg-2 sidebar">
+                <h5 class="">User Menu</h5>
+                <a href="#" class="active">Dashboard</a>
+                <a href="#">My Library</a>
+                <a href="#">Wishlist</a>
+                <a href="#">Shopping Cart</a>
+                <a href="#">Order History</a>
+                <a href="#">Payment History</a>
+                <a href="#">Reading Progress</a>
+                <a href="#">Notifications</a>
+                <a href="#">Profile</a>
+                <a href="#">Account Settings</a>
+            </nav>
+
+            <!-- Profile Content -->
+            <main class="col-md-9 col-lg-10 main-content">
+                <h2 class="profile-header">My Profile</h2>
+                <p>View and edit your profile information.</p>
+
+                <!-- Profile Picture and Upload -->
+                <div class="text-center mb-4 bg-light shadow p-4">
+                    <h4 class="text-muted">Profile Image</h4>
+                    <img src="/images/loading.gif" alt="Profile Picture" id="profilePicPreview"
+                        class="profile-picture">
+                    <div class="mt-3">
+                        <input type="file" class="d-none" id="profilePicUpload" accept="image/*">
+                        <button class="btn btn-primary" id="profilePicUploadBtn">Upload</button>
+                        <button class="btn btn-success" id="savePicBtn">Save</button>
+                    </div>
+                </div>
+
+                <!-- Profile Form -->
+                <div class="bg-light shadow px-5 py-3 mb-4">
+                    <h6 class="text-muted my-3">Personal Information</h6>
+                    <form id="profileForm" class="profile-form">
+
+                        <div class="row my-3">
+                            <div class="col-2 fw-bold">
+                                <label for="firstName" class="form-label">Full Name</label>
+                            </div>
+                            <div class="col-5">
+                                <input type="text" class="form-control" id="firstName" placeholder="First Name" value=""
+                                    required>
+                            </div>
+                            <div class="col-5">
+                                <input type="text" class="form-control" id="lastName" placeholder="Last Name" value=""
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="row my-3">
+                            <div class="col-2 fw-bold">
+                                <label for="username" class="form-label">Username</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" class="form-control" id="username" placeholder="Username"
+                                    value="" required>
+                            </div>
+                        </div>
+
+                        <div class="row my-3">
+                            <div class="col-2 fw-bold">
+                                <label for="email" class="form-label">Email</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="email" class="form-control" id="email" placeholder="Email" value=""
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="row my-3">
+                            <div class="col-2 fw-bold">
+                                <label for="phoneNumber" class="form-label">Phone Number</label>
+                            </div>
+                            <div class="col-2">
+                                <select name="countryCode" id="countryCode" class="form-control form-select ">
+                                    <!-- <option value="+233">+233</option> -->
+                                     <%- include('templates/countryCodes') %>
+                                </select>
+                            </div>
+                            <div class="col-8">
+                                <input type="tel" class="form-control" id="phoneNumber" placeholder="Phone Number"
+                                    value="">
+                            </div>
+                        </div>
+
+                        <div class="row my-3">
+                            <div class="col-2 fw-bold">
+                                <label for="address" class="form-label">Address</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" class="form-control" id="address" placeholder="Address"
+                                    value="">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+                    </form>
+                </div>
+
+                <div class="bg-light shadow px-5 py-3 mb-4">
+                    <h6 class="text-muted my-3">Authentication</h6>
+                    <small class="text-muted">Cannot update password at the moment</small>
+                    <form id="authForm" class="profile-form">
+
+                        <div class="row my-3">
+                            <div class="col-2 fw-bold">
+                                <label for="old_password" class="form-label">Old Password</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="password" class="form-control" id="old_password" placeholder="Old Password" value=""
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-2 fw-bold">
+                                <label for="new_password" class="form-label">New Password</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="password" class="form-control" id="new_password" placeholder="New Password" value=""
+                                    disabled>
+                            </div>
+                        </div>
+
+                        
+                        <button type="submit" class="btn btn-primary w-100">Update Password</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <%- include('templates/main/footer') %>
+    </footer>
+
+    <%- include('templates/main/baseScripts') %>
+        <!-- <script-- type="text/javascript" src="../backend/public/js/bookList.js"></script-->
+        <script type="text/javascript" src="/js/mainFuncs.js"></script>
+        <script type="text/javascript" src="/js/pages/user_profile.js"></script>
+        <!-- <script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script> -->
+
+</body>
+
+</html>

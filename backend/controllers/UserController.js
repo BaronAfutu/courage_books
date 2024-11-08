@@ -63,6 +63,25 @@ const updateUser = async (req, res) => {
     }
 };
 
+const updateProfilePic = async (req, res) => {
+    try {
+        const profileImageUrl = `/uploads/profilePics/${req.file.filename}`;
+        
+        const decoded = await decodeToken(req.headers.authorization);
+        if (!decoded.success) return res.status(500).json({ status: false });
+        const { id: userId, isAdmin } = decoded;
+
+
+        const user = await User.findByIdAndUpdate(userId, { profileImage: profileImageUrl });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json({ message: 'User Profile Picture updated successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating profile picture book cover', error });
+    }
+}
+
 const deleteUser = async (req, res) => {
     try {
         const decoded = await decodeToken(req.headers.authorization);
@@ -70,7 +89,7 @@ const deleteUser = async (req, res) => {
         const { id: userId, isAdmin } = decoded;
 
         if (!isAdmin && userId !== req.params.id) return res.status(401).json({ status: false, message: "Unathorized!!" });
-        
+
         const user = await User.findByIdAndUpdate(req.params.id, { status: 0 });
         if (!user) return res.status(404).json({ message: "User not found" });
 
@@ -85,5 +104,6 @@ module.exports = {
     getAllUsers,
     getUserById,
     updateUser,
+    updateProfilePic,
     deleteUser
 };

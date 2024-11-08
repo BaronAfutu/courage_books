@@ -53,7 +53,8 @@ const uploadProfilePicture = (req, res) => {
         if (err) {
             return res.status(500).json({ message: 'Image upload failed', error: err.message });
         }
-        res.status(200).json({ message: 'Image uploaded successfully', file: req.file, fileName: req.file.filename });
+        // res.status(200).json({ message: 'Image uploaded successfully', file: req.file, fileName: req.file.filename });
+        next()
         // for middleware, next() comes here
     });
 };

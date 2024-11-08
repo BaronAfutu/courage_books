@@ -62,6 +62,11 @@ $(document).ready(async function () {
         }
     }
 
+    if(url.searchParams.has('ReturnUrl')){
+        const ReturnUrl = url.searchParams.get('ReturnUrl');
+        $("#loginForm").attr('action', `/signin?ReturnUrl=${ReturnUrl}`);
+    }
+
 
     $("#confirmPassword").keyup(function (e) {
         if ($(this).val().length > 0) {
@@ -169,7 +174,7 @@ $(document).ready(async function () {
                 lastName: lastName,
                 password: password
             })
-            showAlert('success', "Signup successful! Redirecting to login page...");
+            showAlert('success', "Signup successful! A verification link has been sent to your email...");
             setTimeout(() => {
                 window.location.href = "/login";
             }, 3000);

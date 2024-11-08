@@ -8,19 +8,19 @@ const uploadBookCover = (req, res, next) => {
         if (err) {
             return res.status(500).json({ message: 'Image upload failed', error: err.message });
         }
-        next();
         // res.status(200).json({ message: 'Image uploaded successfully', fileName: req.file.filename });
-        // for middleware, next() comes here
+        next();
     });
 };
 
-const uploadProfilePicture = (req, res) => {
+const uploadProfilePicture = (req, res, next) => {
+    if(typeof req.params.id === 'undefined') return res.status(400).json({message:'user id required'});
     profileImageUpload.single('profilePic')(req, res, (err) => {
         if (err) {
             return res.status(500).json({ message: 'Image upload failed', error: err.message });
         }
-        res.status(200).json({ message: 'Image uploaded successfully', fileName: req.file.filename });
-        // for middleware, next() comes here
+        // res.status(200).json({ message: 'Image uploaded successfully', fileUrl: `/uploads/profilepics/${req.file.filename}` });
+        next();
     });
 };
 
