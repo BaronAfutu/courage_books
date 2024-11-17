@@ -18,6 +18,20 @@ router.get('/profile',(req,res)=>{
     })
 })
 
+router.get('/library',(req,res)=>{
+    res.render('user_library',{
+        title: 'Library',
+        user: req.session.user
+    })
+})
+
+router.get('/books/:id/:slug', (req, res) => {
+    res.render('user_reading', {
+      title: req.params.slug,
+      user: req.session.user
+    });
+  })
+
 
 
 router.get('/:id', userController.getUserById);

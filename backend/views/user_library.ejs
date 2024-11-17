@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('templates/main/head', {title}) %>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div>
+        <%- include('templates/main/navbar', {title}) %>
+    </div>
+
+    <!-- Alerts -->
+    <div>
+        <%- include('templates/alerts') %>
+    </div>
+
+
+
+
+
+
+    <!-- Main User Section Layout -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left Sidebar -->
+            <nav class="col-md-3 col-lg-2 sidebar">
+                <%- include('templates/user_dashboard/sidebar',{title}) %>
+            </nav>
+
+            <!-- Main Content Area (My Library) -->
+            <main class="col-md-9 col-lg-10 main-content">
+                <h2>My Library</h2>
+                <p class="text-muted">Access all the books you've purchased and manage your library.</p>
+
+                <!-- Search & Filter Section -->
+                <!-- <div class="search-filter row">
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" placeholder="Search by title, author, or genre">
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select">
+                            <option value="">Filter by Genre</option>
+                            <option value="fiction">Fiction</option>
+                            <option value="romance">Romance</option>
+                            <option value="mystery">Mystery</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="sci-fi">Sci-Fi</option>
+                        </select>
+                    </div>
+                </div> -->
+
+                <!-- Library Books Section -->
+                <!-- Library Books Section -->
+                <div class="row" id="bookList">
+                    <div class="text-center">
+                        <%- include('templates/loading') %>
+                    </div>
+                    <!-- Book 1 -->
+                    <!-- <div class="col-md-6 col-lg-3 col-xxl-2">
+                        <a href="#" class="card library-book-card text-white">
+                            <!-- Book Cover Image ->
+                            <img src="/images/book_cover.jpg" class="card-img"
+                                alt="Romancing Mister Bridgerton">
+                            <!-- Overlay Content ->
+                            <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                <div class=" library-book-card-title w-100 p-3 text-center">
+                                    <h5 class="card-title">Romancing Mister Bridgerton</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div> -->
+
+                    <!-- Book 2
+                    <div class="col-md-6 col-lg-4 col-xxl-3">
+                        <div class="card book-card text-white">
+                            <!-- Book Cover Image ->
+                            <img src="https://via.placeholder.com/200x300" class="card-img" alt="The Duke and I">
+                            <!-- Overlay Content ->
+                            <div class="card-img-overlay d-flex flex-column justify-content-end"
+                                style="background: rgba(0, 0, 0, 0.6);">
+                                <h5 class="card-title">The Duke and I</h5>
+                                <p class="card-text"><small class="text-muted">Author: Julia Quinn</small></p>
+                                <div class="d-flex flex-wrap">
+                                    <a href="#" class="btn btn-primary me-2">Read Online</a>
+                                    <div class="btn-group">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="fa fa-download d-inline d-xl-none"></span> <span
+                                                class="d-none d-xl-inline">Download</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">PDF</a></li>
+                                            <li><a class="dropdown-item" href="#">ePub</a></li>
+                                            <li><a class="dropdown-item" href="#">Mobi</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- Additional books can be added here using the same structure -->
+                </div>
+
+
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <%- include('templates/main/footer') %>
+    </footer>
+
+    <%- include('templates/main/baseScripts') %>
+        <!-- <script-- type="text/javascript" src="../backend/public/js/bookList.js"></script-->
+        <script type="text/javascript" src="/js/mainFuncs.js"></script>
+        <script type="text/javascript" src="/js/pages/user_library.js"></script>
+        <!-- <script type="text/javascript" src="../backend/public/js/templatemo.custom.js"></script> -->
+
+
+</body>
+
+</html>

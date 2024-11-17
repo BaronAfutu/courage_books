@@ -30,7 +30,7 @@ const getUserById = async (req, res) => {
 
         const user = await User.findById(req.params.id).select('-password')
             .populate('books')
-            .populate('books', 'id slug title subtitle rating.averageRating')
+            .populate('books', 'id category coverImageUrl slug title subtitle rating.averageRating')
             .populate('cart.book', 'id slug title subtitle rating.averageRating')
             .populate('wishlist', 'id slug title subtitle rating.averageRating');
 

@@ -122,6 +122,7 @@ $(document).ready(async function () {
 
     } catch (error) {
         console.log(error)
+        showAlert('Could retrieve the book. Reload the page to try again');
         // alert(error.responseJSON.errMsg || error.responseJSON.message)
     }
 

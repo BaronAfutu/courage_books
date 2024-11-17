@@ -17,7 +17,7 @@ $(document).ready(async function () {
         $("#address").val(user.address);
     } catch (error) {
         console.log(error);
-        showAlert('ward','Could not load profile. Refresh Page!!!');
+        showAlert('warn','Could not load profile. Refresh Page!!!');
     }
 
     $("#profilePicUploadBtn").click(function (e) {
